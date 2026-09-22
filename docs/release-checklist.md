@@ -6,7 +6,7 @@
       DGU separately approved the existing deployment, but its terrain data is
       not redistributed or offered for reuse. Project-authored code remains MIT.
 - [x] Replace the sibling Station3D dependency with exact public release tag
-      `v0.1.0-alpha.1`; Git installation builds and vendors its own `dist/`.
+      `v0.1.0-alpha.2`; Git installation builds and vendors its own `dist/`.
 - [x] Provide a compatible API or a documented read-only demo provider.
 - [x] Start the portable demo from a fresh clone with the documented
       `npm ci && npm run dev` path.

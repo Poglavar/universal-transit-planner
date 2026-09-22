@@ -7877,17 +7877,23 @@ function getLineTrackCenterOffsetAtDistance(line, distanceMeters) {
     );
 }
 
-function plannerCabPoseElevationAt(line, lat, lng, relativeElevationM) {
+function plannerCabPoseElevationAt(_line, _lat, _lng, profileElevationM) {
     if (plannerCabModelGradeActive) {
-        const absoluteElevationM = getLineTrackAbsoluteAslAt(line, lat, lng);
-        if (!Number.isFinite(absoluteElevationM)) return {};
+        // The motion profile already sampled the authored EVRF2000 height at
+        // this exact chainage. Re-projecting the horizontal pose onto the
+        // source track used a second parameterisation that diverged by up to
+        // 0.15 m on a smoothed curve, so height bobbed while pitch followed a
+        // steady profile. One chainage sample must own both values.
+        if (!Number.isFinite(profileElevationM)) return {};
         return {
-            y: roundElevationMeters(absoluteElevationM),
+            y: profileElevationM,
             elevationMode: 'absolute',
             elevationDatum: 'EVRF2000',
         };
     }
-    return { y: roundElevationMeters(relativeElevationM) };
+    // Preserve interpolation precision so a continuous grade does not become
+    // centimetre steps in a moving camera.
+    return { y: Number.isFinite(profileElevationM) ? profileElevationM : 0 };
 }
 
 function makeTrainPoseFn(train, line) {

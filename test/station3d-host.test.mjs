@@ -25,13 +25,29 @@ test('planner configures Station3D without exposing campaigns', async () => {
             name: 'Example City',
             bounds: { west: 1, south: 2, east: 3, north: 4 },
             attributions: [{ name: 'Example data' }],
-            station3d: { worldProfile: { id: 'example-world', buildings: 'overture' } },
+            station3d: {
+                worldProfile: { id: 'example-world', buildings: 'overture' },
+                loadingScreen: {
+                    logoUrl: 'city-pack/brand.svg',
+                    logoAlt: 'Example City',
+                    background: '#102030',
+                    foreground: '#f8fafc',
+                    accent: '#38bdf8',
+                },
+            },
         },
     });
     assert.equal(calls[0][1].id, 'transit-planner-example');
     assert.equal(calls[0][1].worldProfile.id, 'example-world');
     assert.equal(calls[1][1].name, 'Example City Transit Planner');
     assert.equal(calls[1][1].campaigns, false);
+    assert.deepEqual({ ...calls[1][1].loadingScreen }, {
+        logoUrl: 'city-pack/brand.svg',
+        logoAlt: 'Example City',
+        background: '#102030',
+        foreground: '#f8fafc',
+        accent: '#38bdf8',
+    });
 });
 
 test('default world profile selects the global terrain provider contract', async () => {

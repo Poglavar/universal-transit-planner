@@ -12,6 +12,7 @@ test('every checked-in Zagreb data extract has a provenance record', async () =>
     }
     assert.match(notice, /HŽPP publishes the feed[\s\S]*free reuse permission was confirmed directly with HŽPP/);
     assert.match(notice, /zagreb-logo\.svg[\s\S]*project-authored media[\s\S]*MIT licence/);
+    assert.match(notice, /zagreb-prijevoz-logo\.svg[\s\S]*project-authored media[\s\S]*MIT licence/);
     assert.match(notice, /DGU approved that\s+deployment separately[\s\S]*every other use or deployment must obtain its own approval/);
     assert.match(notice, /terrain-provider interfaces and integration code are project-authored\s+MIT code/);
     assert.doesNotMatch(notice, /Not release-cleared: confirm permission or remove before public release/);

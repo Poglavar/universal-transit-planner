@@ -55,9 +55,10 @@ every other use or deployment must obtain its own approval from DGU. The
 planner, terrain-provider interfaces and integration code are project-authored
 MIT code and may be reused independently of the DGU data.
 
-`city-packs/zagreb/zagreb-logo.svg` is project-authored media created by the
-project maintainer and released under the repository's MIT licence. It is a
-legacy compatibility logo and is not referenced by the current runtime.
+`city-packs/zagreb/zagreb-logo.svg` and
+`city-packs/zagreb/zagreb-prijevoz-logo.svg` are project-authored media created
+by the project maintainer and released under the repository's MIT licence. The
+first brands the planner shell; the second brands its Station3D loading screen.
 
 ## Documentation media
 

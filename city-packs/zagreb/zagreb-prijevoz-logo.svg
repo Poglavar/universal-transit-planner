@@ -1,0 +1,23 @@
+<!-- Product-authored Zagreb Prijevoz loading-screen wordmark. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 240" role="img" aria-labelledby="title desc">
+  <title id="title">Zagreb prijevoz</title>
+  <desc id="desc">A stylized blue tram beside the Zagreb prijevoz wordmark.</desc>
+  <g transform="translate(18 20)">
+    <rect width="200" height="200" rx="48" fill="#0ea5e9"/>
+    <path d="M52 158h96M68 178h64" fill="none" stroke="#bae6fd" stroke-width="10" stroke-linecap="round"/>
+    <path d="M67 52h66c17 0 31 14 31 31v61H36V83c0-17 14-31 31-31Z" fill="#f8fafc"/>
+    <path d="M55 78h90v42H55z" fill="#0f2942"/>
+    <path d="M100 78v42" stroke="#38bdf8" stroke-width="6"/>
+    <circle cx="63" cy="139" r="8" fill="#facc15"/>
+    <circle cx="137" cy="139" r="8" fill="#facc15"/>
+    <path d="M75 52 92 31h16l17 21" fill="none" stroke="#f8fafc" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g transform="translate(252 54)">
+    <text x="0" y="54" fill="#f8fafc" font-family="Inter, Montserrat, Arial, sans-serif" font-size="54" font-weight="800" letter-spacing="-1">ZAGREB</text>
+    <text x="0" y="112" fill="#38bdf8" font-family="Inter, Montserrat, Arial, sans-serif" font-size="54" font-weight="800" letter-spacing="1">PRIJEVOZ</text>
+    <path d="M2 140h332" stroke="#38bdf8" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="2" cy="140" r="9" fill="#facc15"/>
+    <circle cx="168" cy="140" r="9" fill="#f8fafc"/>
+    <circle cx="334" cy="140" r="9" fill="#facc15"/>
+  </g>
+</svg>
