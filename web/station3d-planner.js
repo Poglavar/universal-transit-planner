@@ -32,6 +32,7 @@
         }
         const city = runtimeConfig.city || {};
         const worldProfile = city.station3d?.worldProfile || DEFAULT_WORLD_PROFILE;
+        const loading = city.station3d?.loadingScreen;
         return Object.freeze({
             world: Object.freeze({
                 id: `transit-planner-${city.id || 'default'}`,
@@ -42,6 +43,13 @@
             }),
             host: Object.freeze({
                 name: city.name ? `${city.name} Transit Planner` : 'Universal Transit Planner',
+                loadingScreen: loading ? Object.freeze({
+                    logoUrl: loading.logo || null,
+                    logoAlt: loading.logoAlt || '',
+                    background: loading.background || null,
+                    foreground: loading.foreground || null,
+                    accent: loading.accent || null,
+                }) : null,
                 devOverlays: true,
                 campaigns: false,
             }),

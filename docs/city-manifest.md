@@ -72,3 +72,9 @@ explorer links hand off without embedding campaign code in the planner.
 Local static-data URLs in the manifest point at `city-pack/data/...`. Network
 defaults such as electrification, API compatibility field names and provider
 labels are manifest data rather than branches on `city.id`.
+
+`station3d.loadingScreen` optionally gives the shared Station3D loading page a
+city/product logo and three palette values: `background`, `foreground` and
+`accent`. The engine keeps a neutral unbranded default. A local logo belongs in
+the selected city pack and is copied with that pack; other consumers should
+supply their own identity rather than modifying the shared Station3D shell.

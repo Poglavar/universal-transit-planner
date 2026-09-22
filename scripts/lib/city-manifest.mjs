@@ -125,6 +125,21 @@ export function validateCityManifest(city, expectedId = null) {
             add('objectBrowser.path must be a safe relative path');
         }
     }
+    if (city.station3d?.loadingScreen !== undefined) {
+        const loadingScreen = city.station3d.loadingScreen;
+        if (!loadingScreen || typeof loadingScreen !== 'object' || Array.isArray(loadingScreen)) {
+            add('station3d.loadingScreen must be an object');
+        } else {
+            if (!isSafeRelativePath(loadingScreen.logo)) {
+                add('station3d.loadingScreen.logo must be a safe relative path');
+            }
+            for (const field of ['logoAlt', 'background', 'foreground', 'accent']) {
+                if (loadingScreen[field] !== undefined && typeof loadingScreen[field] !== 'string') {
+                    add(`station3d.loadingScreen.${field} must be a string when present`);
+                }
+            }
+        }
+    }
 
     if (!city.features || typeof city.features !== 'object') {
         add('features must be an object');

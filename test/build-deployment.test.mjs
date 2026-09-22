@@ -23,9 +23,10 @@ test('Zagreb deployment build emits branded metadata and isolated asset base', a
                 TRANSIT_EXTERNAL_EXPLORER_URL: '/sloboda/',
             },
         });
-        const [html, deployment] = await Promise.all([
+        const [html, deployment, cityConfig] = await Promise.all([
             readFile(join(output, 'transit.html'), 'utf8'),
             readFile(join(output, 'deployment-config.generated.js'), 'utf8'),
+            readFile(join(output, 'city-config.generated.js'), 'utf8'),
         ]);
         assert.match(html, /<base href="\/prijevoz\/utp\/">/);
         assert.match(html, /<title>Zagreb transit planner<\/title>/);
@@ -33,10 +34,12 @@ test('Zagreb deployment build emits branded metadata and isolated asset base', a
         assert.match(html, /property="og:url" content="https:\/\/zagreb\.lol\/prijevoz\/"/);
         assert.match(deployment, /"apiBaseUrl": "\/prijevoz\/api"/);
         assert.match(deployment, /"externalExplorerBaseUrl": "\/sloboda\/"/);
+        assert.match(cityConfig, /"logo": "city-pack\/zagreb-prijevoz-logo\.svg"/);
         await Promise.all([
             access(join(output, 'objekti.html')),
             access(join(output, 'objekti.js')),
             access(join(output, 'objekti.css')),
+            access(join(output, 'city-pack/zagreb-prijevoz-logo.svg')),
         ]);
         await assert.rejects(access(join(output, 'json/rail-tunnels-osm.json')));
     } finally {

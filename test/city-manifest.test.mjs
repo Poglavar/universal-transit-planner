@@ -106,10 +106,22 @@ test('optional companion tool paths cannot escape the selected build', () => {
     assert.ok(validateCityManifest(invalid).some(error => error.includes('objectBrowser.path')));
 });
 
+test('Station3D loading branding uses a local city-pack asset', () => {
+    const valid = structuredClone(zagreb);
+    assert.deepEqual(validateCityManifest(valid, 'zagreb'), []);
+
+    const invalid = structuredClone(zagreb);
+    invalid.station3d.loadingScreen.logo = '../private-logo.svg';
+    assert.ok(validateCityManifest(invalid, 'zagreb').some(error => (
+        error.includes('station3d.loadingScreen.logo')
+    )));
+});
+
 test('local terrain configuration declares source identity', () => {
     assert.deepEqual(zagreb.providers.terrain, ['best-available', 'dgu-dtm-20m']);
     assert.equal(zagreb.station3d.worldProfile.terrain.source, 'dgu-dtm-20m');
     assert.equal(zagreb.station3d.worldProfile.terrain.detail.source, 'best-available');
+    assert.equal(zagreb.station3d.loadingScreen.logo, 'city-pack/zagreb-prijevoz-logo.svg');
     assert.equal(
         zagreb.attributions.find(attribution => attribution.name === 'Državna geodetska uprava')?.license,
         'Use approved separately for this deployment',
