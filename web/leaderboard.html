@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project leaderboard — Universal Transit Planner</title>
+    <script>
+        document.documentElement.classList.add('i18n-pending');
+        window.setTimeout(() => document.documentElement.classList.remove('i18n-pending'), 2000);
+    </script>
+    <script src="i18n.js"></script>
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23007bff'/%3E%3Ccircle cx='32' cy='32' r='14' fill='white' fill-opacity='0.9'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23ff4d4d'/%3E%3C/svg%3E">
+    <!-- The 📋 object-bill table, shared with transit.html -->
+    <link rel="stylesheet" href="planner-grade/civil-objects.css?v=20260731-1">
+    <style>
+        :root {
+            --page-gutter: clamp(16px, 3vw, 28px);
+            --content-max-width: 800px;
+            --table-max-width: 1200px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px var(--page-gutter) 28px;
+            background: #f8f9fa;
+        }
+
+        .i18n-pending body { visibility: hidden; }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .page-header,
+        .methodology-note,
+        .feedback {
+            box-sizing: border-box;
+            width: min(100%, var(--content-max-width));
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .page-header {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .page-header h1 {
+            margin: 0;
+            text-align: center;
+        }
+
+        .page-actions {
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-size: 0.85rem;
+            color: #1d4ed8;
+            text-decoration: none;
+            padding: 6px 10px;
+            border: 1px solid #bfdbfe;
+            border-radius: 4px;
+            background: white;
+        }
+
+        .language-switch {
+            display: inline-flex;
+            gap: 2px;
+            margin-left: auto;
+            padding: 2px;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            background: white;
+        }
+
+        .language-switch button {
+            min-width: 30px;
+            padding: 5px 6px;
+            border: 0;
+            border-radius: 3px;
+            background: transparent;
+            color: #475569;
+            font-size: 0.72rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .language-switch button.active {
+            background: #0f172a;
+            color: white;
+        }
+
+        .leaderboard-tabs {
+            width: min(100%, var(--table-max-width));
+            margin: 0 auto 12px;
+            display: flex;
+            gap: 6px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        .lb-tab {
+            appearance: none;
+            border: none;
+            background: none;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #64748b;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+        .lb-tab:hover { color: #1d4ed8; }
+        .lb-tab.active { color: #1d4ed8; border-bottom-color: #1d4ed8; }
+        .lb-tab .lb-tab-count {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #94a3b8;
+            margin-left: 4px;
+        }
+        .existing-ref {
+            font-size: 0.8rem;
+            color: #78716c;
+            font-weight: 600;
+        }
+        .project-link {
+            color: #1d4ed8;
+            text-decoration: none;
+        }
+        .project-link:hover { text-decoration: underline; }
+        /* "Dodano": secondary information, and it must never wrap — dd.mon.hh:mm
+           has to stay one line at 320 px or the row height jumps. */
+        .created-cell {
+            font-size: 0.8rem;
+            color: #78716c;
+            white-space: nowrap;
+            font-variant-numeric: tabular-nums;
+        }
+        .rank-btn {
+            appearance: none;
+            border: 1px solid #16a34a;
+            background: #16a34a;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .rank-btn:hover { background: #15803d; }
+        .rank-btn:disabled { opacity: 0.6; cursor: default; }
+        .export-btn {
+            appearance: none;
+            border: 1px solid #93c5fd;
+            background: #eff6ff;
+            color: #1d4ed8;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 6px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .export-btn:hover:not(:disabled) {
+            background: #dbeafe;
+            border-color: #60a5fa;
+        }
+        .export-btn:disabled { opacity: 0.6; cursor: progress; }
+        .row-actions {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .unranked-reason { font-size: 0.82rem; color: #64748b; }
+        .unranked-reason.no-data { color: #b45309; }
+        .unranked-status-pending { color: #2563eb; }
+
+        .nav-link:hover {
+            text-decoration: none;
+            background: #1d4ed8;
+            color: white;
+        }
+
+        .secondary-action {
+            font-size: 0.85rem;
+            color: #1d4ed8;
+            background: white;
+            border: 1px solid #bfdbfe;
+            border-radius: 4px;
+            padding: 6px 10px;
+            cursor: pointer;
+        }
+
+        .secondary-action:hover {
+            background: #1d4ed8;
+            color: white;
+        }
+
+        th.sortable {
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            padding-right: 18px;
+        }
+
+        th.sortable:hover {
+            background: #444;
+        }
+
+        th.sortable::after {
+            content: '⇅';
+            position: absolute;
+            right: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.7rem;
+            opacity: 0.4;
+        }
+
+        th.sortable.sort-asc::after {
+            content: '▲';
+            opacity: 0.9;
+        }
+
+        th.sortable.sort-desc::after {
+            content: '▼';
+            opacity: 0.9;
+        }
+
+        .methodology-note {
+            margin: 0 auto 16px;
+            padding: 14px 16px;
+            background: white;
+            border: 1px solid #dbe4f0;
+            border-radius: 10px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+            color: #334155;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .methodology-note strong {
+            color: #0f172a;
+        }
+
+        .feedback {
+            margin-bottom: 12px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 0.86rem;
+            background: #eef5ff;
+            color: #0f3d91;
+            border: 1px solid #c9dcff;
+        }
+
+        .feedback.hidden {
+            display: none;
+        }
+
+        .feedback.error {
+            background: #fff1f2;
+            color: #b42318;
+            border-color: #fecdd3;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: max-content;
+            min-width: 100%;
+            background: transparent;
+        }
+
+        th {
+            background: #333;
+            color: white;
+            padding: 10px 12px;
+            text-align: left;
+            font-size: 0.85rem;
+        }
+
+        td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #eee;
+            font-size: 0.85rem;
+        }
+
+        th,
+        td {
+            white-space: nowrap;
+        }
+
+        tr.project-row {
+            transition: background 0.12s ease;
+        }
+
+        tr.project-row:hover {
+            background: #f0f4ff;
+            cursor: pointer;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .rank {
+            font-weight: bold;
+            color: #007bff;
+            width: 54px;
+            text-align: center;
+        }
+
+        .rank-badge,
+        .rank-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.4em;
+            margin: 0 auto;
+            line-height: 1;
+        }
+
+        .rank-badge {
+            font-size: 1.15rem;
+        }
+
+        .rank-number {
+            font-size: 1rem;
+        }
+
+        .network-thumb {
+            padding: 4px 6px;
+            line-height: 0;
+        }
+
+        .network-thumb svg {
+            display: block;
+        }
+
+        .author-cell {
+            min-width: 120px;
+        }
+
+        .popularity-cell {
+            min-width: 132px;
+        }
+
+        .vote-controls {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .vote-btn {
+            width: 28px;
+            height: 28px;
+            border: 1px solid #cbd5e1;
+            border-radius: 999px;
+            background: white;
+            color: #334155;
+            font-size: 0.95rem;
+            line-height: 1;
+            cursor: pointer;
+            transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease, transform 0.12s ease;
+        }
+
+        .vote-btn:hover:not(:disabled) {
+            transform: translateY(-1px);
+            border-color: #94a3b8;
+        }
+
+        .vote-btn:disabled {
+            cursor: progress;
+            opacity: 0.7;
+        }
+
+        .vote-btn.active-up {
+            border-color: #16a34a;
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .vote-btn.active-down {
+            border-color: #dc2626;
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .vote-score {
+            min-width: 2.4em;
+            text-align: center;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .error {
+            text-align: center;
+            padding: 40px;
+            color: #dc3545;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        #content {
+            width: min(100%, var(--table-max-width));
+            margin: 0 auto;
+        }
+
+        #content>.loading,
+        #content>.error,
+        #content>.empty {
+            width: min(100%, var(--content-max-width));
+            margin: 0 auto;
+        }
+
+        .table-scroll {
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 📋 next to the cost: opens the bill of structures behind that number. */
+        .objects-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.05em;
+            line-height: 1;
+            padding: 0 2px;
+            opacity: 0.75;
+            /* The table font has no glyph for 📋 and renders tofu; name the
+               emoji fonts explicitly so the icon shows on every platform. */
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+        }
+
+        .objects-btn:hover {
+            opacity: 1;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            z-index: 1000;
+        }
+
+        .modal-overlay.hidden {
+            display: none;
+        }
+
+        .prices-modal {
+            box-sizing: border-box;
+            width: min(720px, 100%);
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 18px 48px rgba(15, 23, 42, 0.22);
+            border: 1px solid #dbe4f0;
+            padding: 20px;
+            max-height: min(calc(100vh - 40px), 760px);
+            overflow-y: auto;
+            overscroll-behavior: contain;
+        }
+
+        .prices-modal h2 {
+            margin: 0 0 8px;
+            font-size: 1.2rem;
+            color: #0f172a;
+        }
+
+        .prices-modal p {
+            margin: 0 0 16px;
+            color: #475569;
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+
+        .prices-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .price-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .price-group-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #0f172a;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #dbe4f0;
+        }
+
+        .price-card {
+            border: 1px solid #dbe4f0;
+            border-radius: 12px;
+            padding: 12px;
+            background: #f8fbff;
+        }
+
+        .price-card.disabled {
+            opacity: 0.65;
+            background: #f8fafc;
+        }
+
+        .price-card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .price-card-icon {
+            font-size: 1.25rem;
+            line-height: 1;
+        }
+
+        .price-card-title {
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .price-card-unit {
+            display: block;
+            color: #64748b;
+            font-size: 0.78rem;
+            margin-top: 2px;
+        }
+
+        .price-card-input {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 1rem;
+            background: white;
+        }
+
+        .price-card-input:disabled {
+            background: #e2e8f0;
+            color: #64748b;
+            cursor: not-allowed;
+        }
+
+        .price-card-help {
+            margin-top: 8px;
+            color: #64748b;
+            font-size: 0.78rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: center;
+            margin-top: 4px;
+        }
+
+        .modal-actions-left,
+        .modal-actions-right {
+            display: inline-flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .modal-primary {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        .modal-primary:hover {
+            background: #1d4ed8;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 12px;
+            }
+
+            .page-header,
+            .methodology-note,
+            .feedback,
+            #content {
+                width: 100%;
+            }
+
+            .modal-overlay {
+                align-items: stretch;
+                justify-content: stretch;
+                padding: 0;
+            }
+
+            .prices-modal {
+                width: 100%;
+                height: 100dvh;
+                max-height: 100dvh;
+                padding: calc(16px + env(safe-area-inset-top)) 16px 0;
+                border-radius: 0;
+                border: none;
+                box-shadow: none;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .prices-modal h2 {
+                font-size: 1.08rem;
+            }
+
+            .prices-modal p {
+                font-size: 0.88rem;
+                margin-bottom: 14px;
+            }
+
+            th,
+            td {
+                padding: 6px 8px;
+                font-size: 0.78rem;
+            }
+
+            .prices-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                margin-bottom: 0;
+                overflow-y: auto;
+                min-height: 0;
+                padding-bottom: 16px;
+            }
+
+            .price-card {
+                padding: 11px;
+            }
+
+            .price-card-header {
+                align-items: flex-start;
+            }
+
+            .price-card-input {
+                font-size: 16px;
+            }
+
+            .modal-actions {
+                flex: 0 0 auto;
+                margin: 0 -16px 0;
+                padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+                background: #ffffff;
+                border-top: 1px solid #e2e8f0;
+                box-shadow: 0 -8px 24px rgba(15, 23, 42, 0.08);
+            }
+
+            .modal-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .modal-actions-left,
+            .modal-actions-right {
+                width: 100%;
+                justify-content: stretch;
+                flex-direction: column;
+            }
+
+            .modal-actions-left>*,
+            .modal-actions-right>* {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body data-page="leaderboard">
+    <div class="page-header">
+        <h1><span data-city-name>Example City</span> project leaderboard</h1>
+        <div class="page-actions">
+            <!-- href set by leaderboard.js (getPlannerBaseHref, +?from when arrived from a project) -->
+            <a id="backToPlannerLink" class="nav-link" href="transit.html">← Planer</a>
+            <button id="openPrices" class="secondary-action" type="button">Postavi cijene</button>
+            <div class="language-switch" role="group" aria-label="Language">
+                <button type="button" data-language="en" aria-label="Use English">EN</button>
+                <button type="button" data-language="hr" aria-label="Koristi hrvatski">HR</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="methodology-note">
+        Klik na zaglavlje stupca sortira tablicu po tom stupcu. Drugi klik mijenja smjer.
+        Kod cjenovnih kriterija niža vrijednost je bolja, a kod popularnosti se gleda razlika pozitivnih i negativnih
+        glasova. Strelice sluze za glasanje.
+        Klik na redak ce prikazati projekt na mapi.
+        Preuzmi ZIP izvozi trase i stanice kao 3D GeoJSON te linije i veze kao JSON.
+        Svi projekti koriste 10 minuta hodanja do stanica za izračun broja stanovnika i radnih mjesta.
+    </div>
+
+    <div id="feedback" class="feedback hidden" aria-live="polite"></div>
+
+    <div id="pricesModal" class="modal-overlay hidden" role="dialog" aria-modal="true"
+        aria-labelledby="pricesModalTitle">
+        <div class="prices-modal">
+            <h2 id="pricesModalTitle">Lokalne cijene gradnje</h2>
+            <p>Ove cijene vrijede samo u ovom pregledniku. Nakon spremanja ljestvica i omjeri se ponovno racunaju
+                lokalno, bez promjene podataka na serveru.</p>
+            <div id="pricesGrid" class="prices-grid"></div>
+            <div class="modal-actions">
+                <div class="modal-actions-left">
+                    <button id="resetPrices" class="secondary-action" type="button">Vrati zadano</button>
+                </div>
+                <div class="modal-actions-right">
+                    <button id="cancelPrices" class="secondary-action" type="button">Odustani</button>
+                    <button id="savePrices" class="secondary-action modal-primary" type="button">Spremi cijene</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bill of civil objects for one project (📋 in each row). -->
+    <div id="objectsModal" class="modal-overlay hidden" role="dialog" aria-modal="true"
+        aria-labelledby="objectsModalTitle">
+        <div class="prices-modal civil-objects-modal">
+            <h2 id="objectsModalTitle">Objekti na mreži</h2>
+            <div id="objectsContent" class="civil-objects-content">
+                <div class="loading">Ucitavam...</div>
+            </div>
+            <div class="modal-actions">
+                <div class="modal-actions-right">
+                    <button id="closeObjects" class="secondary-action modal-primary" type="button">Zatvori</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="leaderboard-tabs" role="tablist">
+        <a id="tabRanked" class="lb-tab active" href="?tab=ranked" role="tab"
+            aria-selected="true">Rangirani <span class="lb-tab-count">…</span></a>
+        <a id="tabUnranked" class="lb-tab" href="?tab=unranked" role="tab"
+            aria-selected="false">Nerangirani <span class="lb-tab-count">…</span></a>
+        <!-- Reconstructed EXISTING lines stored as ordinary projects. Tabs are not
+             mutually exclusive: these also appear under Nerangirani when they
+             have no ridership metrics. -->
+        <a id="tabExisting" class="lb-tab" href="?tab=existing" role="tab"
+            aria-selected="false">Postojeće <span class="lb-tab-count">…</span></a>
+    </div>
+
+    <div id="content">
+        <div class="loading">Ucitavam...</div>
+    </div>
+
+    <!-- The object model behind both the price list and the 📋 bill of
+         structures. vertical-profile.js upgrades a saved project's objects from
+         three coarse level states to the five real ones. -->
+    <script src="tunnel-cover-rule.js?v=20260815-1"></script>
+    <script src="planner-grade/vertical-profile.js?v=20260815-1"></script>
+    <script src="planner-grade/civil-objects.js?v=20260731-1"></script>
+    <script src="planner-grade/civil-objects-view.js?v=20260731-1"></script>
+    <script src="transit-pricing.js"></script>
+    <script src="city-config.generated.js"></script>
+    <script src="city-capabilities.js"></script>
+    <script src="runtime-config.js"></script>
+    <script>window.__transitI18n.boot();</script>
+    <script src="city-branding.js"></script>
+    <script src="leaderboard-format.js?v=20260803-1"></script>
+    <script src="project-export.js?v=20260803-1"></script>
+    <script src="leaderboard.js?v=20260803-1"></script>
+</body>
+
+</html>

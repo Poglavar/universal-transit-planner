@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universal-transit-planner.example/schemas/city-manifest.json",
+  "title": "Universal Transit Planner city manifest",
+  "type": "object",
+  "required": ["id", "name", "center", "zoom", "bounds", "locale", "timezone", "currency", "units", "providers", "features", "attributions", "dataRevision"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "name": { "type": "string", "minLength": 1 },
+    "center": {
+      "type": "array",
+      "prefixItems": [
+        { "type": "number", "minimum": -90, "maximum": 90 },
+        { "type": "number", "minimum": -180, "maximum": 180 }
+      ],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "zoom": { "type": "number", "minimum": 0, "maximum": 24 },
+    "bounds": {
+      "type": "object",
+      "required": ["west", "south", "east", "north"],
+      "properties": {
+        "west": { "type": "number" },
+        "south": { "type": "number" },
+        "east": { "type": "number" },
+        "north": { "type": "number" }
+      },
+      "additionalProperties": false
+    },
+    "locale": { "type": "string" },
+    "timezone": { "type": "string" },
+    "currency": { "type": "string", "minLength": 3, "maxLength": 3 },
+    "units": { "enum": ["metric", "imperial"] },
+    "providers": {
+      "type": "object",
+      "required": ["basemap"],
+      "properties": {
+        "basemap": {
+          "type": "object",
+          "required": ["url", "attribution"],
+          "properties": {
+            "url": { "type": "string", "minLength": 1 },
+            "attribution": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "staticData": { "type": "object" },
+    "cityPack": {
+      "type": "object",
+      "properties": {
+        "prePlanner": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^(?:[A-Za-z0-9][A-Za-z0-9._-]*/)*[A-Za-z0-9][A-Za-z0-9._-]*\\.js$" }
+        },
+        "simulation": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^(?:[A-Za-z0-9][A-Za-z0-9._-]*/)*[A-Za-z0-9][A-Za-z0-9._-]*\\.js$" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "features": {
+      "type": "object",
+      "required": ["routing", "terrain", "terrainTiles", "population", "jobs", "referenceTransit", "referenceRail", "station3d", "persistence", "campaigns"],
+      "properties": {
+        "routing": { "type": "boolean" },
+        "terrain": { "type": "boolean" },
+        "terrainTiles": { "type": "boolean" },
+        "population": { "type": "boolean" },
+        "jobs": { "type": "boolean" },
+        "referenceTransit": { "type": "boolean" },
+        "referenceRail": { "type": "boolean" },
+        "station3d": { "type": "boolean" },
+        "persistence": { "type": "boolean" },
+        "campaigns": { "const": false }
+      },
+      "additionalProperties": false
+    },
+    "providerOperations": {
+      "type": "object",
+      "properties": {
+        "terrain": {
+          "type": "object",
+          "required": ["metadata", "coverage", "point", "profile", "grid", "tiles"],
+          "properties": {
+            "metadata": { "type": "boolean" },
+            "coverage": { "type": "boolean" },
+            "point": { "type": "boolean" },
+            "profile": { "type": "boolean" },
+            "grid": { "type": "boolean" },
+            "tiles": { "type": "boolean" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": true
+    },
+    "terrainReference": {
+      "type": "object",
+      "required": ["horizontalCrs", "verticalReference", "surfaceType", "unit", "revision"],
+      "properties": {
+        "horizontalCrs": { "type": "string", "minLength": 1 },
+        "verticalReference": { "type": "string", "minLength": 1 },
+        "surfaceType": { "enum": ["terrain", "surface"] },
+        "unit": { "type": "string", "minLength": 1 },
+        "revision": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "station3d": { "type": "object" },
+    "attributions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "url": { "type": "string", "minLength": 1 },
+          "license": { "type": "string", "minLength": 1 },
+          "licenseUrl": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "dataRevision": { "type": "string", "minLength": 1 }
+  },
+  "additionalProperties": true
+}

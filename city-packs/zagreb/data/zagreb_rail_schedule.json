@@ -1,0 +1,6964 @@
+[
+  {
+    "tripId": "i-tr1161_18",
+    "routeId": "i-tr1089dh",
+    "routeName": "Harmica - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 1200,
+        "departureSec": 1200
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 1380,
+        "departureSec": 1380
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 1500,
+        "departureSec": 1500
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 1680,
+        "departureSec": 1680
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 1800,
+        "departureSec": 1860
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 2100,
+        "departureSec": 2100
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1087_18",
+    "routeId": "i-tr1089dg",
+    "routeName": "Harmica - Dugo Selo",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 17760,
+        "departureSec": 17760
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 18180,
+        "departureSec": 18240
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 18360,
+        "departureSec": 18360
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 18480,
+        "departureSec": 18480
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 18660,
+        "departureSec": 18660
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 18840,
+        "departureSec": 18900
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 19200,
+        "departureSec": 19200
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1086dc_18",
+    "routeId": "i-tr164",
+    "routeName": "Novoselec - Harmica",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 17820,
+        "departureSec": 17820
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 18180,
+        "departureSec": 18240
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 18360,
+        "departureSec": 18360
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 18540,
+        "departureSec": 18540
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 18660,
+        "departureSec": 18660
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 18840,
+        "departureSec": 18900
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 19320,
+        "departureSec": 19680
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 19860,
+        "departureSec": 19920
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 20040,
+        "departureSec": 20040
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 20220,
+        "departureSec": 20220
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 20340,
+        "departureSec": 20340
+      },
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 20520,
+        "departureSec": 20520
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1085df_18",
+    "routeId": "i-tr164",
+    "routeName": "Novoselec - Harmica",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 17820,
+        "departureSec": 18000
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 18180,
+        "departureSec": 18240
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 18360,
+        "departureSec": 18360
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 18540,
+        "departureSec": 18540
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 18660,
+        "departureSec": 18660
+      },
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 18840,
+        "departureSec": 18840
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1089dh_18",
+    "routeId": "i-tr1089dh",
+    "routeName": "Harmica - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 18240,
+        "departureSec": 18240
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 18420,
+        "departureSec": 18480
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 18600,
+        "departureSec": 18600
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 18780,
+        "departureSec": 18840
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 18960,
+        "departureSec": 19020
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 19260,
+        "departureSec": 19560
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr486_18",
+    "routeId": "i-tr471",
+    "routeName": "Čakovec - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 19020,
+        "departureSec": 19020
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 19200,
+        "departureSec": 19200
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 19380,
+        "departureSec": 19380
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 19560,
+        "departureSec": 19560
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 19740,
+        "departureSec": 19800
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 20040,
+        "departureSec": 20040
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1090_18",
+    "routeId": "i-tr164",
+    "routeName": "Novoselec - Harmica",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 20640,
+        "departureSec": 20640
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 21000,
+        "departureSec": 21060
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 21180,
+        "departureSec": 21180
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 21360,
+        "departureSec": 21360
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 21480,
+        "departureSec": 21480
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 21660,
+        "departureSec": 21720
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 22140,
+        "departureSec": 22380
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 22560,
+        "departureSec": 22620
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 22740,
+        "departureSec": 22740
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 22920,
+        "departureSec": 22920
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 23040,
+        "departureSec": 23040
+      },
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 23220,
+        "departureSec": 23220
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr150_18",
+    "routeId": "i-tr134bg",
+    "routeName": "Tovarnik - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 20940,
+        "departureSec": 20940
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 21300,
+        "departureSec": 21360
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 21540,
+        "departureSec": 21540
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 21660,
+        "departureSec": 21720
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 21780,
+        "departureSec": 21840
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 21960,
+        "departureSec": 22020
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 22440,
+        "departureSec": 22440
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1092_18",
+    "routeId": "i-tr1089dg",
+    "routeName": "Harmica - Dugo Selo",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 21540,
+        "departureSec": 21540
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 21720,
+        "departureSec": 21720
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 21840,
+        "departureSec": 21840
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 22020,
+        "departureSec": 22020
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 22140,
+        "departureSec": 22200
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 22440,
+        "departureSec": 22860
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 23280,
+        "departureSec": 23340
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 23520,
+        "departureSec": 23520
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 23640,
+        "departureSec": 23640
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 23820,
+        "departureSec": 23820
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 24000,
+        "departureSec": 24060
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 24420,
+        "departureSec": 24420
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr651_18",
+    "routeId": "i-tr1033",
+    "routeName": "Rijeka - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o783",
+        "name": "Hrvatski Leskovac",
+        "lat": 45.7444224695,
+        "lng": 15.8920997848,
+        "arrivalSec": 21780,
+        "departureSec": 21840
+      },
+      {
+        "stopId": "i-o782",
+        "name": "Remetinec",
+        "lat": 45.7663628321,
+        "lng": 15.9455841815,
+        "arrivalSec": 22140,
+        "departureSec": 22200
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 22740,
+        "departureSec": 22740
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr740_18",
+    "routeId": "i-tr1217",
+    "routeName": "Volinja - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o574",
+        "name": "Odra",
+        "lat": 45.7338960484,
+        "lng": 16.0116932696,
+        "arrivalSec": 21840,
+        "departureSec": 21840
+      },
+      {
+        "stopId": "i-o576",
+        "name": "Buzin",
+        "lat": 45.7434100911,
+        "lng": 15.9984317731,
+        "arrivalSec": 21960,
+        "departureSec": 21960
+      },
+      {
+        "stopId": "i-o575",
+        "name": "Zagreb Klara",
+        "lat": 45.7559442538,
+        "lng": 15.9813005823,
+        "arrivalSec": 22140,
+        "departureSec": 22140
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 22620,
+        "departureSec": 22620
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr174_18",
+    "routeId": "i-tr1066",
+    "routeName": "Osijek - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 21960,
+        "departureSec": 21960
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 22320,
+        "departureSec": 22380
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 22500,
+        "departureSec": 22500
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 22680,
+        "departureSec": 22680
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 22800,
+        "departureSec": 22800
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 22980,
+        "departureSec": 23040
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 23460,
+        "departureSec": 23460
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1207_18",
+    "routeId": "i-tr1066",
+    "routeName": "Osijek - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 22260,
+        "departureSec": 22320
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 22740,
+        "departureSec": 22740
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1097_18",
+    "routeId": "i-tr1089dg",
+    "routeName": "Harmica - Dugo Selo",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 23280,
+        "departureSec": 23280
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 23460,
+        "departureSec": 23520
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 23640,
+        "departureSec": 23640
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 23820,
+        "departureSec": 23820
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 23940,
+        "departureSec": 24000
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 24240,
+        "departureSec": 24540
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 24960,
+        "departureSec": 25020
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 25200,
+        "departureSec": 25200
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 25320,
+        "departureSec": 25320
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 25500,
+        "departureSec": 25500
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 25680,
+        "departureSec": 25740
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 26100,
+        "departureSec": 26100
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr650_18",
+    "routeId": "i-tr650",
+    "routeName": "Zagreb Glavni kolodvor - Ogulin",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 23340,
+        "departureSec": 23340
+      },
+      {
+        "stopId": "i-o782",
+        "name": "Remetinec",
+        "lat": 45.7663628321,
+        "lng": 15.9455841815,
+        "arrivalSec": 23820,
+        "departureSec": 23880
+      },
+      {
+        "stopId": "i-o783",
+        "name": "Hrvatski Leskovac",
+        "lat": 45.7444224695,
+        "lng": 15.8920997848,
+        "arrivalSec": 24180,
+        "departureSec": 24240
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr734_18",
+    "routeId": "i-tr153ac",
+    "routeName": "Savski Marof - Novska",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 23400,
+        "departureSec": 23400
+      },
+      {
+        "stopId": "i-o575",
+        "name": "Zagreb Klara",
+        "lat": 45.7559442538,
+        "lng": 15.9813005823,
+        "arrivalSec": 23880,
+        "departureSec": 24120
+      },
+      {
+        "stopId": "i-o576",
+        "name": "Buzin",
+        "lat": 45.7434100911,
+        "lng": 15.9984317731,
+        "arrivalSec": 24300,
+        "departureSec": 24300
+      },
+      {
+        "stopId": "i-o574",
+        "name": "Odra",
+        "lat": 45.7338960484,
+        "lng": 16.0116932696,
+        "arrivalSec": 24420,
+        "departureSec": 24420
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr490_18",
+    "routeId": "i-tr471",
+    "routeName": "Čakovec - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 23940,
+        "departureSec": 23940
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 24120,
+        "departureSec": 24120
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 24240,
+        "departureSec": 24240
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 24420,
+        "departureSec": 24480
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 24600,
+        "departureSec": 24660
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 24900,
+        "departureSec": 24900
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1094ds_18",
+    "routeId": "i-tr164",
+    "routeName": "Novoselec - Harmica",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 23880,
+        "departureSec": 24240
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 24420,
+        "departureSec": 24480
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 24600,
+        "departureSec": 24600
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 24780,
+        "departureSec": 24780
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 24900,
+        "departureSec": 24900
+      },
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 25080,
+        "departureSec": 25080
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1099dm_18",
+    "routeId": "i-tr1089dg",
+    "routeName": "Harmica - Dugo Selo",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 24900,
+        "departureSec": 24900
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 25080,
+        "departureSec": 25080
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 25200,
+        "departureSec": 25260
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 25440,
+        "departureSec": 25440
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 25560,
+        "departureSec": 25620
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 25860,
+        "departureSec": 26220
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 26640,
+        "departureSec": 26700
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 26820,
+        "departureSec": 26820
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 26940,
+        "departureSec": 26940
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 27120,
+        "departureSec": 27120
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 27300,
+        "departureSec": 27360
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 27720,
+        "departureSec": 27720
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr733_18",
+    "routeId": "i-tr134bg",
+    "routeName": "Tovarnik - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o574",
+        "name": "Odra",
+        "lat": 45.7338960484,
+        "lng": 16.0116932696,
+        "arrivalSec": 25140,
+        "departureSec": 25140
+      },
+      {
+        "stopId": "i-o576",
+        "name": "Buzin",
+        "lat": 45.7434100911,
+        "lng": 15.9984317731,
+        "arrivalSec": 25260,
+        "departureSec": 25260
+      },
+      {
+        "stopId": "i-o575",
+        "name": "Zagreb Klara",
+        "lat": 45.7559442538,
+        "lng": 15.9813005823,
+        "arrivalSec": 25440,
+        "departureSec": 25440
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 25920,
+        "departureSec": 25920
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr175_18",
+    "routeId": "i-tr1063",
+    "routeName": "Zagreb Glavni kolodvor - Koprivnica",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 25800,
+        "departureSec": 25800
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 26220,
+        "departureSec": 26280
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 26460,
+        "departureSec": 26520
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 26580,
+        "departureSec": 26640
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 26760,
+        "departureSec": 26820
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 27000,
+        "departureSec": 27060
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 27360,
+        "departureSec": 27420
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr152_18",
+    "routeId": "i-tr134bg",
+    "routeName": "Tovarnik - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 26220,
+        "departureSec": 26220
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 26580,
+        "departureSec": 26640
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 26760,
+        "departureSec": 26760
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 26940,
+        "departureSec": 26940
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 27060,
+        "departureSec": 27060
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 27240,
+        "departureSec": 27300
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 27720,
+        "departureSec": 27720
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1100dn_18",
+    "routeId": "i-tr164",
+    "routeName": "Novoselec - Harmica",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 26520,
+        "departureSec": 26520
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 26880,
+        "departureSec": 26940
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 27060,
+        "departureSec": 27060
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 27240,
+        "departureSec": 27240
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 27360,
+        "departureSec": 27360
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 27540,
+        "departureSec": 27600
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 28020,
+        "departureSec": 28200
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 28380,
+        "departureSec": 28440
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 28560,
+        "departureSec": 28560
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 28740,
+        "departureSec": 28740
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 28860,
+        "departureSec": 28860
+      },
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 29040,
+        "departureSec": 29040
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1101dj_18",
+    "routeId": "i-tr1089dh",
+    "routeName": "Harmica - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 26700,
+        "departureSec": 26700
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 26880,
+        "departureSec": 26880
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 27000,
+        "departureSec": 27000
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 27180,
+        "departureSec": 27180
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 27300,
+        "departureSec": 27360
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 27600,
+        "departureSec": 27780
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr133_18",
+    "routeId": "i-tr1256",
+    "routeName": "Zaprešić - Vinkovci",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 27420,
+        "departureSec": 27420
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 27840,
+        "departureSec": 27840
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 28020,
+        "departureSec": 28020
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 28140,
+        "departureSec": 28140
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 28320,
+        "departureSec": 28320
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 28500,
+        "departureSec": 28560
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 28860,
+        "departureSec": 28920
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1102_18",
+    "routeId": "i-tr134bg",
+    "routeName": "Tovarnik - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 28260,
+        "departureSec": 28260
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 28620,
+        "departureSec": 28680
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 28800,
+        "departureSec": 28800
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 28980,
+        "departureSec": 28980
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 29100,
+        "departureSec": 29100
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 29280,
+        "departureSec": 29340
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 29760,
+        "departureSec": 30000
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1105_18",
+    "routeId": "i-tr1089dg",
+    "routeName": "Harmica - Dugo Selo",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 28500,
+        "departureSec": 28500
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 28680,
+        "departureSec": 28680
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 28800,
+        "departureSec": 28800
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 28980,
+        "departureSec": 28980
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 29100,
+        "departureSec": 29160
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 29400,
+        "departureSec": 29700
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 30120,
+        "departureSec": 30120
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 30240,
+        "departureSec": 30300
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 30360,
+        "departureSec": 30420
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 30540,
+        "departureSec": 30600
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 30780,
+        "departureSec": 30840
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 31140,
+        "departureSec": 31140
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr648_18",
+    "routeId": "i-tr1032",
+    "routeName": "Zagreb Glavni kolodvor - Rijeka",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 30600,
+        "departureSec": 30600
+      },
+      {
+        "stopId": "i-o782",
+        "name": "Remetinec",
+        "lat": 45.7663628321,
+        "lng": 15.9455841815,
+        "arrivalSec": 31080,
+        "departureSec": 31140
+      },
+      {
+        "stopId": "i-o783",
+        "name": "Hrvatski Leskovac",
+        "lat": 45.7444224695,
+        "lng": 15.8920997848,
+        "arrivalSec": 31440,
+        "departureSec": 31740
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1208_18",
+    "routeId": "i-tr1208",
+    "routeName": "Zagreb Glavni kolodvor - Bjelovar",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 31560,
+        "departureSec": 31560
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 31980,
+        "departureSec": 32040
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 32160,
+        "departureSec": 32220
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 32340,
+        "departureSec": 32340
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 32520,
+        "departureSec": 32580
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 32700,
+        "departureSec": 32760
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 33120,
+        "departureSec": 33180
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1224_18",
+    "routeId": "i-tr1066",
+    "routeName": "Osijek - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 31620,
+        "departureSec": 31680
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 32040,
+        "departureSec": 32040
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1113_18",
+    "routeId": "i-tr1089dh",
+    "routeName": "Harmica - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 31980,
+        "departureSec": 31980
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 32160,
+        "departureSec": 32160
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 32280,
+        "departureSec": 32280
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 32460,
+        "departureSec": 32460
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 32580,
+        "departureSec": 32640
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 32880,
+        "departureSec": 32880
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr743_18",
+    "routeId": "i-tr743",
+    "routeName": "Zagreb Glavni kolodvor - Volinja",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 32580,
+        "departureSec": 32580
+      },
+      {
+        "stopId": "i-o575",
+        "name": "Zagreb Klara",
+        "lat": 45.7559442538,
+        "lng": 15.9813005823,
+        "arrivalSec": 33060,
+        "departureSec": 33060
+      },
+      {
+        "stopId": "i-o576",
+        "name": "Buzin",
+        "lat": 45.7434100911,
+        "lng": 15.9984317731,
+        "arrivalSec": 33240,
+        "departureSec": 33240
+      },
+      {
+        "stopId": "i-o574",
+        "name": "Odra",
+        "lat": 45.7338960484,
+        "lng": 16.0116932696,
+        "arrivalSec": 33360,
+        "departureSec": 33360
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1106_18",
+    "routeId": "i-tr164",
+    "routeName": "Novoselec - Harmica",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 33000,
+        "departureSec": 33000
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 33360,
+        "departureSec": 33420
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 33540,
+        "departureSec": 33540
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 33720,
+        "departureSec": 33720
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 33840,
+        "departureSec": 33840
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 34020,
+        "departureSec": 34080
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 34500,
+        "departureSec": 34680
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 34860,
+        "departureSec": 34920
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 35040,
+        "departureSec": 35040
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 35220,
+        "departureSec": 35220
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 35340,
+        "departureSec": 35340
+      },
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 35520,
+        "departureSec": 35520
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr496_18",
+    "routeId": "i-tr471",
+    "routeName": "Čakovec - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 33060,
+        "departureSec": 33060
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 33240,
+        "departureSec": 33240
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 33360,
+        "departureSec": 33360
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 33540,
+        "departureSec": 33540
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 33660,
+        "departureSec": 33720
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 33960,
+        "departureSec": 33960
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1111_18",
+    "routeId": "i-tr1089dg",
+    "routeName": "Harmica - Dugo Selo",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 34380,
+        "departureSec": 34620
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 35040,
+        "departureSec": 35100
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 35220,
+        "departureSec": 35280
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 35340,
+        "departureSec": 35400
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 35520,
+        "departureSec": 35520
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 35700,
+        "departureSec": 35760
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 36060,
+        "departureSec": 36120
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1033_18",
+    "routeId": "i-tr1033",
+    "routeName": "Rijeka - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o783",
+        "name": "Hrvatski Leskovac",
+        "lat": 45.7444224695,
+        "lng": 15.8920997848,
+        "arrivalSec": 34620,
+        "departureSec": 34680
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 35400,
+        "departureSec": 35400
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr164_18",
+    "routeId": "i-tr164",
+    "routeName": "Novoselec - Harmica",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 37080,
+        "departureSec": 37080
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 37440,
+        "departureSec": 37500
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 37620,
+        "departureSec": 37620
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 37800,
+        "departureSec": 37800
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 37920,
+        "departureSec": 37920
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 38100,
+        "departureSec": 38100
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 38520,
+        "departureSec": 38820
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 39000,
+        "departureSec": 39060
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 39180,
+        "departureSec": 39180
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 39360,
+        "departureSec": 39360
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 39480,
+        "departureSec": 39480
+      },
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 39660,
+        "departureSec": 39660
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr744_18",
+    "routeId": "i-tr1217",
+    "routeName": "Volinja - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o574",
+        "name": "Odra",
+        "lat": 45.7338960484,
+        "lng": 16.0116932696,
+        "arrivalSec": 37860,
+        "departureSec": 37860
+      },
+      {
+        "stopId": "i-o576",
+        "name": "Buzin",
+        "lat": 45.7434100911,
+        "lng": 15.9984317731,
+        "arrivalSec": 37980,
+        "departureSec": 37980
+      },
+      {
+        "stopId": "i-o575",
+        "name": "Zagreb Klara",
+        "lat": 45.7559442538,
+        "lng": 15.9813005823,
+        "arrivalSec": 38160,
+        "departureSec": 38160
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 38640,
+        "departureSec": 38640
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1110_18",
+    "routeId": "i-tr134bg",
+    "routeName": "Tovarnik - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 38880,
+        "departureSec": 38880
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 39240,
+        "departureSec": 39300
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 39420,
+        "departureSec": 39420
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 39600,
+        "departureSec": 39600
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 39720,
+        "departureSec": 39720
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 39900,
+        "departureSec": 39960
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 40380,
+        "departureSec": 40620
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr163ak_18",
+    "routeId": "i-tr1089dh",
+    "routeName": "Harmica - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 39240,
+        "departureSec": 39240
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 39420,
+        "departureSec": 39420
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 39540,
+        "departureSec": 39540
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 39720,
+        "departureSec": 39720
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 39840,
+        "departureSec": 39900
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 40140,
+        "departureSec": 40320
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr134bh_18",
+    "routeId": "i-tr134bg",
+    "routeName": "Tovarnik - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 39300,
+        "departureSec": 39360
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 39660,
+        "departureSec": 39720
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 39900,
+        "departureSec": 39900
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 40020,
+        "departureSec": 40080
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 40140,
+        "departureSec": 40200
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 40320,
+        "departureSec": 40380
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 40800,
+        "departureSec": 40800
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr736_18",
+    "routeId": "i-tr153ac",
+    "routeName": "Savski Marof - Novska",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 40380,
+        "departureSec": 40380
+      },
+      {
+        "stopId": "i-o575",
+        "name": "Zagreb Klara",
+        "lat": 45.7559442538,
+        "lng": 15.9813005823,
+        "arrivalSec": 40860,
+        "departureSec": 40860
+      },
+      {
+        "stopId": "i-o576",
+        "name": "Buzin",
+        "lat": 45.7434100911,
+        "lng": 15.9984317731,
+        "arrivalSec": 41040,
+        "departureSec": 41040
+      },
+      {
+        "stopId": "i-o574",
+        "name": "Odra",
+        "lat": 45.7338960484,
+        "lng": 16.0116932696,
+        "arrivalSec": 41160,
+        "departureSec": 41160
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr472af_18",
+    "routeId": "i-tr1233",
+    "routeName": "Zagreb Glavni kolodvor - Zabok",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 41820,
+        "departureSec": 41820
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 42060,
+        "departureSec": 42120
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 42300,
+        "departureSec": 42300
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 42480,
+        "departureSec": 42480
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 42660,
+        "departureSec": 42660
+      },
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 42840,
+        "departureSec": 42840
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1119_18",
+    "routeId": "i-tr1089dg",
+    "routeName": "Harmica - Dugo Selo",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 42540,
+        "departureSec": 42540
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 42720,
+        "departureSec": 42720
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 42840,
+        "departureSec": 42840
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 43020,
+        "departureSec": 43020
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 43140,
+        "departureSec": 43200
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 43440,
+        "departureSec": 43680
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 44100,
+        "departureSec": 44160
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 44280,
+        "departureSec": 44280
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 44400,
+        "departureSec": 44400
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 44580,
+        "departureSec": 44580
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 44760,
+        "departureSec": 44820
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 45180,
+        "departureSec": 45180
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1112ea_18",
+    "routeId": "i-tr164",
+    "routeName": "Novoselec - Harmica",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 43200,
+        "departureSec": 43380
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 43560,
+        "departureSec": 43620
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 43740,
+        "departureSec": 43740
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 43920,
+        "departureSec": 43920
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 44040,
+        "departureSec": 44040
+      },
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 44220,
+        "departureSec": 44220
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr659_18",
+    "routeId": "i-tr1033",
+    "routeName": "Rijeka - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o783",
+        "name": "Hrvatski Leskovac",
+        "lat": 45.7444224695,
+        "lng": 15.8920997848,
+        "arrivalSec": 44340,
+        "departureSec": 44400
+      },
+      {
+        "stopId": "i-o782",
+        "name": "Remetinec",
+        "lat": 45.7663628321,
+        "lng": 15.9455841815,
+        "arrivalSec": 44700,
+        "departureSec": 44700
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 45240,
+        "departureSec": 45240
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr180_18",
+    "routeId": "i-tr1066",
+    "routeName": "Osijek - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 45120,
+        "departureSec": 45120
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 45480,
+        "departureSec": 45540
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 45660,
+        "departureSec": 45660
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 45840,
+        "departureSec": 45840
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 45960,
+        "departureSec": 45960
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 46140,
+        "departureSec": 46200
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 46620,
+        "departureSec": 46620
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1226bs_18",
+    "routeId": "i-tr1066",
+    "routeName": "Osijek - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 45300,
+        "departureSec": 45360
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 45780,
+        "departureSec": 45780
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1223_18",
+    "routeId": "i-tr1223",
+    "routeName": "Zagreb Glavni kolodvor - Kloštar",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 45480,
+        "departureSec": 45480
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 45900,
+        "departureSec": 45960
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 46380,
+        "departureSec": 46440
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr737_18",
+    "routeId": "i-tr134bg",
+    "routeName": "Tovarnik - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o574",
+        "name": "Odra",
+        "lat": 45.7338960484,
+        "lng": 16.0116932696,
+        "arrivalSec": 46620,
+        "departureSec": 46620
+      },
+      {
+        "stopId": "i-o576",
+        "name": "Buzin",
+        "lat": 45.7434100911,
+        "lng": 15.9984317731,
+        "arrivalSec": 46740,
+        "departureSec": 46740
+      },
+      {
+        "stopId": "i-o575",
+        "name": "Zagreb Klara",
+        "lat": 45.7559442538,
+        "lng": 15.9813005823,
+        "arrivalSec": 46920,
+        "departureSec": 46920
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 47400,
+        "departureSec": 47400
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1116_18",
+    "routeId": "i-tr164",
+    "routeName": "Novoselec - Harmica",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 46740,
+        "departureSec": 46740
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 46920,
+        "departureSec": 46980
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 47100,
+        "departureSec": 47100
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 47280,
+        "departureSec": 47280
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 47400,
+        "departureSec": 47400
+      },
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 47580,
+        "departureSec": 47580
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr498_18",
+    "routeId": "i-tr471",
+    "routeName": "Čakovec - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 46740,
+        "departureSec": 46740
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 46920,
+        "departureSec": 46920
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 47040,
+        "departureSec": 47040
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 47220,
+        "departureSec": 47220
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 47340,
+        "departureSec": 47400
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 47640,
+        "departureSec": 47640
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr654_18",
+    "routeId": "i-tr650",
+    "routeName": "Zagreb Glavni kolodvor - Ogulin",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 47280,
+        "departureSec": 47280
+      },
+      {
+        "stopId": "i-o782",
+        "name": "Remetinec",
+        "lat": 45.7663628321,
+        "lng": 15.9455841815,
+        "arrivalSec": 47760,
+        "departureSec": 47820
+      },
+      {
+        "stopId": "i-o783",
+        "name": "Hrvatski Leskovac",
+        "lat": 45.7444224695,
+        "lng": 15.8920997848,
+        "arrivalSec": 48120,
+        "departureSec": 48180
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1123_18",
+    "routeId": "i-tr1089dg",
+    "routeName": "Harmica - Dugo Selo",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 47400,
+        "departureSec": 47400
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 47580,
+        "departureSec": 47580
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 47700,
+        "departureSec": 47700
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 47880,
+        "departureSec": 47880
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 48000,
+        "departureSec": 48060
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 48300,
+        "departureSec": 48480
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 48900,
+        "departureSec": 48900
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 49020,
+        "departureSec": 49080
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 49140,
+        "departureSec": 49200
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 49320,
+        "departureSec": 49380
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 49560,
+        "departureSec": 49620
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 49920,
+        "departureSec": 49920
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1227_18",
+    "routeId": "i-tr128",
+    "routeName": "Split - Osijek",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 48000,
+        "departureSec": 48000
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 48420,
+        "departureSec": 48480
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1118_18",
+    "routeId": "i-tr164",
+    "routeName": "Novoselec - Harmica",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 48180,
+        "departureSec": 48180
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 48540,
+        "departureSec": 48600
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 48720,
+        "departureSec": 48720
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 48900,
+        "departureSec": 48900
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 49020,
+        "departureSec": 49020
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 49200,
+        "departureSec": 49260
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 49680,
+        "departureSec": 49920
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 50100,
+        "departureSec": 50160
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 50280,
+        "departureSec": 50280
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 50460,
+        "departureSec": 50460
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 50580,
+        "departureSec": 50580
+      },
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 50760,
+        "departureSec": 50760
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr747_18",
+    "routeId": "i-tr743",
+    "routeName": "Zagreb Glavni kolodvor - Volinja",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 49320,
+        "departureSec": 49320
+      },
+      {
+        "stopId": "i-o575",
+        "name": "Zagreb Klara",
+        "lat": 45.7559442538,
+        "lng": 15.9813005823,
+        "arrivalSec": 49800,
+        "departureSec": 49800
+      },
+      {
+        "stopId": "i-o576",
+        "name": "Buzin",
+        "lat": 45.7434100911,
+        "lng": 15.9984317731,
+        "arrivalSec": 49980,
+        "departureSec": 49980
+      },
+      {
+        "stopId": "i-o574",
+        "name": "Odra",
+        "lat": 45.7338960484,
+        "lng": 16.0116932696,
+        "arrivalSec": 50100,
+        "departureSec": 50100
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1128eg_18",
+    "routeId": "i-tr1089dg",
+    "routeName": "Harmica - Dugo Selo",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 50160,
+        "departureSec": 50160
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 50340,
+        "departureSec": 50340
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 50460,
+        "departureSec": 50460
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 50640,
+        "departureSec": 50640
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 50760,
+        "departureSec": 50820
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 51060,
+        "departureSec": 51360
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 51780,
+        "departureSec": 51780
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 51900,
+        "departureSec": 51960
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 52020,
+        "departureSec": 52080
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 52200,
+        "departureSec": 52260
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 52440,
+        "departureSec": 52500
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 52800,
+        "departureSec": 52800
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1122_18",
+    "routeId": "i-tr164",
+    "routeName": "Novoselec - Harmica",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 51060,
+        "departureSec": 51060
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 51420,
+        "departureSec": 51480
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 51600,
+        "departureSec": 51600
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 51780,
+        "departureSec": 51780
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 51900,
+        "departureSec": 51900
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 52080,
+        "departureSec": 52140
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 52560,
+        "departureSec": 52740
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 52920,
+        "departureSec": 52980
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 53100,
+        "departureSec": 53100
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 53280,
+        "departureSec": 53340
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 53460,
+        "departureSec": 53520
+      },
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 53700,
+        "departureSec": 53700
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr138br_18",
+    "routeId": "i-tr1256",
+    "routeName": "Zaprešić - Vinkovci",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 51660,
+        "departureSec": 51660
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 52080,
+        "departureSec": 52140
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 52260,
+        "departureSec": 52320
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 52380,
+        "departureSec": 52440
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 52560,
+        "departureSec": 52620
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 52740,
+        "departureSec": 52800
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 53160,
+        "departureSec": 53220
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr493_18",
+    "routeId": "i-tr1233",
+    "routeName": "Zagreb Glavni kolodvor - Zabok",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 52320,
+        "departureSec": 52320
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 52560,
+        "departureSec": 52620
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 52740,
+        "departureSec": 52740
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 52920,
+        "departureSec": 52920
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 53040,
+        "departureSec": 53040
+      },
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 53220,
+        "departureSec": 53220
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr179_18",
+    "routeId": "i-tr1063",
+    "routeName": "Zagreb Glavni kolodvor - Koprivnica",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 52920,
+        "departureSec": 52920
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 53340,
+        "departureSec": 53340
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 53520,
+        "departureSec": 53520
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 53640,
+        "departureSec": 53640
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 53760,
+        "departureSec": 53760
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 53940,
+        "departureSec": 54000
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 54360,
+        "departureSec": 54360
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1133_18",
+    "routeId": "i-tr1089dg",
+    "routeName": "Harmica - Dugo Selo",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 53880,
+        "departureSec": 53880
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 54060,
+        "departureSec": 54060
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 54180,
+        "departureSec": 54180
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 54360,
+        "departureSec": 54420
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 54540,
+        "departureSec": 54600
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 54840,
+        "departureSec": 55080
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 55500,
+        "departureSec": 55500
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 55620,
+        "departureSec": 55680
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 55740,
+        "departureSec": 55800
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 55920,
+        "departureSec": 55980
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 56160,
+        "departureSec": 56220
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 56520,
+        "departureSec": 56520
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1127ef_18",
+    "routeId": "i-tr167ag",
+    "routeName": "Ivanić Grad - Savski Marof",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 54840,
+        "departureSec": 54840
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 55200,
+        "departureSec": 55260
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 55380,
+        "departureSec": 55380
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 55560,
+        "departureSec": 55560
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 55680,
+        "departureSec": 55680
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 55860,
+        "departureSec": 55860
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 56280,
+        "departureSec": 56760
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 56940,
+        "departureSec": 57000
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 57120,
+        "departureSec": 57120
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 57300,
+        "departureSec": 57360
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 57480,
+        "departureSec": 57540
+      },
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 57720,
+        "departureSec": 57720
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr658_18",
+    "routeId": "i-tr650",
+    "routeName": "Zagreb Glavni kolodvor - Ogulin",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 55980,
+        "departureSec": 55980
+      },
+      {
+        "stopId": "i-o782",
+        "name": "Remetinec",
+        "lat": 45.7663628321,
+        "lng": 15.9455841815,
+        "arrivalSec": 56520,
+        "departureSec": 56580
+      },
+      {
+        "stopId": "i-o783",
+        "name": "Hrvatski Leskovac",
+        "lat": 45.7444224695,
+        "lng": 15.8920997848,
+        "arrivalSec": 56940,
+        "departureSec": 57180
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1136_18",
+    "routeId": "i-tr1089dg",
+    "routeName": "Harmica - Dugo Selo",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 56880,
+        "departureSec": 56880
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 57060,
+        "departureSec": 57120
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 57240,
+        "departureSec": 57240
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 57420,
+        "departureSec": 57420
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 57540,
+        "departureSec": 57600
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 57840,
+        "departureSec": 58260
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 58680,
+        "departureSec": 58740
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 58860,
+        "departureSec": 58860
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 58980,
+        "departureSec": 58980
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 59160,
+        "departureSec": 59160
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 59340,
+        "departureSec": 59400
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 59700,
+        "departureSec": 59760
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr750_18",
+    "routeId": "i-tr1217",
+    "routeName": "Volinja - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o574",
+        "name": "Odra",
+        "lat": 45.7338960484,
+        "lng": 16.0116932696,
+        "arrivalSec": 57000,
+        "departureSec": 57000
+      },
+      {
+        "stopId": "i-o576",
+        "name": "Buzin",
+        "lat": 45.7434100911,
+        "lng": 15.9984317731,
+        "arrivalSec": 57120,
+        "departureSec": 57120
+      },
+      {
+        "stopId": "i-o575",
+        "name": "Zagreb Klara",
+        "lat": 45.7559442538,
+        "lng": 15.9813005823,
+        "arrivalSec": 57300,
+        "departureSec": 57540
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 58020,
+        "departureSec": 58020
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr751_18",
+    "routeId": "i-tr743",
+    "routeName": "Zagreb Glavni kolodvor - Volinja",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 57000,
+        "departureSec": 57000
+      },
+      {
+        "stopId": "i-o575",
+        "name": "Zagreb Klara",
+        "lat": 45.7559442538,
+        "lng": 15.9813005823,
+        "arrivalSec": 57480,
+        "departureSec": 57480
+      },
+      {
+        "stopId": "i-o576",
+        "name": "Buzin",
+        "lat": 45.7434100911,
+        "lng": 15.9984317731,
+        "arrivalSec": 57660,
+        "departureSec": 57660
+      },
+      {
+        "stopId": "i-o574",
+        "name": "Odra",
+        "lat": 45.7338960484,
+        "lng": 16.0116932696,
+        "arrivalSec": 57780,
+        "departureSec": 57780
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1131_18",
+    "routeId": "i-tr164",
+    "routeName": "Novoselec - Harmica",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 57840,
+        "departureSec": 57840
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 58200,
+        "departureSec": 58260
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 58440,
+        "departureSec": 58440
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 58560,
+        "departureSec": 58620
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 58680,
+        "departureSec": 58740
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 58860,
+        "departureSec": 58920
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 59340,
+        "departureSec": 59700
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 59880,
+        "departureSec": 59940
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 60060,
+        "departureSec": 60060
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 60240,
+        "departureSec": 60240
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 60360,
+        "departureSec": 60420
+      },
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 60600,
+        "departureSec": 60660
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1230_18",
+    "routeId": "i-tr1066",
+    "routeName": "Osijek - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 58080,
+        "departureSec": 58140
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 58560,
+        "departureSec": 58560
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr137_18",
+    "routeId": "i-tr134bg",
+    "routeName": "Tovarnik - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 58320,
+        "departureSec": 58320
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 58680,
+        "departureSec": 58740
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 58860,
+        "departureSec": 58860
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 59040,
+        "departureSec": 59040
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 59160,
+        "departureSec": 59160
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 59340,
+        "departureSec": 59400
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 59820,
+        "departureSec": 59820
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr153_18",
+    "routeId": "i-tr1089dh",
+    "routeName": "Harmica - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 59700,
+        "departureSec": 59700
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 59880,
+        "departureSec": 59880
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 60000,
+        "departureSec": 60000
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 60180,
+        "departureSec": 60180
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 60300,
+        "departureSec": 60360
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 60600,
+        "departureSec": 60900
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr495_18",
+    "routeId": "i-tr1233",
+    "routeName": "Zagreb Glavni kolodvor - Zabok",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 60360,
+        "departureSec": 60360
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 60600,
+        "departureSec": 60660
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 60780,
+        "departureSec": 60780
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 60960,
+        "departureSec": 61020
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 61140,
+        "departureSec": 61200
+      },
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 61380,
+        "departureSec": 61380
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1135_18",
+    "routeId": "i-tr164",
+    "routeName": "Novoselec - Harmica",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 60960,
+        "departureSec": 60960
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 61320,
+        "departureSec": 61380
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 61500,
+        "departureSec": 61500
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 61680,
+        "departureSec": 61680
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 61800,
+        "departureSec": 61800
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 61980,
+        "departureSec": 61980
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 62400,
+        "departureSec": 62760
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 62940,
+        "departureSec": 63000
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 63120,
+        "departureSec": 63120
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 63300,
+        "departureSec": 63300
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 63420,
+        "departureSec": 63480
+      },
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 63660,
+        "departureSec": 63660
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr670_18",
+    "routeId": "i-tr1033",
+    "routeName": "Rijeka - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o783",
+        "name": "Hrvatski Leskovac",
+        "lat": 45.7444224695,
+        "lng": 15.8920997848,
+        "arrivalSec": 61020,
+        "departureSec": 61080
+      },
+      {
+        "stopId": "i-o782",
+        "name": "Remetinec",
+        "lat": 45.7663628321,
+        "lng": 15.9455841815,
+        "arrivalSec": 61380,
+        "departureSec": 61440
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 61920,
+        "departureSec": 61920
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1210_18",
+    "routeId": "i-tr1208",
+    "routeName": "Zagreb Glavni kolodvor - Bjelovar",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 61740,
+        "departureSec": 61740
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 62160,
+        "departureSec": 62220
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1137_18",
+    "routeId": "i-tr134bg",
+    "routeName": "Tovarnik - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 62700,
+        "departureSec": 62700
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 63060,
+        "departureSec": 63120
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 63240,
+        "departureSec": 63240
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 63420,
+        "departureSec": 63420
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 63540,
+        "departureSec": 63540
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 63720,
+        "departureSec": 63780
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 64200,
+        "departureSec": 64380
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr754_18",
+    "routeId": "i-tr1217",
+    "routeName": "Volinja - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o574",
+        "name": "Odra",
+        "lat": 45.7338960484,
+        "lng": 16.0116932696,
+        "arrivalSec": 63420,
+        "departureSec": 63420
+      },
+      {
+        "stopId": "i-o576",
+        "name": "Buzin",
+        "lat": 45.7434100911,
+        "lng": 15.9984317731,
+        "arrivalSec": 63540,
+        "departureSec": 63540
+      },
+      {
+        "stopId": "i-o575",
+        "name": "Zagreb Klara",
+        "lat": 45.7559442538,
+        "lng": 15.9813005823,
+        "arrivalSec": 63720,
+        "departureSec": 63720
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 64200,
+        "departureSec": 64200
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1140_18",
+    "routeId": "i-tr1089dg",
+    "routeName": "Harmica - Dugo Selo",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 63420,
+        "departureSec": 63660
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 64080,
+        "departureSec": 64080
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 64200,
+        "departureSec": 64260
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 64320,
+        "departureSec": 64380
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 64500,
+        "departureSec": 64560
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 64740,
+        "departureSec": 64740
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 65100,
+        "departureSec": 65100
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr186_18",
+    "routeId": "i-tr1066",
+    "routeName": "Osijek - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 63900,
+        "departureSec": 63900
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 64260,
+        "departureSec": 64320
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 64440,
+        "departureSec": 64440
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 64620,
+        "departureSec": 64620
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 64740,
+        "departureSec": 64740
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 64920,
+        "departureSec": 64980
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 65400,
+        "departureSec": 65400
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1141_18",
+    "routeId": "i-tr1089dg",
+    "routeName": "Harmica - Dugo Selo",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 63900,
+        "departureSec": 63960
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 64140,
+        "departureSec": 64140
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 64260,
+        "departureSec": 64320
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 64500,
+        "departureSec": 64560
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 64680,
+        "departureSec": 64740
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 64980,
+        "departureSec": 65160
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 65580,
+        "departureSec": 65640
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 65760,
+        "departureSec": 65760
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 65880,
+        "departureSec": 65880
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 66060,
+        "departureSec": 66060
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 66240,
+        "departureSec": 66300
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 66600,
+        "departureSec": 66600
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr504_18",
+    "routeId": "i-tr471",
+    "routeName": "Čakovec - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 65820,
+        "departureSec": 65820
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 66000,
+        "departureSec": 66000
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 66120,
+        "departureSec": 66120
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 66300,
+        "departureSec": 66300
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 66420,
+        "departureSec": 66480
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 66720,
+        "departureSec": 66720
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr649_18",
+    "routeId": "i-tr1033",
+    "routeName": "Rijeka - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o783",
+        "name": "Hrvatski Leskovac",
+        "lat": 45.7444224695,
+        "lng": 15.8920997848,
+        "arrivalSec": 65760,
+        "departureSec": 65820
+      },
+      {
+        "stopId": "i-o782",
+        "name": "Remetinec",
+        "lat": 45.7663628321,
+        "lng": 15.9455841815,
+        "arrivalSec": 66120,
+        "departureSec": 66120
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 66600,
+        "departureSec": 66600
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1139_18",
+    "routeId": "i-tr164",
+    "routeName": "Novoselec - Harmica",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 66000,
+        "departureSec": 66000
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 66180,
+        "departureSec": 66240
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 66360,
+        "departureSec": 66360
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 66540,
+        "departureSec": 66540
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 66660,
+        "departureSec": 66660
+      },
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 66840,
+        "departureSec": 66840
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1145ep_18",
+    "routeId": "i-tr1089dh",
+    "routeName": "Harmica - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 66480,
+        "departureSec": 66480
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 66660,
+        "departureSec": 66660
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 66780,
+        "departureSec": 66780
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 66960,
+        "departureSec": 66960
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 67080,
+        "departureSec": 67140
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 67380,
+        "departureSec": 67620
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr662_18",
+    "routeId": "i-tr662",
+    "routeName": "Zagreb Glavni kolodvor - Duga Resa",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 66840,
+        "departureSec": 66840
+      },
+      {
+        "stopId": "i-o782",
+        "name": "Remetinec",
+        "lat": 45.7663628321,
+        "lng": 15.9455841815,
+        "arrivalSec": 67320,
+        "departureSec": 67380
+      },
+      {
+        "stopId": "i-o783",
+        "name": "Hrvatski Leskovac",
+        "lat": 45.7444224695,
+        "lng": 15.8920997848,
+        "arrivalSec": 67680,
+        "departureSec": 67740
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr194_18",
+    "routeId": "i-tr1066",
+    "routeName": "Osijek - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 66960,
+        "departureSec": 67020
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 67440,
+        "departureSec": 67500
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 67920,
+        "departureSec": 67920
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1222_18",
+    "routeId": "i-tr1063",
+    "routeName": "Zagreb Glavni kolodvor - Koprivnica",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 67320,
+        "departureSec": 67320
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 67980,
+        "departureSec": 67980
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1142_18",
+    "routeId": "i-tr164",
+    "routeName": "Novoselec - Harmica",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 67440,
+        "departureSec": 67440
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 67800,
+        "departureSec": 67860
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 67980,
+        "departureSec": 67980
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 68160,
+        "departureSec": 68160
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 68280,
+        "departureSec": 68280
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 68460,
+        "departureSec": 68520
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 68940,
+        "departureSec": 69180
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 69360,
+        "departureSec": 69420
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 69540,
+        "departureSec": 69540
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 69720,
+        "departureSec": 69720
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 69840,
+        "departureSec": 69900
+      },
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 70080,
+        "departureSec": 70080
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr144bn_18",
+    "routeId": "i-tr153ac",
+    "routeName": "Savski Marof - Novska",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 69240,
+        "departureSec": 69240
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 69660,
+        "departureSec": 69720
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 69840,
+        "departureSec": 69900
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 69960,
+        "departureSec": 70020
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 70140,
+        "departureSec": 70200
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 70320,
+        "departureSec": 70380
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 70740,
+        "departureSec": 70740
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr757cm_18",
+    "routeId": "i-tr741",
+    "routeName": "Zagreb Glavni kolodvor - Sunja",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 69360,
+        "departureSec": 69360
+      },
+      {
+        "stopId": "i-o575",
+        "name": "Zagreb Klara",
+        "lat": 45.7559442538,
+        "lng": 15.9813005823,
+        "arrivalSec": 69840,
+        "departureSec": 69840
+      },
+      {
+        "stopId": "i-o576",
+        "name": "Buzin",
+        "lat": 45.7434100911,
+        "lng": 15.9984317731,
+        "arrivalSec": 70020,
+        "departureSec": 70020
+      },
+      {
+        "stopId": "i-o574",
+        "name": "Odra",
+        "lat": 45.7338960484,
+        "lng": 16.0116932696,
+        "arrivalSec": 70140,
+        "departureSec": 70140
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1150_18",
+    "routeId": "i-tr1089dg",
+    "routeName": "Harmica - Dugo Selo",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 70320,
+        "departureSec": 70320
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 70500,
+        "departureSec": 70500
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 70620,
+        "departureSec": 70620
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 70800,
+        "departureSec": 70860
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 70980,
+        "departureSec": 71040
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 71280,
+        "departureSec": 71520
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 71940,
+        "departureSec": 72000
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 72120,
+        "departureSec": 72120
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 72240,
+        "departureSec": 72240
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 72420,
+        "departureSec": 72420
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 72600,
+        "departureSec": 72660
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 72960,
+        "departureSec": 72960
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1229bv_18",
+    "routeId": "i-tr1077",
+    "routeName": "Zagreb Glavni kolodvor - Virovitica",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 70620,
+        "departureSec": 70620
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 71040,
+        "departureSec": 71100
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 71520,
+        "departureSec": 71580
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr506_18",
+    "routeId": "i-tr471",
+    "routeName": "Čakovec - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 71460,
+        "departureSec": 71460
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 71640,
+        "departureSec": 71640
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 71760,
+        "departureSec": 71820
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 72000,
+        "departureSec": 72000
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 72120,
+        "departureSec": 72180
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 72420,
+        "departureSec": 72420
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr503_18",
+    "routeId": "i-tr1233",
+    "routeName": "Zagreb Glavni kolodvor - Zabok",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 72960,
+        "departureSec": 72960
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 73200,
+        "departureSec": 73260
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 73380,
+        "departureSec": 73380
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 73560,
+        "departureSec": 73560
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 73680,
+        "departureSec": 73680
+      },
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 73860,
+        "departureSec": 73860
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1152_18",
+    "routeId": "i-tr1089dg",
+    "routeName": "Harmica - Dugo Selo",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 73020,
+        "departureSec": 73020
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 73200,
+        "departureSec": 73260
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 73380,
+        "departureSec": 73440
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 73620,
+        "departureSec": 73680
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 73800,
+        "departureSec": 73860
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 74100,
+        "departureSec": 74280
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 74700,
+        "departureSec": 74760
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 74880,
+        "departureSec": 74880
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 75000,
+        "departureSec": 75000
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 75180,
+        "departureSec": 75180
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 75360,
+        "departureSec": 75420
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 75720,
+        "departureSec": 75720
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr185_18",
+    "routeId": "i-tr1063",
+    "routeName": "Zagreb Glavni kolodvor - Koprivnica",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 73080,
+        "departureSec": 73080
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 73500,
+        "departureSec": 73560
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 73680,
+        "departureSec": 73740
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 73800,
+        "departureSec": 73860
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 73980,
+        "departureSec": 74040
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 74220,
+        "departureSec": 74280
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 74580,
+        "departureSec": 74640
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr143bp_18",
+    "routeId": "i-tr134bg",
+    "routeName": "Tovarnik - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 73140,
+        "departureSec": 73140
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 73500,
+        "departureSec": 73560
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 73680,
+        "departureSec": 73680
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 73860,
+        "departureSec": 73860
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 73980,
+        "departureSec": 73980
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 74160,
+        "departureSec": 74220
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 74640,
+        "departureSec": 74640
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr759_18",
+    "routeId": "i-tr1216",
+    "routeName": "Zagreb Glavni kolodvor - Sisak Caprag",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 73980,
+        "departureSec": 73980
+      },
+      {
+        "stopId": "i-o575",
+        "name": "Zagreb Klara",
+        "lat": 45.7559442538,
+        "lng": 15.9813005823,
+        "arrivalSec": 74460,
+        "departureSec": 74460
+      },
+      {
+        "stopId": "i-o576",
+        "name": "Buzin",
+        "lat": 45.7434100911,
+        "lng": 15.9984317731,
+        "arrivalSec": 74640,
+        "departureSec": 74640
+      },
+      {
+        "stopId": "i-o574",
+        "name": "Odra",
+        "lat": 45.7338960484,
+        "lng": 16.0116932696,
+        "arrivalSec": 74760,
+        "departureSec": 74760
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr155_18",
+    "routeId": "i-tr153ac",
+    "routeName": "Savski Marof - Novska",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 75300,
+        "departureSec": 75300
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 75720,
+        "departureSec": 75720
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 75900,
+        "departureSec": 75900
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 76020,
+        "departureSec": 76020
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 76200,
+        "departureSec": 76200
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 76380,
+        "departureSec": 76440
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 76740,
+        "departureSec": 76740
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr760_18",
+    "routeId": "i-tr1217",
+    "routeName": "Volinja - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o574",
+        "name": "Odra",
+        "lat": 45.7338960484,
+        "lng": 16.0116932696,
+        "arrivalSec": 75480,
+        "departureSec": 75480
+      },
+      {
+        "stopId": "i-o576",
+        "name": "Buzin",
+        "lat": 45.7434100911,
+        "lng": 15.9984317731,
+        "arrivalSec": 75600,
+        "departureSec": 75600
+      },
+      {
+        "stopId": "i-o575",
+        "name": "Zagreb Klara",
+        "lat": 45.7559442538,
+        "lng": 15.9813005823,
+        "arrivalSec": 75780,
+        "departureSec": 75780
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 76260,
+        "departureSec": 76260
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1212_18",
+    "routeId": "i-tr1066",
+    "routeName": "Osijek - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 75660,
+        "departureSec": 75720
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 76140,
+        "departureSec": 76140
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr129_18",
+    "routeId": "i-tr1066",
+    "routeName": "Osijek - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 76140,
+        "departureSec": 76140
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 76560,
+        "departureSec": 76560
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1149_18",
+    "routeId": "i-tr164",
+    "routeName": "Novoselec - Harmica",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 76260,
+        "departureSec": 76260
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 76620,
+        "departureSec": 76680
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 76800,
+        "departureSec": 76800
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 76980,
+        "departureSec": 76980
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 77100,
+        "departureSec": 77100
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 77280,
+        "departureSec": 77340
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 77760,
+        "departureSec": 78060
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 78240,
+        "departureSec": 78300
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 78420,
+        "departureSec": 78420
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 78600,
+        "departureSec": 78600
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 78720,
+        "departureSec": 78780
+      },
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 78960,
+        "departureSec": 78960
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr664_18",
+    "routeId": "i-tr650",
+    "routeName": "Zagreb Glavni kolodvor - Ogulin",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 77580,
+        "departureSec": 77580
+      },
+      {
+        "stopId": "i-o782",
+        "name": "Remetinec",
+        "lat": 45.7663628321,
+        "lng": 15.9455841815,
+        "arrivalSec": 78060,
+        "departureSec": 78120
+      },
+      {
+        "stopId": "i-o783",
+        "name": "Hrvatski Leskovac",
+        "lat": 45.7444224695,
+        "lng": 15.8920997848,
+        "arrivalSec": 78420,
+        "departureSec": 78480
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr508_18",
+    "routeId": "i-tr471",
+    "routeName": "Čakovec - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 77880,
+        "departureSec": 77880
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 78060,
+        "departureSec": 78060
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 78180,
+        "departureSec": 78180
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 78360,
+        "departureSec": 78360
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 78480,
+        "departureSec": 78540
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 78780,
+        "departureSec": 78780
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr188_18",
+    "routeId": "i-tr1066",
+    "routeName": "Osijek - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 78000,
+        "departureSec": 78000
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 78360,
+        "departureSec": 78420
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 78600,
+        "departureSec": 78600
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 78720,
+        "departureSec": 78720
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 78840,
+        "departureSec": 78840
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 78960,
+        "departureSec": 78960
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 79380,
+        "departureSec": 79380
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1151_18",
+    "routeId": "i-tr134bg",
+    "routeName": "Tovarnik - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 79320,
+        "departureSec": 79320
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 79680,
+        "departureSec": 79740
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 79860,
+        "departureSec": 79860
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 80040,
+        "departureSec": 80040
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 80160,
+        "departureSec": 80160
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 80340,
+        "departureSec": 80400
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 80820,
+        "departureSec": 80820
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr505_18",
+    "routeId": "i-tr1233",
+    "routeName": "Zagreb Glavni kolodvor - Zabok",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 79440,
+        "departureSec": 79440
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 79680,
+        "departureSec": 79740
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 79860,
+        "departureSec": 79860
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 80040,
+        "departureSec": 80040
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 80160,
+        "departureSec": 80220
+      },
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 80400,
+        "departureSec": 80400
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr762_18",
+    "routeId": "i-tr1217",
+    "routeName": "Volinja - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o574",
+        "name": "Odra",
+        "lat": 45.7338960484,
+        "lng": 16.0116932696,
+        "arrivalSec": 80340,
+        "departureSec": 80340
+      },
+      {
+        "stopId": "i-o576",
+        "name": "Buzin",
+        "lat": 45.7434100911,
+        "lng": 15.9984317731,
+        "arrivalSec": 80460,
+        "departureSec": 80460
+      },
+      {
+        "stopId": "i-o575",
+        "name": "Zagreb Klara",
+        "lat": 45.7559442538,
+        "lng": 15.9813005823,
+        "arrivalSec": 80640,
+        "departureSec": 80640
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 81120,
+        "departureSec": 81120
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr663_18",
+    "routeId": "i-tr1033",
+    "routeName": "Rijeka - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o783",
+        "name": "Hrvatski Leskovac",
+        "lat": 45.7444224695,
+        "lng": 15.8920997848,
+        "arrivalSec": 80520,
+        "departureSec": 80580
+      },
+      {
+        "stopId": "i-o782",
+        "name": "Remetinec",
+        "lat": 45.7663628321,
+        "lng": 15.9455841815,
+        "arrivalSec": 80880,
+        "departureSec": 80940
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 81420,
+        "departureSec": 81420
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr196_18",
+    "routeId": "i-tr1208",
+    "routeName": "Zagreb Glavni kolodvor - Bjelovar",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 81000,
+        "departureSec": 81000
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 81420,
+        "departureSec": 81480
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 81600,
+        "departureSec": 81660
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 81780,
+        "departureSec": 81780
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 81960,
+        "departureSec": 82020
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 82200,
+        "departureSec": 82200
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 82560,
+        "departureSec": 82620
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr159_18",
+    "routeId": "i-tr153ac",
+    "routeName": "Savski Marof - Novska",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 81360,
+        "departureSec": 81360
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 81780,
+        "departureSec": 81840
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 81960,
+        "departureSec": 82020
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 82080,
+        "departureSec": 82140
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 82260,
+        "departureSec": 82320
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 82500,
+        "departureSec": 82560
+      },
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 82860,
+        "departureSec": 82920
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr507_18",
+    "routeId": "i-tr1233",
+    "routeName": "Zagreb Glavni kolodvor - Zabok",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 81780,
+        "departureSec": 81780
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 82020,
+        "departureSec": 82080
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 82200,
+        "departureSec": 82200
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 82380,
+        "departureSec": 82380
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 82500,
+        "departureSec": 82500
+      },
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 82680,
+        "departureSec": 82680
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr673_18",
+    "routeId": "i-tr662",
+    "routeName": "Zagreb Glavni kolodvor - Duga Resa",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 82020,
+        "departureSec": 82020
+      },
+      {
+        "stopId": "i-o782",
+        "name": "Remetinec",
+        "lat": 45.7663628321,
+        "lng": 15.9455841815,
+        "arrivalSec": 82500,
+        "departureSec": 82560
+      },
+      {
+        "stopId": "i-o783",
+        "name": "Hrvatski Leskovac",
+        "lat": 45.7444224695,
+        "lng": 15.8920997848,
+        "arrivalSec": 82860,
+        "departureSec": 82920
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr763cj_18",
+    "routeId": "i-tr743",
+    "routeName": "Zagreb Glavni kolodvor - Volinja",
+    "stops": [
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 82200,
+        "departureSec": 82200
+      },
+      {
+        "stopId": "i-o575",
+        "name": "Zagreb Klara",
+        "lat": 45.7559442538,
+        "lng": 15.9813005823,
+        "arrivalSec": 82680,
+        "departureSec": 82680
+      },
+      {
+        "stopId": "i-o576",
+        "name": "Buzin",
+        "lat": 45.7434100911,
+        "lng": 15.9984317731,
+        "arrivalSec": 82860,
+        "departureSec": 82860
+      },
+      {
+        "stopId": "i-o574",
+        "name": "Odra",
+        "lat": 45.7338960484,
+        "lng": 16.0116932696,
+        "arrivalSec": 82980,
+        "departureSec": 82980
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1156_18",
+    "routeId": "i-tr164",
+    "routeName": "Novoselec - Harmica",
+    "stops": [
+      {
+        "stopId": "i-o513",
+        "name": "Sesvetski Kraljevec",
+        "lat": 45.8107253531,
+        "lng": 16.1688806102,
+        "arrivalSec": 82260,
+        "departureSec": 82260
+      },
+      {
+        "stopId": "i-o514",
+        "name": "Sesvete",
+        "lat": 45.8248451177,
+        "lng": 16.109907637,
+        "arrivalSec": 82620,
+        "departureSec": 82680
+      },
+      {
+        "stopId": "i-o519",
+        "name": "Sesvetska Sopnica",
+        "lat": 45.82457,
+        "lng": 16.08579,
+        "arrivalSec": 82800,
+        "departureSec": 82800
+      },
+      {
+        "stopId": "i-o515",
+        "name": "Čulinec",
+        "lat": 45.8208442451,
+        "lng": 16.0636177663,
+        "arrivalSec": 82980,
+        "departureSec": 82980
+      },
+      {
+        "stopId": "i-o516",
+        "name": "Trnava",
+        "lat": 45.8184452691,
+        "lng": 16.0494026724,
+        "arrivalSec": 83100,
+        "departureSec": 83100
+      },
+      {
+        "stopId": "i-o517",
+        "name": "Maksimir",
+        "lat": 45.8140787699,
+        "lng": 16.023745024,
+        "arrivalSec": 83280,
+        "departureSec": 83280
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 83700,
+        "departureSec": 83940
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 84120,
+        "departureSec": 84180
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 84300,
+        "departureSec": 84300
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 84480,
+        "departureSec": 84480
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 84600,
+        "departureSec": 84600
+      },
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 84780,
+        "departureSec": 84780
+      }
+    ]
+  },
+  {
+    "tripId": "i-tr1159ev_18",
+    "routeId": "i-tr1089dh",
+    "routeName": "Harmica - Zagreb Glavni kolodvor",
+    "stops": [
+      {
+        "stopId": "i-o694",
+        "name": "Podsused Stajalište",
+        "lat": 45.8156037931,
+        "lng": 15.8358497923,
+        "arrivalSec": 82740,
+        "departureSec": 82740
+      },
+      {
+        "stopId": "i-o697",
+        "name": "Gajnice",
+        "lat": 45.8135855446,
+        "lng": 15.8728285771,
+        "arrivalSec": 82920,
+        "departureSec": 82920
+      },
+      {
+        "stopId": "i-o692",
+        "name": "Vrapče",
+        "lat": 45.8122886632,
+        "lng": 15.896561914,
+        "arrivalSec": 83040,
+        "departureSec": 83100
+      },
+      {
+        "stopId": "i-o696",
+        "name": "Kustošija",
+        "lat": 45.8106281373,
+        "lng": 15.9268870664,
+        "arrivalSec": 83280,
+        "departureSec": 83280
+      },
+      {
+        "stopId": "i-o700",
+        "name": "Zagreb Zapadni Kolodvor",
+        "lat": 45.8091245968,
+        "lng": 15.9542125497,
+        "arrivalSec": 83400,
+        "departureSec": 83460
+      },
+      {
+        "stopId": "i-o523",
+        "name": "Zagreb Glavni kolodvor",
+        "lat": 45.8044511799,
+        "lng": 15.9788116194,
+        "arrivalSec": 83700,
+        "departureSec": 83880
+      }
+    ]
+  }
+]

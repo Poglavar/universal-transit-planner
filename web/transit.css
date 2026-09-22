@@ -1,0 +1,3099 @@
+:root {
+    --visual-viewport-top: 0px;
+    --visual-viewport-left: 0px;
+    --visual-viewport-right: 0px;
+    --visual-viewport-width: 100vw;
+    --visual-viewport-height: 100dvh;
+}
+
+body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; font-family: Arial, sans-serif; }
+.i18n-pending body { visibility: hidden; }
+#map { position: fixed; top: 0; left: 0; width: 100%; height: 100%; }
+.capability-unavailable { display: none !important; }
+
+/* While a 3D session is open, the modal is the ONLY visible surface: every
+   other body child is hidden wholesale — no map, no docks, no toasts, no
+   future widget can paint over or under the 3D world, and no click can fall
+   through to the map. (Previously a hand-kept ID list; anything not on the
+   list leaked.) The dev-only perf/FPS overlays (`.station3d-dev-overlay`,
+   appended to <body> by scene/animate.js) are exempt — otherwise the F-key
+   performance HUD was hidden in every 3D mode. The loading screen, the exit
+   question and the bake pill live on <body> above the modal and are exempt too.
+   So is the end-of-line connection choice: it is offered ONLY to a train being
+   ridden from the cab (offerRailConnectionChoice requires `_cabRidden`), so
+   without this exemption the one surface it ever appears on is the one that
+   blanks it — populated, at z-index 4300, and invisible at opacity 0 with no
+   clicks reaching it. It went unnoticed because a scripted click still works. */
+body.station3d-suspend-map > :not(#station3DModal):not(.station3d-dev-overlay):not(.station-3d-campaign-curtain):not(.station-3d-exit-confirm):not(.station-3d-bake-status):not(#railConnectionChoiceModal) {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+[role="button"],
+.nav-pill,
+button *,
+[role="button"] *,
+.nav-pill * {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-drag: none;
+}
+
+/* --- Sidebar --- */
+#controls {
+    position: absolute; top: 10px; right: 10px; z-index: 1200;
+    background: rgba(255, 255, 255, 0.55); padding: 10px 15px 15px; border-radius: 5px;
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2); width: 280px;
+    transition: right 0.25s ease;
+    max-height: calc(100vh - 20px); overflow-y: auto; box-sizing: border-box;
+}
+#controls.collapsed {
+    right: -120vw;
+    pointer-events: none;
+}
+
+#controlsScrim { display: none; }
+
+/* --- Toggle button --- */
+/* Inline flex item inside .nav-row when open; moves to document.body when closed */
+#toggleControls {
+    flex: 0 0 40px; width: 40px; height: 40px; padding: 0; margin: 0; margin-top: 0;
+    background: #333; color: white; border: none; border-radius: 5px;
+    font-size: 1.3rem; cursor: pointer; touch-action: manipulation;
+    box-sizing: border-box;
+}
+/* Floating state: toggle has been moved to document.body, positioned fixed */
+#toggleControls.floating {
+    position: fixed;
+    top: calc(var(--visual-viewport-top) + 10px);
+    right: calc(var(--visual-viewport-right) + 10px);
+    z-index: 4001;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+#toggleControls:hover { background: #555; }
+
+/* --- Sidebar header with logo --- */
+.sidebar-header { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 6px; }
+.logo-link { flex-shrink: 0; line-height: 0; }
+.sidebar-logo { width: 28px; height: 28px; border-radius: 5px; }
+.sidebar-product-mark {
+    display: inline-grid;
+    place-items: center;
+    width: 34px;
+    height: 28px;
+    border-radius: 6px;
+    background: #0f172a;
+    color: #fff;
+    font: 700 10px/1 Arial, sans-serif;
+    letter-spacing: 0.06em;
+}
+.sidebar-header h2 { margin: 0; }
+.language-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 2px;
+    border: 1px solid rgba(15, 23, 42, 0.18);
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.72);
+}
+.language-switch button {
+    width: auto;
+    min-width: 30px;
+    margin: 0;
+    padding: 5px 6px;
+    border-radius: 3px;
+    background: transparent;
+    color: #475569;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+.language-switch button:hover,
+.language-switch button.active {
+    background: #0f172a;
+    color: #fff;
+}
+
+/* --- Controls --- */
+h2 { margin-top: 0; font-size: 1.2rem; }
+h3 { font-size: 1rem; margin: 10px 0 8px 0; }
+.control-group { margin-bottom: 15px; }
+select, button { width: 100%; padding: 8px; margin-top: 5px; font-size: 0.95em; }
+button { background-color: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer; }
+button:disabled { background-color: #cccccc; cursor: not-allowed; }
+button:hover:not(:disabled) { background-color: #0056b3; }
+.map-action-toolbar {
+    position: fixed;
+    top: calc(var(--visual-viewport-top) + 10px);
+    right: calc(var(--visual-viewport-right) + 60px);
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    /* The bar itself is only a layout box — it must never swallow map clicks
+       around the buttons, least of all while its panel is collapsed. */
+    pointer-events: none;
+    transition: right 0.25s ease;
+}
+.map-action-toolbar > * { pointer-events: auto; }
+body.sidebar-open .map-action-toolbar {
+    right: calc(var(--visual-viewport-right) + 300px);
+}
+/* The editing tools live behind one 📝 button and stay out of the way until
+   they are wanted. */
+.map-action-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid rgba(148, 163, 184, 0.72);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 2px 12px rgba(15, 23, 42, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: pointer;
+}
+.map-action-toggle:hover { background: #fff; }
+.map-action-toggle.active {
+    background: #2563eb;
+    border-color: #1d4ed8;
+    box-shadow: 0 2px 12px rgba(37, 99, 235, 0.45);
+}
+.map-action-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+}
+.map-action-panel.hidden { display: none; }
+.map-action-row,
+.map-gauge-picker {
+    display: flex;
+    gap: 6px;
+    padding: 5px;
+    border: 1px solid rgba(148, 163, 184, 0.72);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 2px 12px rgba(15, 23, 42, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.map-action-row {
+    flex-direction: column;
+    align-items: stretch;
+}
+.map-action-group {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+}
+.map-action-group + .map-action-group {
+    padding-top: 6px;
+    border-top: 1px solid rgba(148, 163, 184, 0.72);
+}
+.map-action-btn,
+.map-gauge-btn {
+    width: auto;
+    min-height: 40px;
+    margin: 0;
+    border: 1px solid #93c5fd;
+    border-radius: 7px;
+    color: #1e3a8a;
+    background: #eff6ff;
+    font-weight: 700;
+    white-space: nowrap;
+}
+.map-action-btn { width: 100%; }
+.map-action-btn:hover:not(:disabled),
+.map-gauge-btn:hover:not(:disabled) { color: #172554; background: #dbeafe; }
+.map-action-btn.active,
+.map-action-btn.pending,
+.map-action-btn.active:hover:not(:disabled),
+.map-action-btn.pending:hover:not(:disabled) {
+    color: #fff;
+    background: #1d4ed8;
+    border-color: #1e40af;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.24);
+}
+.map-gauge-btn { min-width: 54px; padding: 7px 10px; }
+.map-gauge-picker.hidden { display: none; }
+.track-level-legend {
+    min-width: 150px;
+    padding: 8px 10px;
+    color: #172554;
+    /* Semi-transparent: the map should stay visible behind its own legend. The
+       blur is what keeps the text readable without an opaque plate — over busy
+       tiles a flat alpha alone leaves the labels fighting the map detail. */
+    background: rgba(255, 255, 255, 0.62);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    border: 1px solid rgba(30, 64, 175, 0.22);
+    border-radius: 7px;
+    box-shadow: 0 2px 9px rgba(15, 23, 42, 0.16);
+    font: 700 11px/1.25 system-ui, sans-serif;
+}
+.track-level-legend-title { margin-bottom: 5px; }
+.track-level-legend-row {
+    display: grid;
+    grid-template-columns: 27px 1fr;
+    align-items: center;
+    gap: 7px;
+    margin-top: 3px;
+    white-space: nowrap;
+}
+.track-level-legend-swatch {
+    display: block;
+    height: 5px;
+    border: 1px solid rgba(15, 23, 42, 0.2);
+    border-radius: 3px;
+}
+.track-ramp-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 2px solid rgba(255, 255, 255, 0.96);
+    border-radius: 50%;
+    color: #fff;
+    background: #9333ea;
+    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.58);
+    font: 800 10px/1 system-ui, sans-serif;
+    pointer-events: none;
+}
+.track-ramp-label-underground { background: #9333ea; }
+.track-ramp-label-elevated { color: #422006; background: #eab308; }
+/* Toast notifications — bottom-center ephemeral messages */
+.toast-container {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 8px;
+    pointer-events: none;
+    max-width: min(420px, calc(100vw - 32px));
+}
+.toast {
+    pointer-events: auto;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 0.84rem;
+    line-height: 1.4;
+    color: #1e293b;
+    background: #ffffffee;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 16px rgba(15,23,42,0.14);
+    animation: toast-in 0.25s ease, toast-out 0.3s ease 3.2s forwards;
+}
+.toast.toast-error {
+    color: #991b1b;
+    background: #fef2f2ee;
+    border-color: #fecaca;
+}
+.toast a { color: #2563eb; text-decoration: underline; }
+/* Toasts with an action button stay on screen longer so it can be clicked */
+.toast.toast-with-action {
+    animation: toast-in 0.25s ease, toast-out 0.3s ease 7.2s forwards;
+}
+.toast-action-btn {
+    display: block;
+    margin-top: 8px;
+    padding: 4px 10px;
+    border: 1px solid #2563eb;
+    border-radius: 6px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.toast-action-btn:hover { background: #dbeafe; }
+@keyframes toast-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes toast-out {
+    from { opacity: 1; }
+    to   { opacity: 0; transform: translateY(-8px); }
+}
+
+/* Cab hint — top-centre banner after a project opens on the map, telling a
+   newcomer how to get into the cab (K, or the train icon). It fades away on
+   its own; transit.js removes it on the out-animation's end, or at once when
+   the cab actually opens. pointer-events none: it must never block the map. */
+.planner-cab-hint {
+    position: fixed;
+    top: calc(var(--visual-viewport-top, 0px) + 14px);
+    /* left/right 0 + auto margins centre it without capping the shrink-to-fit
+       width at half the viewport, which left:50% does. */
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: fit-content;
+    z-index: 2100;
+    max-width: min(520px, calc(100vw - 32px));
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    text-align: center;
+    color: #f8fafc;
+    background: rgba(15, 23, 42, 0.86);
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.28);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    pointer-events: none;
+    opacity: 0;
+}
+.planner-cab-hint kbd {
+    display: inline-block;
+    min-width: 1.4em;
+    padding: 1px 7px;
+    border-radius: 6px;
+    border: 1px solid rgba(248, 250, 252, 0.55);
+    border-bottom-width: 2px;
+    font: 700 0.95em/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+    color: #0f172a;
+    background: #f8fafc;
+}
+/* Ease in, hold, then a slow fade — the hold is the delay on the out keyframes. */
+.planner-cab-hint.is-showing {
+    animation: planner-cab-hint-in 0.4s ease both, planner-cab-hint-out 1.8s ease 7s forwards;
+}
+@keyframes planner-cab-hint-in {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes planner-cab-hint-out {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+    /* A fade is not motion; the slide-in is. */
+    @keyframes planner-cab-hint-in {
+        from { opacity: 0; transform: none; }
+        to   { opacity: 1; transform: none; }
+    }
+}
+@media (max-width: 768px) {
+    /* Below the clock/speed widget and the floating toolbar buttons, which
+       own the top strip on a phone. */
+    .planner-cab-hint {
+        top: calc(var(--visual-viewport-top, 0px) + 96px);
+        font-size: 0.88rem;
+    }
+}
+
+/* Map overlay loader — shown during async operations on mobile */
+.map-loader-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1100;
+    padding: 14px 24px;
+    border-radius: 12px;
+    background: rgba(15, 23, 42, 0.82);
+    color: white;
+    font-size: 0.9rem;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    pointer-events: none;
+    animation: toast-in 0.2s ease;
+}
+
+/* Game log modal */
+.game-log-modal {
+    max-height: min(70vh, 560px);
+}
+.game-log-content {
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+    padding: 4px 0;
+}
+.game-log-entry {
+    display: flex;
+    gap: 10px;
+    padding: 5px 0;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    border-bottom: 1px solid #f1f5f9;
+}
+.game-log-entry:last-child { border-bottom: none; }
+.game-log-time {
+    flex-shrink: 0;
+    color: #94a3b8;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.78rem;
+}
+.game-log-msg { color: #334155; }
+.game-log-msg.is-error { color: #dc2626; }
+.game-log-empty {
+    text-align: center;
+    padding: 32px 16px;
+    color: #94a3b8;
+    font-size: 0.88rem;
+}
+.game-log-actions {
+    padding-top: 10px;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: flex-end;
+}
+.help-text { margin-top: 6px; font-size: 0.8rem; color: #666; line-height: 1.35; }
+.range-field-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+}
+.range-field-header label {
+    margin: 0;
+}
+.range-field-value {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #166534;
+}
+.walk-time-options {
+    --walk-time-gap: 4px;
+    --walk-time-radio-size: 18px;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: var(--walk-time-gap);
+    margin-top: 8px;
+}
+.walk-time-options::before {
+    content: '';
+    position: absolute;
+    top: calc(var(--walk-time-radio-size) / 2);
+    left: calc((100% - (4 * var(--walk-time-gap))) / 10);
+    right: calc((100% - (4 * var(--walk-time-gap))) / 10);
+    border-top: 2px solid #166534;
+    z-index: 0;
+}
+.walk-time-option {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-top: 0;
+    cursor: pointer;
+    text-align: center;
+    color: #475569;
+    font-size: 0.76rem;
+    line-height: 1.2;
+}
+.walk-time-option input {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    accent-color: #166534;
+    background: #ffffff;
+}
+.walk-time-option input:focus-visible {
+    outline: 2px solid rgba(22, 163, 74, 0.25);
+    outline-offset: 3px;
+}
+.walk-time-option-label {
+    display: block;
+}
+.walk-time-option input:checked + .walk-time-option-label {
+    color: #166534;
+    font-weight: 700;
+}
+
+/* --- Nav row --- */
+.nav-row { display: flex; gap: 6px; margin-bottom: 10px; }
+.nav-pill {
+    flex: 1; text-align: center; padding: 0 8px; font-size: 0.82rem;
+    height: 40px; box-sizing: border-box; display: flex; align-items: center; justify-content: center;
+    color: #007bff; text-decoration: none;
+    border: 1px solid #007bff; border-radius: 3px;
+}
+.nav-pill:hover { background: #007bff; color: white; }
+
+.sidebar-action-row {
+    margin-bottom: 10px;
+    display: flex;
+    gap: 8px;
+}
+
+.sidebar-secondary-btn {
+    margin-top: 0;
+    background: #eef2f7;
+    color: #213547;
+    border: 1px solid #c9d4df;
+}
+
+.sidebar-secondary-btn:hover:not(:disabled) {
+    background: #e0e8f0;
+}
+
+.heatmap-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: -4px;
+}
+
+.heatmap-btn {
+    flex: 1;
+    min-width: 0;
+    margin-top: 0;
+    background: #f8f9fa;
+    color: #0b3d91;
+    border: 1px solid #b6ccf5;
+}
+
+.heatmap-btn:hover:not(:disabled) {
+    background: #e7f0ff;
+}
+
+.heatmap-btn.active {
+    background: #0b5ed7;
+    border-color: #0b5ed7;
+    color: #fff;
+}
+
+.reference-toggle-group {
+    margin-top: -6px;
+}
+
+.reference-toggle-group .compact-toggle + .compact-toggle,
+.compact-toggle-group .compact-toggle + .compact-toggle {
+    margin-top: 8px;
+}
+
+.compact-toggle-group {
+    margin-top: -10px;
+}
+
+/* A toggle with something beside it. The wrapper breaks the
+   `.compact-toggle + .compact-toggle` adjacency that spaces the rows, so the
+   spacing is restored explicitly rather than left to collapse. */
+.compact-toggle-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.compact-toggle-group .compact-toggle + .compact-toggle-row,
+.compact-toggle-group .compact-toggle-row + .compact-toggle {
+    margin-top: 8px;
+}
+.compact-toggle-row .compact-toggle {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Green, because it leaves for another tool rather than changing this one —
+   every other control in this group acts on the map in front of you. */
+.relief-viewer-btn {
+    flex: 0 0 auto;
+    width: auto;
+    margin-top: 0;
+    padding: 5px 10px;
+    border: 1px solid #16a34a;
+    border-radius: 4px;
+    background: #16a34a;
+    color: #fff;
+    font-size: 0.74rem;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+.relief-viewer-btn:hover:not(:disabled) {
+    background: #15803d;
+    border-color: #15803d;
+}
+.relief-viewer-btn:disabled {
+    background: #cbd5e1;
+    border-color: #cbd5e1;
+    color: #64748b;
+}
+
+.compact-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.compact-toggle-label {
+    color: #334155;
+    font-size: 0.85rem;
+    line-height: 1.2;
+    font-weight: 500;
+}
+
+.compact-toggle-switch {
+    position: relative;
+    display: inline-flex;
+    flex-shrink: 0;
+    width: 40px;
+    height: 24px;
+}
+
+.compact-toggle-input {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.compact-toggle-track {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 999px;
+    border: 1px solid #cbd5e1;
+    background: #e2e8f0;
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.compact-toggle-track::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.2);
+    transition: transform 0.15s ease;
+}
+
+.compact-toggle-input:checked + .compact-toggle-track {
+    background: #0b5ed7;
+    border-color: #0b5ed7;
+}
+
+.compact-toggle-input:checked + .compact-toggle-track::after {
+    transform: translateX(16px);
+}
+
+.compact-toggle-input:focus-visible + .compact-toggle-track {
+    outline: 2px solid rgba(11, 94, 215, 0.35);
+    outline-offset: 2px;
+}
+
+.compact-toggle-input:disabled + .compact-toggle-track {
+    opacity: 0.7;
+}
+
+.terrain-map-legend {
+    position: fixed;
+    left: max(12px, calc(env(safe-area-inset-left) + 8px));
+    /* Sit below the floating simulation clock instead of sharing its corner. */
+    top: max(98px, calc(env(safe-area-inset-top) + 96px));
+    z-index: 900;
+    width: 176px;
+    box-sizing: border-box;
+    padding: 9px 10px 8px;
+    border: 1px solid rgba(15, 23, 42, 0.18);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.62);
+    color: #1e293b;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.16);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    pointer-events: none;
+    font: 600 11px/1.2 system-ui, sans-serif;
+}
+.terrain-map-legend.hidden { display: none; }
+.terrain-map-legend strong,
+.terrain-map-legend small { display: block; }
+.terrain-map-legend-ramp {
+    display: block;
+    height: 9px;
+    margin-top: 6px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #788a4a 0%, #5c8530 8%, #ad9647 31%, #996330 50%, #754a3b 75%, #f0f2f2 100%);
+}
+.terrain-map-legend-values {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3px;
+    color: #475569;
+    font-size: 9px;
+    font-weight: 500;
+}
+.terrain-map-legend small {
+    margin-top: 5px;
+    color: #64748b;
+    font-size: 9px;
+    font-weight: 500;
+}
+@media (max-width: 768px) {
+    .terrain-map-legend {
+        /* The mobile clock itself clears the variable-height action toolbar. */
+        top: calc(
+            var(--visual-viewport-top)
+            + var(--map-action-toolbar-height, 50px)
+            + 110px
+            + env(safe-area-inset-top)
+        );
+    }
+}
+
+/* --- Station type picker on the route --- */
+.station-picker-popup {
+    display: flex;
+    gap: 4px;
+    background: white;
+    border-radius: 8px;
+    padding: 4px;
+    /* border-box so Leaflet's iconSize matches the actual rendered outer size */
+    box-sizing: border-box;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.15), 0 2px 8px rgba(0,0,0,0.25);
+}
+
+.station-picker-btn {
+    width: 28px; height: 28px;
+    border: 1px solid #ddd; border-radius: 6px;
+    background: #f8f9fa;
+    cursor: pointer; font-size: 1rem;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0; margin: 0; margin-top: 0;
+    box-sizing: border-box;
+    line-height: 1;
+}
+.station-picker-btn:hover { background: #e2e6ea; border-color: #adb5bd; }
+
+/* --- Line type selector --- */
+.line-type-selector { margin-top: 5px; }
+.radio-label {
+    display: block; padding: 6px 8px; margin: 3px 0;
+    font-size: 0.85em; cursor: pointer; border-radius: 3px;
+    background: #f8f9fa; border: 1px solid #e9ecef;
+}
+.radio-label:hover { background: #e9ecef; }
+.radio-label input { margin-right: 6px; }
+.line-controls-hint { margin-top: 6px; font-size: 0.75em; color: #64748b; }
+.secondary-btn { background: #6c757d; }
+.secondary-btn:hover:not(:disabled) { background: #5a6268; }
+.drawing-toolbar-icon { overflow: visible; }
+.drawing-toolbar {
+    position: absolute;
+    left: 10px;
+    top: 0;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+.draw-tool-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+    line-height: 1;
+    border: none;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+.draw-tool-btn:hover:not(:disabled) { background: #eef4ff; }
+.draw-tool-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+/* --- Stats --- */
+#catchmentStats { margin-top: 15px; padding-top: 10px; border-top: 1px solid #eee; }
+.stat-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+.stat-label { font-size: 0.85rem; color: #555; }
+.stat-value { font-size: 1rem; font-weight: bold; }
+.stat-bar-container { display: flex; height: 8px; border-radius: 4px; overflow: hidden; background: #eee; margin: 4px 0; }
+.stat-bar-in { background: #007bff; transition: width 0.3s; }
+.stat-bar-out { background: #ddd; transition: width 0.3s; }
+.stat-detail { font-size: 0.78rem; color: #777; margin-bottom: 2px; }
+
+/* --- Lines list --- */
+#linesList { margin-top: 15px; padding-top: 10px; border-top: 1px solid #eee; }
+/* Sidebar tabs */
+.sidebar-tabs {
+    display: flex; gap: 0; margin-bottom: 6px; border-bottom: 2px solid #e2e8f0;
+}
+.sidebar-tab {
+    flex: 1; padding: 6px 10px; border: none; background: #f1f5f9;
+    font-size: 0.85em; font-weight: 600; color: #64748b; cursor: pointer;
+    border-bottom: 2px solid transparent; margin-bottom: -2px;
+    border-radius: 6px 6px 0 0;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.sidebar-tab:hover { color: #475569; background: #e2e8f0; }
+.sidebar-tab.active { color: #1e293b; background: #dbeafe; border-bottom-color: #3b82f6; }
+.sidebar-tab-content.hidden { display: none; }
+
+.line-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 5px 8px; margin: 3px 0; border-radius: 3px;
+    font-size: 0.85em; background: #f8f9fa;
+    cursor: pointer; transition: background 0.15s;
+}
+.line-item:hover { background: #e2e8f0; }
+.line-item.active { background: #dbeafe; outline: 2px solid #3b82f6; }
+/* Flash used when a delete-guard toast reveals the owning line in the sidebar */
+@keyframes line-item-flash {
+    0%, 60% { background: #fde68a; }
+    100% { background: transparent; }
+}
+.line-item-flash { animation: line-item-flash 1.6s ease; }
+.line-item-info { flex: 1; }
+.line-item-type { display: flex; align-items: center; gap: 8px; font-weight: bold; }
+.line-item-swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    flex: 0 0 12px;
+    box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.12);
+}
+.line-item-meta { font-size: 0.8em; color: #666; }
+.line-item .delete-btn {
+    width: auto; padding: 2px 8px; margin: 0; font-size: 0.8em;
+    background: #dc3545; border-radius: 3px;
+}
+.line-item .delete-btn:hover { background: #c82333; }
+
+/* --- Project summary --- */
+#projectSummary { margin-top: 15px; padding-top: 10px; border-top: 1px solid #eee; }
+.summary-grid { display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; font-size: 0.85em; }
+.summary-label { color: #555; }
+.ancestor-link { font-size: 0.75em; font-weight: normal; }
+.ancestor-link a { color: #0066cc; text-decoration: none; }
+.ancestor-link a:hover { text-decoration: underline; }
+.summary-value { font-weight: bold; text-align: right; }
+
+/* --- Save / Share --- */
+.save-section-sticky {
+    position: sticky;
+    bottom: 0;
+    padding: 10px 0;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 10;
+}
+.save-actions { display: flex; gap: 8px; }
+#saveProject { flex: 1; }
+#shareProject { flex: 1; }
+#shareProject.share-unavailable { opacity: 0.45; cursor: not-allowed; }
+#shareProject.share-unavailable:hover { background-color: #6c757d; }
+
+.share-popup {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: calc(100% + 10px);
+    z-index: 1300;
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.16);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.share-popup::after {
+    content: '';
+    position: absolute;
+    right: 22px;
+    top: 100%;
+    border-width: 8px 8px 0 8px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.98) transparent transparent transparent;
+    filter: drop-shadow(0 1px 0 rgba(15, 23, 42, 0.08));
+}
+.share-popup-label { font-size: 0.8em; color: #555; display: block; margin-bottom: 4px; }
+.share-popup-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+.share-popup-section { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(148, 163, 184, 0.22); }
+.share-link-input {
+    width: 100%;
+    font-size: 0.82em;
+    padding: 8px 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #fff;
+    min-width: 0;
+}
+.share-copy-btn {
+    width: auto;
+    margin-top: 0;
+    font-size: 0.82em;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    background: #007bff;
+    color: #fff;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.share-copy-btn:hover { background: #0056b3; }
+.share-export-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+.share-export-btn {
+    margin-top: 0;
+    padding: 9px 10px;
+    font-size: 0.8em;
+    border-radius: 8px;
+    background: #0b5ed7;
+}
+.share-export-btn:hover:not(:disabled) { background: #094db1; }
+.share-export-btn-secondary {
+    background: #e2e8f0;
+    color: #1e293b;
+    border: 1px solid #cbd5e1;
+}
+.share-export-btn-secondary:hover:not(:disabled) { background: #cbd5e1; }
+.share-popup-help {
+    margin: 8px 0 0;
+    font-size: 0.76em;
+    line-height: 1.45;
+    color: #64748b;
+}
+
+/* --- Modal --- */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4); z-index: 2000;
+    display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+    box-sizing: border-box;
+    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px)
+             env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+}
+#discardDraftModal { z-index: 2100; }
+.modal {
+    background: white; border-radius: 8px; padding: 24px; width: min(320px, calc(100vw - 24px));
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+.modal h3 { margin: 0 0 16px 0; font-size: 1.1rem; }
+.modal-message { margin: 0; font-size: 0.92rem; line-height: 1.5; color: #4b5563; }
+.modal label { display: block; font-size: 0.85rem; color: #555; margin-bottom: 6px; }
+.modal input[type="text"] {
+    width: 100%; padding: 10px; font-size: 0.95rem; border: 1px solid #ccc;
+    border-radius: 4px; box-sizing: border-box; outline: none;
+}
+.modal input[type="text"]:focus { border-color: #007bff; box-shadow: 0 0 0 2px rgba(0,123,255,0.15); }
+.modal-error { margin: 10px 0 0; font-size: 0.85rem; color: #dc2626; }
+.modal-buttons { display: flex; gap: 8px; margin-top: 16px; }
+.modal-btn-cancel {
+    flex: 1; padding: 8px; background: #e9ecef; color: #333;
+    border: 1px solid #ccc; border-radius: 4px; cursor: pointer; font-size: 0.9rem;
+}
+.modal-btn-cancel:hover { background: #dee2e6; }
+.modal-btn-confirm {
+    flex: 1; padding: 8px; background: #007bff; color: white;
+    border: none; border-radius: 4px; cursor: pointer; font-size: 0.9rem;
+}
+.modal-btn-confirm:hover { background: #0056b3; }
+.modal-btn-danger {
+    flex: 1; padding: 8px; background: #dc2626; color: white;
+    border: none; border-radius: 4px; cursor: pointer; font-size: 0.9rem;
+}
+.modal-btn-danger:hover { background: #b91c1c; }
+
+.info-modal {
+    width: min(560px, calc(100vw - 24px));
+    max-height: min(80vh, 720px);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.info-modal-header h3 {
+    margin: 0;
+}
+
+.info-close-btn {
+    width: 36px;
+    min-width: 36px;
+    height: 36px;
+    margin-top: 0;
+    padding: 0;
+    font-size: 1.4rem;
+    line-height: 1;
+    background: #eef2f7;
+    color: #334155;
+    border: 1px solid #d3dce6;
+}
+
+.info-close-btn:hover:not(:disabled) {
+    background: #e2e8f0;
+}
+
+.info-modal-content {
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.info-modal-content section + section {
+    margin-top: 16px;
+}
+
+.info-modal-content h4 {
+    margin: 0 0 8px;
+    font-size: 0.95rem;
+    color: #0f172a;
+}
+
+.info-modal-content p,
+.info-modal-content li {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: #475569;
+}
+
+.info-modal-content ol,
+.info-modal-content ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.info-modal-content li + li {
+    margin-top: 6px;
+}
+
+.info-modal-content p {
+    margin: 0;
+}
+
+.info-modal-content p + p {
+    margin-top: 10px;
+}
+
+.info-modal-content a {
+    color: #0b5ed7;
+    text-decoration: underline;
+}
+
+.info-modal-content a:hover {
+    color: #084298;
+}
+
+/* --- Misc --- */
+.hidden { display: none !important; }
+#loading { display: flex; align-items: center; margin-top: 10px; color: #007bff; }
+.spinner { border: 3px solid #f3f3f3; border-top: 3px solid #007bff; border-radius: 50%; width: 15px; height: 15px; animation: spin 1s linear infinite; margin-right: 8px; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.snap-marker { width: 14px; height: 14px; background: #007bff; border: 2px solid white; border-radius: 50%; box-shadow: 0 0 4px rgba(0,0,0,0.4); opacity: 0.8; }
+.snap-marker-transfer { width: 18px; height: 18px; background: #f59f00; border: 2px solid white; box-shadow: 0 0 8px rgba(245,159,0,0.6); }
+.snap-marker-junction { width: 18px; height: 18px; background: #6b7280; border: 2px solid white; border-radius: 50%; box-shadow: 0 0 8px rgba(107,114,128,0.7); }
+.snap-marker-external { width: 18px; height: 18px; background: #7c3aed; border: 2px solid white; border-radius: 50%; box-shadow: 0 0 8px rgba(124,58,237,0.75); }
+
+.rail-connection-choice { max-width: 440px; }
+#railConnectionChoiceModal { z-index: 4300; }
+.rail-connection-choices { display: grid; gap: 10px; margin-top: 16px; }
+.rail-connection-choices button { width: 100%; }
+.catchment-origin-marker { width: 18px; height: 18px; background: #16a34a; border: 3px solid white; border-radius: 50%; box-shadow: 0 0 8px rgba(0,0,0,0.35); }
+.station-marker { width: 16px; height: 16px; border: 3px solid white; box-shadow: 0 0 6px rgba(0,0,0,0.5); }
+.station-marker-linked::after { content: ''; position: absolute; width: 6px; height: 6px; background: #f59f00; border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; }
+.station-marker-near-transfer { box-shadow: 0 0 0 4px rgba(245, 159, 0, 0.55), 0 0 6px rgba(0,0,0,0.5) !important; }
+/* Dropping here will be refused — shown DURING the drag so the snap-back is the
+   expected outcome rather than the station appearing to move on its own. Matches
+   the vertex-drag-illegal treatment. */
+.station-marker-illegal { box-shadow: 0 0 0 5px rgba(220, 38, 38, 0.45), 0 0 6px rgba(0,0,0,0.5) !important; }
+.station-marker-round { border-radius: 50%; }
+.station-marker-square { border-radius: 3px; }
+/* Base color per gauge, tint per level (underground darker, elevated lighter) */
+.station-marker-monorail { background: #f59e0b; }
+.station-marker-g1000 { background: #ef4444; }
+.station-marker-g1435 { background: #3b82f6; }
+.station-marker-underground { filter: brightness(0.62); }
+.station-marker-elevated { filter: brightness(1.12) saturate(1.25); border-style: double; }
+.rail-station-marker {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    pointer-events: none;
+}
+
+.rail-station-marker-diamond {
+    width: 10px;
+    height: 10px;
+    background: #111;
+    border: 2px solid #fff;
+    box-shadow: 0 0 6px rgba(0,0,0,0.45);
+    transform: rotate(45deg);
+}
+
+.tram-stop-marker {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    pointer-events: none;
+}
+
+.tram-stop-marker-dot {
+    width: 8px;
+    height: 8px;
+    background: #d97706;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(0,0,0,0.4);
+}
+
+body.is-exporting #toggleControls,
+body.is-exporting #mapActionToolbar,
+body.is-exporting #loading,
+body.is-exporting #sharePopup,
+body.is-exporting #infoModal,
+body.is-exporting #saveModal {
+    display: none !important;
+}
+/* ─── Sim Panel (floating top-left clock + speed controls) ─────────── */
+.sim-panel {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1100;
+    width: 136px;
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 10px;
+    overflow: hidden;
+    user-select: none;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+.sim-panel .sky-strip {
+    position: relative;
+    height: 36px;
+    margin-bottom: 0;
+    border-radius: 0;
+}
+.sim-panel-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    color: rgba(255, 255, 255, 0.9);
+}
+/* The editable hour floats directly over the animated sky without a chip. Its
+   two-sided shadow remains legible against both daylight and the night sky,
+   while leaving the sun/moon visible underneath. */
+.sim-panel .sky-strip .time-clock-display {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.98rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #fff;
+    background: transparent;
+    text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.95),
+        0 0 5px rgba(0, 0, 0, 0.72);
+}
+.sim-clock-btn {
+    background: rgba(15, 23, 42, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    color: #fff;
+    /* The global `select, button` rule adds margin-top:5px, which under
+       align-items:center pushes the buttons 2.5px below the digits. */
+    margin: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1;
+}
+.sim-clock-btn:hover {
+    background: #1d4ed8;
+    border-color: #bfdbfe;
+}
+.sim-clock-speed {
+    flex: 1;
+    min-width: 28px;
+    padding: 2px 5px;
+    border-radius: 5px;
+    background: rgba(15, 23, 42, 0.3);
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    color: #fff;
+}
+
+.train-marker {
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+.train-marker-shell {
+    position: relative;
+    width: 44px;
+    height: 44px;
+}
+.train-marker-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 10px;
+    margin-left: -8px;
+    margin-top: -5px;
+    border-radius: 3px;
+    border: 1.5px solid rgba(255,255,255,0.95);
+    background: var(--train-color, #334155);
+    box-shadow: 0 1px 5px rgba(15,23,42,0.35);
+    transform: translateZ(0) rotate(var(--train-angle, 0deg));
+    transform-origin: center center;
+    will-change: transform;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.train-marker-icon::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 4px;
+    height: 4px;
+    border-radius: 1px;
+    background: rgba(255,255,255,0.9);
+}
+.train-marker-g1435 .train-marker-icon {
+    height: 10px;
+}
+.train-marker-g1000 .train-marker-icon {
+    height: 8px;
+    margin-top: -4px;
+}
+.train-marker-monorail .train-marker-icon {
+    height: 7px;
+    margin-top: -4px;
+    border-radius: 5px;
+}
+.train-stop-indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    margin-left: -12px;
+    margin-top: -12px;
+    border-radius: 999px;
+    border: 2px solid rgba(255,255,255,0.96);
+    background: var(--train-color, #334155);
+    box-shadow: 0 6px 18px rgba(15,23,42,0.28);
+    color: #fff;
+    font-size: 0.66rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    transform: scale(0.82);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.train-marker.is-stopped .train-marker-icon {
+    opacity: 0;
+    transform: translateZ(0) scale(0.7) rotate(var(--train-angle, 0deg));
+}
+.train-marker.is-stopped .train-stop-indicator {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* --- Legacy sidebar selection panel (kept hidden; replaced by bottom panel) --- */
+#selectionPanel { display: none !important; }
+.selection-title-button {
+    display: block;
+    width: 100%;
+    margin: 0 0 6px 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #0b5ed7;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-align: left;
+    cursor: default;
+}
+.selection-title-button.is-editable { cursor: text; }
+.selection-title-input {
+    width: 100%;
+    margin: 0 0 8px 0;
+    padding: 8px 10px;
+    border: 1px solid rgba(15, 23, 42, 0.18);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0b5ed7;
+    background: #fff;
+}
+#selectionDetails { font-size: 0.85rem; color: #333; line-height: 1.5; }
+#selectionDetails .sel-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; }
+#selectionDetails .sel-label { color: #555; }
+#selectionDetails .sel-value { font-weight: bold; }
+#selectionDetails .sel-catchment-group {
+    border: 2px solid #1e293b;
+    border-radius: 6px;
+    padding: 4px 8px;
+    margin: 4px 0;
+}
+/* --- Depot map popup --- */
+.depot-popup-icon { background: transparent; border: 0; }
+.depot-popup {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.15), 0 2px 8px rgba(0,0,0,0.25);
+    white-space: nowrap;
+    font-size: 0.8rem;
+    font-weight: 600;
+    min-width: min(200px, 90vw);
+}
+.depot-line-row { display: flex; align-items: center; gap: 6px; cursor: pointer; padding: 2px 4px; border-radius: 4px; transition: background 0.15s; }
+.depot-line-row:hover { background: rgba(0, 0, 0, 0.05); }
+.depot-popup-train { width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.depot-popup-train .train-marker-shell { width: 22px; height: 22px; }
+.depot-line-label { color: #334155; font-weight: 700; min-width: 2em; }
+.depot-line-info { color: #64748b; font-weight: 400; flex: 1; }
+.depot-popup-add-train, .depot-popup-delete-line {
+    width: 24px; height: 24px; border-radius: 4px; border: 1px solid #cbd5e1;
+    background: #fff; cursor: pointer; font-size: 0.7rem; padding: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: background 0.15s;
+}
+.depot-popup-add-train:hover { background: #e0f2fe; }
+.depot-popup-delete-line { color: #dc2626; border-color: #fca5a5; }
+.depot-popup-delete-line:hover { background: #fee2e2; }
+.depot-popup-new-line {
+    padding: 6px 10px; border-radius: 4px; border: 2px solid #16a34a;
+    background: #fff; color: #16a34a; font-size: 0.8rem; font-weight: 700;
+    cursor: pointer; transition: background 0.15s, color 0.15s; margin-top: 2px;
+    width: 100%;
+}
+.depot-popup-new-line:hover { background: #16a34a; color: #fff; }
+/* Placement: above station (tip points down) or below station (tip points up) */
+.depot-popup-above { transform: translate(-50%, calc(-100% - 14px)); }
+.depot-popup-below { transform: translate(-50%, 14px); }
+/* Line building picker */
+.line-picker-icon { background: transparent; border: 0; }
+.line-picker-popup {
+    display: flex; flex-direction: column; gap: 4px;
+    padding: 6px 8px; border-radius: 6px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    font-size: 0.8rem; font-weight: 600;
+    transform: translate(-50%, 0);
+    min-width: min(180px, 90vw);
+    margin-top: 8px;
+    position: relative;
+}
+.line-picker-popup::before {
+    content: '';
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid rgba(255, 255, 255, 0.95);
+    filter: drop-shadow(0 -1px 1px rgba(0,0,0,0.1));
+}
+.line-picker-btn {
+    padding: 6px 10px; border-radius: 4px; border: 1px solid #cbd5e1;
+    background: #fff; color: #334155; cursor: pointer; text-align: left;
+    transition: background 0.15s;
+}
+.line-picker-btn:hover { background: #e0f2fe; }
+.line-picker-finish {
+    padding: 6px 10px; border-radius: 4px; border: 2px solid #2563eb;
+    background: #fff; color: #2563eb; cursor: pointer; font-weight: 700;
+    transition: background 0.15s, color 0.15s; margin-top: 2px;
+}
+.line-picker-finish:hover { background: #2563eb; color: #fff; }
+.line-picker-cancel {
+    padding: 6px 10px; border-radius: 4px; border: 1px solid #cbd5e1;
+    background: #fff; color: #64748b; cursor: pointer; font-size: 0.8em;
+    transition: background 0.15s, color 0.15s;
+}
+.line-picker-cancel:hover { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
+.station-marker-candidate { box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.5), 0 0 6px rgba(0,0,0,0.5) !important; }
+.line-picker-confirm { align-items: center; }
+.line-picker-confirm-label { font-weight: 700; font-size: 0.9rem; color: #0f172a; margin-bottom: 2px; text-align: center; }
+.line-picker-confirm-actions { display: flex; gap: 6px; }
+.line-picker-confirm-btn {
+    padding: 6px 14px; border-radius: 4px; border: 2px solid #16a34a;
+    background: #16a34a; color: #fff; cursor: pointer; font-weight: 700;
+    transition: background 0.15s;
+}
+.line-picker-confirm-btn:hover { background: #15803d; border-color: #15803d; }
+.line-picker-cancel-btn {
+    padding: 6px 14px; border-radius: 4px; border: 1px solid #cbd5e1;
+    background: #fff; color: #334155; cursor: pointer;
+    transition: background 0.15s;
+}
+.line-picker-cancel-btn:hover { background: #fee2e2; border-color: #fca5a5; color: #991b1b; }
+/* Station name chips shown while building a line. Explicit high-contrast fill so
+   "Stanica X" is readable over any basemap (was inheriting dark text with no
+   solid background → dark-on-dark). */
+.line-building-label {
+    font-size: 0.75rem; font-weight: 600; padding: 3px 7px !important;
+    background: #1e293b; color: #fff;
+    border: none; border-radius: 5px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+.leaflet-tooltip-top.line-building-label::before { border-top-color: #1e293b; }
+.leaflet-tooltip-bottom.line-building-label::before { border-bottom-color: #1e293b; }
+.leaflet-tooltip-left.line-building-label::before { border-left-color: #1e293b; }
+.leaflet-tooltip-right.line-building-label::before { border-right-color: #1e293b; }
+
+.selection-actions { display: flex; gap: 8px; margin-top: 8px; }
+.selection-delete-btn { flex: 1; background: #dc3545; font-size: 0.85em; padding: 6px; }
+.selection-delete-btn:hover:not(:disabled) { background: #c82333; }
+.selection-deselect-btn { flex: 1; background: #6c757d; font-size: 0.85em; padding: 6px; }
+.selection-deselect-btn:hover:not(:disabled) { background: #5a6268; }
+
+/* --- Line hit area for easier hover/click --- */
+.line-hit-area { pointer-events: stroke !important; }
+
+/* --- Selected object highlights --- */
+.station-marker-hover { box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3), 0 0 6px rgba(0,0,0,0.5) !important; }
+.station-marker-selected { box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.5), 0 0 6px rgba(0,0,0,0.5) !important; }
+
+/* --- Transfer link popup --- */
+.transfer-choice-popup .leaflet-popup-content-wrapper { border-radius: 8px; padding: 0; }
+.transfer-choice-popup .leaflet-popup-content { margin: 0; min-width: min(200px, 90vw); }
+.transfer-popup { padding: 10px 12px; }
+.transfer-popup-question { font-size: 13px; color: #333; margin-bottom: 8px; line-height: 1.4; }
+.transfer-popup-detail { font-size: 12px; color: #666; }
+.transfer-popup-actions { display: flex; gap: 6px; }
+.transfer-popup-btn {
+    flex: 1; padding: 7px 10px; margin-top: 0;
+    border: 1px solid #ddd; border-radius: 5px;
+    font-size: 13px; cursor: pointer; text-align: center; transition: background 0.15s;
+}
+.transfer-popup-yes { background: #007bff; color: white; border-color: #0056b3; font-weight: 600; }
+.transfer-popup-yes:hover { background: #0056b3; color: white; }
+.transfer-popup-no { background: #f8f9fa; color: #333; }
+.transfer-popup-no:hover { background: #e9ecef; color: #333; }
+
+/* --- Shared selection bottom panel --- */
+.sel-popup-inner { padding: 12px 14px 10px; min-width: min(190px, 90vw); }
+.sel-popup-title {
+    display: block; width: 100%;
+    font-size: 0.93rem; font-weight: 700; color: #0b5ed7;
+    margin-bottom: 6px; cursor: default;
+    background: transparent; border: 0; padding: 0; text-align: left;
+}
+.sel-popup-title.is-editable { cursor: text; }
+.sel-popup-title.hidden { display: none; }
+.sel-popup-title-input {
+    display: block; width: 100%; margin-bottom: 8px; padding: 6px 8px;
+    border: 1px solid rgba(15,23,42,0.18); border-radius: 6px;
+    font-size: 0.93rem; font-weight: 700; color: #0b5ed7; background: #fff;
+    box-sizing: border-box;
+}
+.sel-popup-title-input.hidden { display: none; }
+.sel-popup-details { font-size: 0.82rem; color: #333; line-height: 1.5; }
+.sel-popup-details .sel-row { display: flex; justify-content: space-between; margin-bottom: 2px; gap: 12px; }
+.sel-popup-details .sel-label { color: #555; }
+.sel-popup-details .sel-value { font-weight: bold; }
+.track-electrification-editor {
+    margin: 8px 0 4px;
+    padding: 9px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: rgba(248, 250, 252, 0.96);
+}
+.track-electrification-editor-hint,
+.track-electrification-range-hint {
+    color: #475569;
+    font-size: 0.78rem;
+    line-height: 1.35;
+}
+.track-electrification-choices {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+    margin: 8px 0 6px;
+}
+.track-electrification-choices button {
+    min-width: 0;
+    margin: 0;
+    padding: 7px 5px;
+    border: 2px solid #cbd5e1;
+    border-radius: 7px;
+    background: #fff;
+    color: #334155;
+    font: 700 0.72rem/1.15 system-ui, sans-serif;
+    cursor: pointer;
+}
+.track-electrification-choices button:hover {
+    border-color: #64748b;
+    background: #f8fafc;
+}
+.track-electrification-choices button.active {
+    border-color: #1d4ed8;
+    background: #dbeafe;
+    color: #1e3a8a;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.16);
+}
+.track-electrification-segment {
+    cursor: pointer;
+    transition: filter 0.12s ease;
+}
+.track-electrification-segment:hover {
+    filter: brightness(1.08) drop-shadow(0 0 4px rgba(15, 23, 42, 0.65));
+}
+.track-electrification-node { cursor: pointer; }
+#map.track-electrification-edit-mode .leaflet-overlay-pane {
+    cursor: default;
+}
+/* Map-docked elevation profile (top-left; clears the top-right #controls
+   sidebar on desktop and the floating toggle on mobile). Shown while a track
+   is selected; hover links it to the map both ways. */
+.elevation-dock {
+    position: fixed;
+    bottom: 12px;
+    left: 10px;
+    width: min(680px, calc(100vw - 320px));
+    z-index: 1150;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 2px solid #007bff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.16);
+    padding: 5px 8px 3px;
+    box-sizing: border-box;
+}
+.elevation-dock.hidden { display: none; }
+.elevation-dock .elevation-dock-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #334;
+    margin: 0 2px 3px;
+}
+.elevation-dock .elevation-dock-actions { display: flex; gap: 6px; align-items: center; }
+.elevation-dock .elevation-dock-actions button {
+    width: auto;
+    margin: 0;
+    padding: 3px 10px;
+    font-size: 0.78rem;
+    border-radius: 6px;
+    border: 1px solid #007bff;
+    background: #fff;
+    color: #007bff;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.elevation-dock .elevation-dock-recompute { border-color: #16a34a; color: #16a34a; }
+.elevation-dock .elevation-dock-recompute:hover { background: #edfaf0; }
+.elevation-dock .elevation-dock-reset:hover { background: #eef5ff; }
+.elevation-dock .elevation-dock-objects:hover { background: #eef5ff; }
+.elevation-dock .elevation-dock-actions button[hidden] { display: none; }
+.elevation-dock-canvas-shell {
+    position: relative;
+    min-height: 150px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #d8dee7;
+}
+.elevation-dock-canvas-host {
+    min-height: 150px;
+    transition: opacity 0.15s ease, filter 0.15s ease;
+}
+.elevation-dock-loading-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #334155;
+    background: rgba(203, 213, 225, 0.84);
+    font-size: 0.86rem;
+    font-weight: 700;
+    pointer-events: auto;
+}
+.elevation-dock.is-loading .elevation-dock-loading-overlay { display: flex; }
+.elevation-dock.is-loading .elevation-dock-canvas-host {
+    opacity: 0.32;
+    filter: grayscale(1);
+    pointer-events: none;
+}
+.elevation-dock.is-loading .elevation-dock-actions button {
+    opacity: 0.5;
+    cursor: wait;
+}
+.elevation-dock-loading-spinner {
+    width: 30px;
+    height: 30px;
+    box-sizing: border-box;
+    border: 4px solid rgba(71, 85, 105, 0.24);
+    border-top-color: #2563eb;
+    border-radius: 50%;
+    animation: elevation-dock-spin 0.8s linear infinite;
+}
+@keyframes elevation-dock-spin {
+    to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .elevation-dock-loading-spinner { animation-duration: 1.8s; }
+}
+@media (max-width: 768px) {
+    .elevation-dock {
+        bottom: 44px;                    /* above the bottom drag-handle bar */
+        left: 8px;                       /* full width, like the bottom sheets */
+        width: calc(100vw - 16px);
+    }
+}
+
+/* ⚙ snap-clearance settings popover (anchored to the fixed dock). */
+.elevation-dock .elevation-dock-settings {
+    position: absolute;
+    right: 8px;
+    bottom: calc(100% - 30px);
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.18);
+    padding: 10px 42px 10px 12px;
+    font-size: 0.8rem;
+    color: #223;
+}
+.elevation-dock .elevation-dock-settings-close {
+    position: absolute;
+    top: 5px;
+    right: 6px;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: #64748b;
+    font-size: 20px;
+    line-height: 24px;
+    cursor: pointer;
+}
+.elevation-dock .elevation-dock-settings-close:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+.elevation-dock .elevation-dock-settings.hidden { display: none; }
+.elevation-dock .elevation-dock-settings label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+.elevation-dock .elevation-dock-settings input { width: 64px; padding: 2px 4px; }
+.elevation-dock .elevation-dock-settings-hint {
+    color: #64748b;
+    max-width: 280px;
+    line-height: 1.35;
+}
+
+/* Track elevation-profile strip (M3): canvas fills the sheet width; drags on
+   it must not pan the map or scroll the sheet, hence touch-action none. */
+.sel-profile { margin: 6px 0 2px; }
+/* Unscoped: the same canvas class is used by the selection-sheet strip (M3)
+   and the map-docked strip (elevation-dock). */
+.sel-profile-canvas {
+    display: block;
+    width: 100%;
+    height: 150px;
+    border-radius: 8px;
+    background: #f4f6f9;
+    touch-action: none;
+    cursor: crosshair;
+}
+.sel-profile-warn {
+    margin: 4px 0;
+    padding: 5px 8px;
+    border-radius: 6px;
+    background: #fef2f2;
+    border: 1px solid #fca5a5;
+    color: #b0322c;
+    font-size: 0.85em;
+}
+/* An underground station whose route cannot carry its straight 170 m box. */
+.sel-popup-details .sel-row-warning {
+    align-items: flex-start;
+    margin: 4px 0;
+    padding: 6px 8px;
+    border-radius: 6px;
+    background: #fef2f2;
+    border: 1px solid #fca5a5;
+}
+.sel-popup-details .sel-row-warning .sel-label { color: #b91c1c; white-space: nowrap; }
+.sel-popup-details .sel-row-warning .sel-value {
+    font-weight: 600;
+    color: #7f1d1d;
+    text-align: right;
+    font-size: 0.9em;
+}
+/* Station catchment group — bordered cluster for walk/pop/jobs */
+.sel-catchment-group {
+    border: 2px solid #1e293b;
+    border-radius: 6px;
+    padding: 4px 8px;
+    margin: 4px 0;
+}
+.sel-catchment-group .sel-row { margin-bottom: 1px; }
+.sel-walk-value {
+    cursor: pointer;
+    color: #2563eb;
+    user-select: none;
+}
+.sel-walk-value:hover { text-decoration: underline; }
+.sel-walk-picker {
+    display: flex;
+    gap: 2px;
+    padding: 4px 0 2px;
+}
+.sel-walk-picker.hidden { display: none; }
+.sel-walk-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    color: #475569;
+    flex: 1;
+    text-align: center;
+}
+.sel-walk-option input {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    accent-color: #166534;
+}
+.sel-walk-option input:checked + span {
+    color: #166534;
+    font-weight: 700;
+}
+.sel-popup-actions { display: flex; gap: 6px; margin-top: 8px; }
+.sel-popup-btn {
+    flex: 1; font-size: 0.82em; padding: 5px 8px;
+    border: none; border-radius: 4px; cursor: pointer;
+    background: #dc3545; color: white;
+}
+.sel-popup-btn:hover { background: #c82333; }
+.sel-popup-btn.sel-popup-btn-neutral { background: #6c757d; }
+.sel-popup-btn.sel-popup-btn-neutral:hover { background: #5a6268; }
+/* Click popup on real-world ZET trams / HŽ trains: line label + "U kabinu" button. */
+.tram-cab-popup { min-width: 130px; text-align: center; }
+.tram-cab-popup-line { font-weight: 700; margin-bottom: 6px; font-size: 0.95em; }
+.tram-cab-popup-btn {
+    width: 100%; font-size: 0.85em; padding: 6px 10px;
+    border: none; border-radius: 4px; cursor: pointer;
+    background: #1d4ed8; color: white;
+}
+.tram-cab-popup-btn:hover { background: #1e40af; }
+
+/* --- Selection bottom panel (sheet on mobile, compact panel on desktop) --- */
+#selectionSheet {
+    display: none;
+    position: fixed;
+    left: 50%;
+    width: min(620px, calc(100vw - 32px));
+    /* Info on TOP, editor (elevation dock) on the bottom — swapped 2026-07-22
+       so the strip can live full-width at the thumb edge. */
+    top: calc(var(--visual-viewport-top, 0px) + 12px);
+    transform: translateX(-50%);
+    z-index: 2000;
+    background: rgba(255, 255, 255, 0.93);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    box-shadow: 0 -4px 28px rgba(0,0,0,0.18);
+    border: 2px solid #007bff;
+    box-sizing: border-box;
+    max-height: calc(var(--visual-viewport-height, 100dvh) * 0.55);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    transition: top 0.18s ease;
+}
+#selectionSheet:not(.hidden) { display: block; }
+/* Collapse control: shrinks the sheet to a corner chip so the map and the
+   elevation strip stay usable while something is selected. */
+#selectionSheet .selection-sheet-collapse {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #cbd5e1;
+    border-radius: 50%;
+    background: #fff;
+    color: #334;
+    line-height: 0;
+    cursor: pointer;
+    z-index: 5;
+    padding: 0;
+}
+#selectionSheet .selection-sheet-collapse svg {
+    display: block;
+    width: 16px;
+    height: 10px;
+}
+#selectionSheet .selection-sheet-collapse:hover {
+    border-color: #60a5fa;
+    background: #eff6ff;
+    color: #1d4ed8;
+}
+#selectionSheet .selection-sheet-collapse:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+.selection-sheet-chip {
+    position: fixed;
+    /* Share one horizontal toolbar row with the 📝 edit control. */
+    top: calc(var(--visual-viewport-top) + 11px);
+    left: 154px;
+    z-index: 2050;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 2px solid #007bff;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.95);
+    color: #007bff;
+    font: 600 19px/1 system-ui, sans-serif;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+}
+.selection-sheet-chip.hidden { display: none; }
+#selectionSheet::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 4px;
+    background: rgba(0, 0, 0, 0.22);
+    border-radius: 2px;
+    margin: 10px auto 4px;
+}
+#selectionSheet.dragging {
+    transition: none !important;
+    overflow-y: hidden;
+}
+#selectionSheet .sel-popup-inner {
+    padding: 16px 20px calc(16px + env(safe-area-inset-bottom));
+}
+#selectionSheet .sel-popup-title { font-size: 1rem; }
+#selectionSheet .sel-popup-details { font-size: 0.9rem; }
+#selectionSheet .sel-popup-actions { flex-wrap: wrap; }
+#selectionSheet .sel-popup-btn { flex: 1 1 108px; font-size: 0.9em; padding: 9px 12px; }
+/* Network edit is an exclusive map interaction mode. Raster tiles remain
+   pannable, while proposal route hit paths, their node markers, and station
+   markers can receive pointer input. The Podigni/Spusti popup lives in the
+   popup pane and remains functional. */
+#map.edit-mode .leaflet-overlay-pane path {
+    pointer-events: none;
+}
+#map.edit-mode .leaflet-overlay-pane path.route-edit-target {
+    pointer-events: stroke;
+}
+#map.edit-mode .leaflet-marker-pane > * {
+    pointer-events: none;
+}
+#map.edit-mode .leaflet-marker-pane > .vertex-handle:not(.vertex-handle-preview) {
+    pointer-events: auto;
+}
+/* Stations are draggable alongside route nodes in the same edit mode. */
+#map.edit-mode .leaflet-marker-pane > .station-edit-target {
+    pointer-events: auto;
+    cursor: grab;
+    box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.28), 0 0 8px rgba(15, 118, 110, 0.72);
+}
+#map.edit-mode .leaflet-marker-pane > .station-edit-target:hover,
+#map.edit-mode .leaflet-marker-pane > .station-edit-target.station-edit-active {
+    box-shadow: 0 0 0 7px rgba(13, 148, 136, 0.4), 0 0 12px rgba(15, 118, 110, 0.9);
+}
+#map.edit-mode .leaflet-marker-pane > .station-edit-target:active {
+    cursor: grabbing;
+}
+
+@media (min-width: 769px) {
+    /* Layout swap (desktop): the elevation strip becomes a full-width bottom bar
+       (up to the ~290px right sidebar); the Trasa details sheet moves to a
+       compact top-left card. Mobile keeps the bottom-sheet + top-strip layout. */
+    .elevation-dock {
+        top: auto;
+        bottom: 12px;
+        left: 12px;
+        right: 12px;
+        width: auto;
+    }
+    body.sidebar-open .elevation-dock {
+        right: 302px;                              /* clear the open sidebar */
+    }
+    #selectionSheet {
+        top: 12px;
+        bottom: auto;
+        left: 12px;
+        transform: none;
+        width: min(400px, calc(100vw - 320px));
+        max-height: calc(100dvh - 270px);          /* leave the bottom for the strip */
+    }
+    body.sidebar-open #selectionSheet {
+        left: 12px;
+        width: min(400px, calc(100vw - 332px));
+    }
+}
+
+@media (max-width: 768px) {
+    #selectionSheet {
+        left: var(--visual-viewport-left, 0px);
+        width: var(--visual-viewport-width, 100vw);
+        /* Top-anchored below the floating toolbar buttons. */
+        top: calc(var(--visual-viewport-top, 0px) + 60px);
+        transform: none;
+        border-width: 0 0 2px;
+        border-radius: 0 0 18px 18px;
+    }
+}
+
+/* --- Clickable links in the selection panel --- */
+.sel-link { color: #1d4ed8; cursor: pointer; text-decoration: underline; text-decoration-color: transparent; transition: text-decoration-color 0.15s; }
+.sel-link:hover { text-decoration-color: #1d4ed8; }
+
+/* --- Depot lines in station popup --- */
+.sel-depot-lines { margin: 6px 0 2px; display: flex; flex-direction: column; gap: 3px; }
+.sel-depot-line-row { display: flex; align-items: center; gap: 6px; padding: 3px 6px; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: 600; }
+.sel-depot-line-row:hover { background: #eef5ff; }
+.sel-depot-swatch { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+.sel-depot-line-meta { font-weight: 400; color: #64748b; margin-left: auto; }
+.sel-popup-btn-add-line { background: #16a34a !important; color: white !important; }
+.sel-popup-btn-add-line:hover { background: #15803d !important; }
+.sel-popup-btn-3d { background: #1d4ed8 !important; color: white !important; }
+.sel-popup-btn-3d:hover:not(:disabled) { background: #1e40af !important; }
+.sel-popup-btn-3d:disabled { background: #94a3b8 !important; color: #e5e7eb !important; cursor: not-allowed; opacity: 0.75; }
+.sel-popup-btn-3d.is-loading { display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+/* Walk popup: strip the Leaflet bubble so only the pill shows. */
+/* Šetnja pill: a dot marks the exact clicked point and the pill hangs to its
+   RIGHT — × first, then the action — rendered via a divIcon marker. */
+.walk-popup-icon { background: transparent; border: 0; }
+.walk-popup-anchor { position: relative; }
+.walk-popup-mark {
+    position: absolute;
+    left: -6px;
+    top: -6px;
+    width: 12px;
+    height: 12px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background: #1d4ed8;
+    border: 2px solid #ffffff;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+}
+.walk-popup-facing {
+    position: absolute;
+    left: -4px;
+    top: -17px;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 8px solid #1d4ed8;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+}
+.walk-popup-pill {
+    position: absolute;
+    left: 14px;
+    top: -17px;
+    height: 34px;
+    /* The anchor is a 0x0 point: without max-content an absolute box falls
+       into min-content sizing and crushes the cells. */
+    width: max-content;
+    display: flex;
+    align-items: center;
+    border-radius: 9px;
+    overflow: hidden;
+    background: #1d4ed8;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.32);
+    font: 600 13px/1 system-ui, sans-serif;
+    white-space: nowrap;
+}
+.walk-popup-pill.has-terrain-elevation {
+    top: -22px;
+    height: 44px;
+}
+.walk-popup-pill.has-terrain-elevation .walk-popup-btn,
+.walk-popup-pill.has-terrain-elevation .walk-popup-close {
+    height: 44px;
+}
+.terrain-elevation-readout {
+    display: flex;
+    height: 44px;
+    min-width: 104px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    font-variant-numeric: tabular-nums;
+}
+.terrain-elevation-value { font-size: 13px; font-weight: 750; line-height: 1.1; }
+.terrain-elevation-meta {
+    max-width: 150px;
+    margin-top: 2px;
+    overflow: hidden;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/* Both cells are exact-height flex-centred boxes, so the label and the ×
+   sit dead-centre; icons are inline SVG (no font metrics involved). */
+.walk-popup-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    height: 34px;
+    box-sizing: border-box;
+    /* The global `select, button` rule adds width:100% + margin-top:5px —
+       the margin made flex centre the MARGIN box (content shifted 2.5 px
+       down, clipped below). Reset everything it sets. */
+    width: auto;
+    margin: 0;
+    flex: none;
+    padding: 0 14px;
+    border: 0;
+    background: transparent;
+    color: #ffffff;
+    cursor: pointer;
+    font: inherit;
+    white-space: nowrap;
+    appearance: none;
+    -webkit-appearance: none;
+}
+.walk-popup-btn:hover:not(:disabled) { background: rgba(255, 255, 255, 0.12); }
+.walk-popup-btn:disabled { cursor: wait; }
+.walk-popup-btn-icon { display: flex; align-items: center; }
+.walk-popup-btn-icon svg { display: block; }
+.walk-popup-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    box-sizing: border-box;
+    margin: 0;
+    flex: none;
+    border: 0;
+    border-right: 1px solid rgba(255, 255, 255, 0.25);
+    background: transparent;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 0;
+    appearance: none;
+    -webkit-appearance: none;
+}
+.walk-popup-close svg { display: block; }
+.walk-popup-close:hover { background: rgba(255, 255, 255, 0.2); }
+.sel-popup-btn-loader {
+    display: inline-block;
+    flex: 0 0 auto;
+    width: 12px;
+    height: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.42);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spin 0.75s linear infinite;
+}
+
+/* --- Service-line details inside the shared bottom panel --- */
+.line-popup-station-list,
+.line-popup-train-list { margin: 2px 0 6px; line-height: 1.6; font-size: 0.85em; color: #334155; }
+.line-popup-station-link,
+.line-popup-train-link,
+.line-popup-depot-link { color: #1d4ed8; cursor: pointer; text-decoration: underline; text-decoration-color: transparent; transition: text-decoration-color 0.15s; }
+.line-popup-station-link:hover,
+.line-popup-train-link:hover,
+.line-popup-depot-link:hover { text-decoration-color: #1d4ed8; }
+.line-popup-empty { color: #999; }
+.line-popup-add-train { background: #16a34a !important; color: white !important; }
+.line-popup-add-train:hover { background: #15803d !important; }
+
+/* --- Vertex editing handles --- */
+.vertex-handle {
+    width: 12px;
+    height: 12px;
+    background: white;
+    border: 2px solid #333;
+    border-radius: 50%;
+    cursor: grab;
+    box-shadow: 0 0 4px rgba(0,0,0,0.4);
+}
+.vertex-handle:active { cursor: grabbing; }
+/* Touch devices get an invisible enlarged hit area around the small visual
+   dot (and around draggable stations) so nodes are grabbable with a finger. */
+@media (pointer: coarse) {
+    .vertex-handle::before,
+    #map.edit-mode .leaflet-marker-pane > .station-edit-target::before {
+        content: '';
+        position: absolute;
+        inset: -12px;
+    }
+}
+.vertex-handle.vertex-drag-legal {
+    background: #dcfce7;
+    border-color: #16a34a;
+    box-shadow: 0 0 0 6px rgba(22, 163, 74, 0.24);
+}
+.vertex-handle.vertex-drag-illegal {
+    background: #fee2e2;
+    border-color: #dc2626;
+    box-shadow: 0 0 0 6px rgba(220, 38, 38, 0.24);
+}
+.leaflet-tooltip.vertex-drag-legality-tooltip {
+    border: 0;
+    border-radius: 7px;
+    color: #fff;
+    font-size: 0.74rem;
+    font-weight: 750;
+    line-height: 1;
+    padding: 6px 8px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.28);
+}
+/* A soft rule is accepted on drop, so its live badge reads as a warning about
+   what will be left behind rather than as a refusal. */
+.vertex-handle.vertex-drag-warned {
+    background: #fef3c7;
+    border-color: #d97706;
+    box-shadow: 0 0 0 6px rgba(217, 119, 6, 0.26);
+}
+.leaflet-tooltip.vertex-drag-legality-tooltip.is-legal { background: #15803d; }
+.leaflet-tooltip.vertex-drag-legality-tooltip.is-illegal { background: #b91c1c; }
+.leaflet-tooltip.vertex-drag-legality-tooltip.is-warned { background: #b45309; }
+.leaflet-tooltip-top.vertex-drag-legality-tooltip.is-warned::before { border-top-color: #b45309; }
+
+/* A brief, neutral highlight over a structure the objects panel was asked to
+   show. Deliberately not the red of flashTrackSegments: nothing is wrong here,
+   the map is just answering "where is this one?". */
+.civil-objects-locate-flash {
+    animation: civil-objects-locate-pulse 1.5s ease-in-out 2;
+}
+@keyframes civil-objects-locate-pulse {
+    0%, 100% { opacity: 0.25; }
+    50% { opacity: 0.95; }
+}
+
+/* Generic confirm dialog. */
+.confirm-modal { width: min(430px, calc(100vw - 32px)); }
+.confirm-modal-message { margin: 4px 0 16px; line-height: 1.5; color: #1f2937; }
+.confirm-modal-actions { display: flex; justify-content: flex-end; gap: 8px; }
+.confirm-modal-ok {
+    background: #b91c1c;
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+.confirm-modal-ok:hover { background: #7f1d1d; }
+
+/* Node handles are thinned when they would overlap on screen; this says so
+   instead of leaving the impression that nodes vanished. */
+.vertex-density-hint {
+    position: fixed;
+    top: calc(var(--visual-viewport-top) + 58px);
+    right: calc(var(--visual-viewport-right) + 60px);
+    z-index: 899;
+    max-width: 15rem;
+    padding: 5px 9px;
+    border-radius: 7px;
+    background: rgba(15, 23, 42, 0.82);
+    color: #e2e8f0;
+    font-size: 0.72rem;
+    line-height: 1.25;
+    pointer-events: none;
+    transition: right 0.25s ease;
+}
+body.sidebar-open .vertex-density-hint {
+    right: calc(var(--visual-viewport-right) + 300px);
+}
+.leaflet-tooltip-top.vertex-drag-legality-tooltip.is-legal::before { border-top-color: #15803d; }
+.leaflet-tooltip-top.vertex-drag-legality-tooltip.is-illegal::before { border-top-color: #b91c1c; }
+.curve-angle-warning {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    color: #fff;
+    background: #dc2626;
+    box-shadow: 0 0 0 5px rgba(220, 38, 38, 0.28), 0 3px 10px rgba(127, 29, 29, 0.5);
+    font: 900 18px/1 system-ui, sans-serif;
+    pointer-events: none;
+}
+.curve-angle-warning.is-flashing {
+    animation: curve-angle-warning-pulse 0.36s ease-in-out infinite alternate;
+}
+.leaflet-tooltip.curve-angle-warning-tooltip {
+    border: 0;
+    border-radius: 7px;
+    color: #fff;
+    background: #b91c1c;
+    font-size: 0.76rem;
+    font-weight: 800;
+    line-height: 1;
+    padding: 6px 8px;
+    box-shadow: 0 2px 8px rgba(127, 29, 29, 0.35);
+    pointer-events: none;
+}
+.leaflet-tooltip-top.curve-angle-warning-tooltip::before { border-top-color: #b91c1c; }
+/* Hovering a standing red stretch says which rule it breaks and by how much. */
+.leaflet-tooltip.track-problem-tooltip {
+    border: 0;
+    border-radius: 7px;
+    color: #fff;
+    background: #7f1d1d;
+    font-size: 0.74rem;
+    font-weight: 650;
+    line-height: 1.3;
+    max-width: 17rem;
+    white-space: normal;
+    padding: 6px 9px;
+    box-shadow: 0 2px 8px rgba(127, 29, 29, 0.35);
+}
+@keyframes curve-angle-warning-pulse {
+    from { transform: scale(0.84); opacity: 0.68; }
+    to { transform: scale(1.12); opacity: 1; }
+}
+.vertex-handle-extend {
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box;
+    background: #6b7280;
+    border: 2px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 6px rgba(107,114,128,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.vertex-handle-extend::after {
+    content: '+';
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1;
+    pointer-events: none;
+    margin-top: -1px;
+}
+.vertex-handle-preview { opacity: 0.5; cursor: copy; }
+/* A node that was just added stays oversized for a moment so it can be grabbed
+   and dragged straight away — with a finger as much as with a mouse. */
+.vertex-handle.vertex-handle-fresh {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.25), 0 0 12px rgba(37, 99, 235, 0.8);
+    animation: vertex-fresh-pulse 0.75s ease-in-out infinite alternate;
+}
+@keyframes vertex-fresh-pulse {
+    from { box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.22), 0 0 10px rgba(37, 99, 235, 0.6); }
+    to { box-shadow: 0 0 0 9px rgba(37, 99, 235, 0.30), 0 0 16px rgba(37, 99, 235, 0.95); }
+}
+.vertex-remove-effect {
+    width: 22px;
+    height: 22px;
+    box-sizing: border-box;
+    border: 3px solid #dc2626;
+    border-radius: 50%;
+    background: rgba(254, 226, 226, 0.7);
+    pointer-events: none;
+    animation: vertex-remove 0.42s ease-out both;
+}
+.vertex-merge-target {
+    width: 30px;
+    height: 30px;
+    box-sizing: border-box;
+    border: 4px solid #dc2626;
+    border-radius: 50%;
+    background: rgba(254, 226, 226, 0.45);
+    box-shadow: 0 0 0 6px rgba(220, 38, 38, 0.18);
+    pointer-events: none;
+    animation: vertex-merge-pulse 0.7s ease-in-out infinite alternate;
+}
+@keyframes vertex-remove {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.1); }
+}
+@keyframes vertex-merge-pulse {
+    from { transform: scale(0.86); }
+    to { transform: scale(1.08); }
+}
+/* Level tint on vertex handles follows the categorical map legend. */
+.vertex-handle-below { background: #111827; border-color: #94a3b8; }
+.vertex-handle-above { background: #dcfce7; border-color: #16a34a; }
+.vertex-level-badge {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 4px;
+    border-radius: 6px;
+    background: #1e293b;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 14px;
+    pointer-events: none;
+    white-space: nowrap;
+}
+/* Vertex raise/lower popup */
+.vertex-level-map-popup .leaflet-popup-content { margin: 8px 10px; }
+.vertex-level-popup { min-width: 190px; font-size: 0.84rem; color: #1e293b; }
+.vertex-level-title { margin-bottom: 6px; }
+.vertex-level-actions { display: flex; gap: 6px; }
+.vertex-level-btn {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 4px 10px;
+    border: 1px solid #1e293b;
+    border-radius: 6px;
+    background: #334155;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 650;
+    line-height: 1;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+.vertex-level-btn:hover:not(:disabled) { background: #1d4ed8; border-color: #1e40af; }
+.vertex-level-btn:disabled {
+    border-color: #cbd5e1;
+    background: #e2e8f0;
+    color: #64748b;
+    opacity: 1;
+    cursor: default;
+}
+.vertex-remove-btn {
+    width: 100%;
+    margin-top: 7px;
+    padding: 5px 10px;
+    border: 1px solid #b91c1c;
+    border-radius: 6px;
+    background: #fff;
+    color: #b91c1c;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 650;
+}
+.vertex-remove-btn:hover:not(:disabled) { background: #fef2f2; }
+.vertex-remove-btn:disabled {
+    border-color: #cbd5e1;
+    background: #f8fafc;
+    color: #94a3b8;
+    cursor: default;
+}
+.vertex-level-hint {
+    max-width: 240px;
+    margin-top: 5px;
+    color: #64748b;
+    font-size: 0.72rem;
+    line-height: 1.25;
+}
+
+/* --- Catchment polygon colors --- */
+.catchment-preview { opacity: 0.15; }
+.catchment-confirmed { opacity: 0.25; }
+
+/* --- Hover tooltip --- */
+.hover-tooltip {
+    position: absolute; z-index: 1100;
+    background: rgba(255,255,255,0.95); padding: 6px 10px;
+    border-radius: 4px; box-shadow: 0 1px 6px rgba(0,0,0,0.2);
+    font-size: 0.8rem; pointer-events: none; white-space: nowrap;
+}
+
+.station-distance-label-icon {
+    background: transparent;
+    border: 0;
+}
+
+.station-distance-label {
+    transform: translate(-50%, -50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 56px;
+    padding: 4px 9px;
+    border-radius: 999px;
+    border: 2px solid var(--distance-color, #2563eb);
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--distance-color, #2563eb);
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.22);
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.station-distance-label.is-preview {
+    background: var(--distance-color, #2563eb);
+    color: #fff;
+}
+
+/* --- Sky animation --- */
+.sky-strip {
+    position: relative;
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 8px;
+    background: #0f172a;
+    transition: background 2s linear;
+}
+.sky-body {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    transform: translate(-50%, 50%);
+    transition: box-shadow 2s linear;
+    pointer-events: none;
+}
+/* Revenue floats independently at the top centre and stays absent until earned. */
+.time-clock-revenue-hud {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    z-index: 1100;
+    transform: translateX(-50%);
+    padding: 6px 10px;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 8px;
+    background: rgba(15, 23, 42, 0.88);
+    color: #4ade80;
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+/* --- Demand labels above stations --- */
+.demand-label-icon { background: transparent; border: 0; }
+.demand-label {
+    transform: translate(-50%, calc(-100% - 12px));
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+    white-space: nowrap;
+    pointer-events: none;
+    font-size: 0.7rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    padding: 2px 5px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.18);
+}
+.demand-label-supply {
+    color: #16a34a;
+}
+.demand-label-supply::before { content: '('; }
+.demand-label-supply::after  { content: ')'; }
+.demand-label-demand {
+    color: #dc2626; /* waiting count — red = pressure */
+}
+.demand-label-sep {
+    color: #94a3b8;
+    font-weight: 400;
+}
+
+/* Ephemeral boarding/alighting toast that floats up and fades out */
+@keyframes boarding-toast-rise {
+    0%   { opacity: 1;   transform: translate(-50%, -100%); }
+    70%  { opacity: 1;   transform: translate(-50%, -180%); }
+    100% { opacity: 0;   transform: translate(-50%, -220%); }
+}
+.boarding-toast-icon { background: transparent; border: 0; }
+.boarding-toast {
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+    white-space: nowrap;
+    pointer-events: none;
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1;
+    padding: 3px 6px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.22);
+    animation: boarding-toast-rise 2.2s ease-out forwards;
+}
+.boarding-toast-on  { color: #16a34a; }  /* boarded — green */
+.boarding-toast-off { color: #dc2626; }  /* alighted — red  */
+
+/* --- Mobile --- */
+@media (max-width: 768px) {
+    #controlsScrim {
+        position: fixed;
+        top: var(--visual-viewport-top);
+        left: var(--visual-viewport-left);
+        width: var(--visual-viewport-width);
+        height: var(--visual-viewport-height);
+        display: block;
+        z-index: 999;
+        background: rgba(15, 23, 42, 0.28);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+    }
+    #controls {
+        position: fixed;
+        top: var(--visual-viewport-top);
+        right: var(--visual-viewport-right);
+        bottom: auto;
+        left: auto;
+        width: var(--visual-viewport-width);
+        max-width: var(--visual-viewport-width);
+        height: var(--visual-viewport-height);
+        max-height: var(--visual-viewport-height);
+        padding: calc(10px + env(safe-area-inset-top)) 16px calc(20px + env(safe-area-inset-bottom));
+        border-radius: 0;
+        background: rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        box-shadow: none;
+        font-size: 0.92em;
+        overscroll-behavior: contain;
+    }
+    .nav-row {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        margin: calc(-10px - env(safe-area-inset-top)) -16px 10px;
+        padding: calc(10px + env(safe-area-inset-top)) 16px 8px;
+    }
+    .nav-pill { height: 48px; }
+    #toggleControls {
+        flex: 0 0 48px; width: 48px; height: 48px;
+        border-radius: 14px;
+        font-size: 1.45rem;
+        background: rgba(15, 23, 42, 0.92);
+    }
+    #controls.collapsed {
+        right: -120vw;
+    }
+    #toggleControls.floating {
+        top: calc(var(--visual-viewport-top) + 10px + env(safe-area-inset-top));
+        right: calc(var(--visual-viewport-right) + 10px);
+        width: 48px;
+        height: 48px;
+    }
+    .map-action-toolbar {
+        top: calc(var(--visual-viewport-top) + 10px + env(safe-area-inset-top));
+        right: calc(var(--visual-viewport-right) + 68px);
+        z-index: 1200;
+        width: auto;
+        max-width: none;
+    }
+    /* The drawer owns the screen on a phone: the map tools must not show
+       through beside it. */
+    body.sidebar-open .map-action-toolbar { display: none; }
+    /* Keep the collapsed edit toggle in the top-right row with the clock. The
+       expanded tools dock below that row instead of pushing the clock down. */
+    .map-action-panel {
+        position: fixed;
+        top: calc(var(--visual-viewport-top) + 102px + env(safe-area-inset-top));
+        right: calc(var(--visual-viewport-right) + 10px + env(safe-area-inset-right));
+        width: min(240px, calc(var(--visual-viewport-width) - 20px - env(safe-area-inset-left) - env(safe-area-inset-right)));
+    }
+    .map-action-row {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    .map-action-group {
+        min-width: 0;
+        flex-direction: column;
+    }
+    .map-action-group + .map-action-group {
+        padding-left: 0;
+        padding-top: 6px;
+        border-left: 0;
+        border-top: 1px solid rgba(148, 163, 184, 0.72);
+    }
+    .map-action-btn,
+    .map-gauge-btn { min-height: 44px; font-size: 0.82rem; }
+    .map-action-btn { width: 100%; padding: 8px 7px; }
+    .map-gauge-btn { padding: 7px 8px; }
+    .heatmap-buttons { gap: 5px; }
+    .station-picker-btn { width: 44px; height: 44px; font-size: 1.2rem; }
+    .draw-tool-btn { width: 44px; height: 44px; font-size: 20px; }
+    .share-popup-row { grid-template-columns: 1fr; }
+    .share-copy-btn { width: 100%; }
+    .info-modal {
+        width: calc(100vw - 16px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
+        max-height: calc(100dvh - 16px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+        padding: 16px;
+    }
+    /* Sim panel: compact for mobile */
+    .sim-panel {
+        width: 154px;
+        min-width: 0;
+        left: calc(10px + env(safe-area-inset-left, 0px));
+        top: calc(var(--visual-viewport-top) + 10px + env(safe-area-inset-top, 0px));
+        position: fixed;
+    }
+    .sim-panel .sky-strip {
+        position: relative;
+        height: 36px;
+        opacity: 1;
+    }
+    .sim-panel-row { padding: 6px 10px; gap: 6px; position: relative; z-index: 1; }
+    .sim-panel .sky-strip .time-clock-display { font-size: 1rem; }
+    .sim-clock-btn { width: 36px; height: 36px; border-radius: 6px; font-size: 16px; min-width: 36px; }
+    /* The route-colour legend is an editing aid. On a phone it otherwise
+       occupies scarce map space even while the network is only being viewed. */
+    #map:not(.edit-mode) .track-level-legend { display: none; }
+    .selection-sheet-chip {
+        top: calc(var(--visual-viewport-top) + 11px + env(safe-area-inset-top, 0px));
+        left: calc(172px + env(safe-area-inset-left, 0px));
+    }
+    /* Touch targets */
+    .walk-time-option { padding: 8px 4px; margin: -8px -4px; }
+    .walk-time-option input { width: 22px; height: 22px; }
+    #selectionSheet .sel-popup-btn { padding: 11px 14px; }
+    .toast-container { bottom: calc(16px + env(safe-area-inset-bottom)); }
+}
+
+/* ─── Touch devices: suppress sticky hover states ─────────────────── */
+@media (hover: none) {
+    button:hover:not(:disabled) { background-color: #007bff; }
+    #toggleControls:hover { background: #333; }
+    .nav-pill:hover { background: transparent; color: #007bff; }
+    .sidebar-secondary-btn:hover:not(:disabled) { background: #eef2f7; }
+    .heatmap-btn:hover:not(:disabled) { background: #f8f9fa; }
+    .map-action-btn:hover:not(:disabled),
+    .map-gauge-btn:hover:not(:disabled) { color: #1e3a8a; background: #eff6ff; }
+    .map-action-btn.active:hover:not(:disabled),
+    .map-action-btn.pending:hover:not(:disabled) { color: #fff; background: #1d4ed8; }
+    .station-picker-btn:hover { background: #f8f9fa; border-color: #ddd; }
+    .radio-label:hover { background: #f8f9fa; }
+    .secondary-btn:hover:not(:disabled) { background: #6c757d; }
+    .draw-tool-btn:hover:not(:disabled) { background: white; }
+    .line-item:hover { background: #f8f9fa; }
+    .sidebar-tab:hover { color: #94a3b8; }
+    .share-copy-btn:hover { background: #007bff; }
+    .share-export-btn:hover:not(:disabled) { background: #0b5ed7; }
+    .share-export-btn-secondary:hover:not(:disabled) { background: #e2e8f0; }
+    .modal-btn-cancel:hover { background: #e9ecef; }
+    .modal-btn-confirm:hover { background: #007bff; }
+    .modal-btn-danger:hover { background: #dc2626; }
+    .info-close-btn:hover:not(:disabled) { background: #eef2f7; }
+    .sim-clock-btn:hover { background: rgba(15, 23, 42, 0.88); }
+    .sel-popup-btn:hover { background: #dc3545; }
+    .sel-popup-btn.sel-popup-btn-neutral:hover { background: #6c757d; }
+    .sel-popup-btn-add-line:hover { background: #16a34a !important; }
+    .sel-depot-line-row:hover { background: transparent; }
+    .line-picker-btn:hover { background: #fff; }
+    .line-picker-finish:hover { background: #fff; color: #2563eb; }
+    .line-picker-cancel:hover { background: #fff; color: #64748b; border-color: #cbd5e1; }
+    .line-picker-confirm-btn:hover { background: #16a34a; border-color: #16a34a; }
+    .line-picker-cancel-btn:hover { background: #fff; border-color: #cbd5e1; color: #334155; }
+    .transfer-popup-yes:hover { background: #007bff; color: white; }
+    .transfer-popup-no:hover { background: #f8f9fa; color: #333; }
+    .line-popup-add-train:hover { background: #16a34a !important; }
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ── Chainage dialog (line-chainage-dialog.js) ─────────────────────────────── */
+.lcd-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 4000;
+    background: rgba(15, 23, 42, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+.lcd-modal {
+    position: relative;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 18px 50px rgba(15, 23, 42, 0.35);
+    max-width: min(1320px, 100%);
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    padding: 18px 18px 12px;
+}
+.lcd-close {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #64748b;
+}
+button.lcd-close:hover:not(:disabled) {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+.lcd-head { padding-right: 32px; }
+.lcd-title { display: flex; flex-direction: column; gap: 2px; }
+.lcd-title strong { font-size: 1.05rem; }
+.lcd-title span { font-size: 0.82rem; color: #475569; }
+.lcd-from { font-size: 0.76rem; color: #78716c; margin-top: 4px; }
+.lcd-electrification-runs {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+    color: #854d0e;
+    font-size: 0.76rem;
+}
+.lcd-electrification-runs > span {
+    width: 18px;
+    height: 3px;
+    border-radius: 2px;
+    background: #eab308;
+    flex: 0 0 auto;
+}
+/* Wide table: it scrolls inside its own container so the page never does. */
+.lcd-scroll { overflow: auto; margin-top: 12px; }
+.lcd-table { border-collapse: collapse; font-size: 0.8rem; width: 100%; }
+.lcd-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+.lcd-table th,
+.lcd-table td { padding: 4px 8px; border-bottom: 1px solid #e2e8f0; text-align: right; }
+.lcd-table thead th {
+    background: #1e293b;
+    color: #f8fafc;
+    font-weight: 600;
+    text-align: right;
+    white-space: nowrap;
+}
+.lcd-table th.lcd-official-group,
+.lcd-table td.lcd-official {
+    /* The published columns are visually separated from ours, so nobody reads a
+       computed figure as an official one. */
+    background: #f1f5f9;
+}
+.lcd-table thead th.lcd-official-group { background: #334155; }
+.lcd-name, .lcd-structures { text-align: left !important; white-space: nowrap; }
+.lcd-structures { color: #57534e; font-size: 0.76rem; }
+.lcd-electrification { white-space: nowrap; color: #64748b; }
+.lcd-electrification.lcd-electrified { color: #854d0e; font-weight: 600; }
+.lcd-num { font-variant-numeric: tabular-nums; }
+.lcd-missing { color: #94a3b8; }
+.lcd-inherited { color: #0284c7; font-weight: 700; }
+.lcd-row:hover td { background: #f8fafc; }
+.lcd-row:hover td.lcd-official { background: #e2e8f0; }
+.lcd-note { font-size: 0.72rem; color: #64748b; margin: 10px 2px 0; line-height: 1.45; }
+.lcd-warn { color: #b45309; font-weight: 600; }
+@media (max-width: 640px) {
+    .lcd-modal { padding: 14px 10px 10px; max-height: 96vh; }
+    .lcd-table { font-size: 0.74rem; }
+    .lcd-table th, .lcd-table td { padding: 3px 5px; }
+}
+
+
+/* ── The objects panel owns the right edge while it is open ────────────────
+   Everything else that floats on that edge steps aside for it, exactly as it
+   already does for the sidebar. These rules sit at the END of the file on
+   purpose: they have the same specificity as the `body.sidebar-open` ones
+   above and must win, and source order is what decides that. (Measured: with
+   them earlier in the file the sidebar sat underneath the panel, fully
+   hidden.) */
+:root { --objects-panel-width: clamp(320px, 32vw, 460px); }
+
+/* :not(.collapsed) matters — without it this rule has the same specificity as
+   `#controls.collapsed { right: -120vw }` and, being later in the file, would
+   win and pin an intentionally-collapsed sidebar back on screen. (Measured:
+   opening the panel collapsed the sidebar and it stayed visible anyway.) */
+body.objects-panel-open #controls:not(.collapsed) {
+    right: calc(var(--visual-viewport-right) + var(--objects-panel-width) + 10px);
+}
+body.objects-panel-open .map-action-toolbar,
+body.objects-panel-open .vertex-density-hint {
+    right: calc(var(--visual-viewport-right) + var(--objects-panel-width) + 60px);
+}
+/* Sidebar and panel open together: the toolbar clears both. */
+body.objects-panel-open.sidebar-open .map-action-toolbar,
+body.objects-panel-open.sidebar-open .vertex-density-hint {
+    right: calc(var(--visual-viewport-right) + var(--objects-panel-width) + 300px);
+}
+/* The elevation strip is a full-width bottom bar on desktop, so without this it
+   runs underneath the panel (measured: ~450 px of it hidden at 1600 px wide).
+   Narrowing it puts the two side by side, which is the point of a side panel. */
+body.objects-panel-open .elevation-dock {
+    right: calc(var(--objects-panel-width) + 12px);
+}
+body.objects-panel-open.sidebar-open .elevation-dock {
+    right: calc(var(--objects-panel-width) + 302px);
+}
+
+/* A phone gives the panel the whole screen, so nothing can step aside — the
+   map controls are simply out of the way until it is closed. */
+@media (max-width: 700px) {
+    body.objects-panel-open #controls,
+    body.objects-panel-open .map-action-toolbar,
+    body.objects-panel-open .vertex-density-hint { display: none; }
+}
+
+
+/* ── Grade view: the legend doubles as the switch between the two ways of
+   colouring a route (what carries it / which way it tilts). ─────────────── */
+.track-level-legend-modes {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 6px;
+}
+.track-level-legend-modes button {
+    flex: 1;
+    padding: 3px 6px;
+    font: inherit;
+    font-size: 0.72rem;
+    border: 1px solid rgba(107, 114, 128, 0.5);
+    border-radius: 5px;
+    /* Its own opaque fill would have read as a solid block inside a
+       see-through panel, which is worse than either being solid. */
+    background: rgba(255, 255, 255, 0.45);
+    color: #374151;
+    cursor: pointer;
+}
+.track-level-legend-modes button:hover { background: rgba(241, 245, 249, 0.85); }
+.track-level-legend-modes button.is-active {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+    color: #fff;
+    font-weight: 600;
+}
+/* A grade only means "climb" relative to a direction, so the direction is
+   stated on the legend and is itself the control that reverses it. */
+.track-level-legend-flip {
+    display: block;
+    width: 100%;
+    margin-bottom: 6px;
+    padding: 3px 6px;
+    font: inherit;
+    font-size: 0.7rem;
+    text-align: left;
+    border: 1px dashed rgba(107, 114, 128, 0.75);
+    border-radius: 5px;
+    background: rgba(248, 250, 252, 0.4);
+    color: #374151;
+    cursor: pointer;
+}
+.track-level-legend-flip:hover {
+    background: rgba(238, 242, 247, 0.85);
+    border-color: #6b7280;
+}
+
+/* Over the ruling grade is drawn as a BROKEN line on the map, because the
+   colour ramp is saturated at the limit and cannot say "steeper than that".
+   The swatch has to show the same mark or the legend would claim a distinction
+   the map does not make. */
+.track-level-legend-swatch.is-over-limit {
+    background: repeating-linear-gradient(
+        90deg,
+        var(--swatch) 0 7px,
+        transparent 7px 11px
+    ) !important;
+}
+
+
+/* ── Scale bar, and keeping the bottom-left corner usable ────────────────────
+   The elevation strip is a fixed bottom bar, and it was covering the map's
+   bottom-left controls entirely: the legend sat underneath it and could not be
+   clicked whenever a track was selected. The corner now rides on top of the
+   strip, so the scale and the legend are readable in every state. */
+.leaflet-bottom.leaflet-left {
+    margin-bottom: var(--elevation-dock-height, 0px);
+    transition: margin-bottom 0.15s ease;
+}
+.leaflet-control-scale {
+    margin: 0 0 8px 10px !important;
+}
+.leaflet-control-scale-line {
+    /* Transparent, so the bar reads as part of the map rather than a card laid
+       on it. A plate was doing the legibility work, so the mark has to do it
+       itself now: a white halo on the glyphs and a white outer edge on the
+       bracket, which keep both readable over dark tiles, forest green and the
+       route's own colours without hiding any of them. */
+    background: none;
+    border: 2px solid #374151;
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.85);
+    color: #1f2937;
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1.2;
+    padding: 1px 6px 2px;
+    text-shadow:
+        -1px -1px 0 rgba(255, 255, 255, 0.9), 1px -1px 0 rgba(255, 255, 255, 0.9),
+        -1px 1px 0 rgba(255, 255, 255, 0.9), 1px 1px 0 rgba(255, 255, 255, 0.9),
+        0 0 3px rgba(255, 255, 255, 0.95);
+}
+
+/* --- embedded 3D relief preview (relief-preview.js) ----------------------- */
+/* A docked companion window, NOT a modal: no backdrop, map and stripe stay
+   interactive around it. Draggable by its header, resizable by its corner.
+   Default berth: top-right, clear of the sidebar. */
+.relief-preview-panel {
+    position: fixed;
+    top: 64px;
+    right: 340px;
+    width: 420px;
+    height: 300px;
+    min-width: 260px;
+    min-height: 180px;
+    background: #0e1418;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    resize: both;
+    z-index: 4000; /* under the sidebar hamburger (4001), above the map */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+.relief-preview-header {
+    position: relative;
+    display: flex; align-items: center;
+    padding: 5px 34px 5px 10px;
+    color: #e8eef1;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+}
+.relief-preview-header:active { cursor: grabbing; }
+.relief-preview-header h3 { margin: 0; font-size: 12px; white-space: nowrap; }
+.relief-preview-close {
+    position: absolute; top: 3px; right: 6px;
+    width: 24px; height: 24px;
+    background: none; border: none; color: #e8eef1;
+    font-size: 18px; line-height: 24px; text-align: center;
+    cursor: pointer; padding: 0; border-radius: 6px;
+}
+.relief-preview-close:hover { background: rgba(255, 255, 255, 0.12); }
+.relief-preview-iframe { flex: 1; border: 0; width: 100%; }
+@media (max-width: 900px) {
+    .relief-preview-panel { right: 12px; }
+}
+@media (max-width: 640px) {
+    .relief-preview-panel { top: auto; bottom: 12px; left: 12px; right: 12px; width: auto; height: 40vh; }
+}

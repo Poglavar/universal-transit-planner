@@ -1,0 +1,145 @@
+{
+  "$schema": "../../docs/city-manifest.schema.json",
+  "id": "zagreb",
+  "name": "Zagreb",
+  "center": [45.815, 15.9819],
+  "zoom": 13,
+  "bounds": {
+    "west": 15.7,
+    "south": 45.68,
+    "east": 16.25,
+    "north": 45.92
+  },
+  "locale": "hr-HR",
+  "timezone": "Europe/Zagreb",
+  "currency": "EUR",
+  "units": "metric",
+  "providers": {
+    "apiBaseUrl": null,
+    "valhallaIsochroneUrl": null,
+    "basemap": {
+      "url": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      "attribution": "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap contributors</a>"
+    },
+    "routing": "valhalla",
+    "terrain": ["best-available", "dgu-dtm-20m"],
+    "population": "zagreb-buildings",
+    "jobs": "zagreb-buildings",
+    "referenceTransit": "zagreb-static-data",
+    "referenceRail": "zagreb-static-data",
+    "persistence": "planner-api"
+  },
+  "staticData": {
+    "tramStops": "city-pack/data/zagreb_tram_stops.json",
+    "tramTracks": "city-pack/data/zagreb_tram_tracks_osm.geojson",
+    "railTracks": "city-pack/data/zagreb_rail_tracks.geojson"
+  },
+  "cityPack": {
+    "prePlanner": ["croatia-boundary.js", "location-registry.js"],
+    "simulation": ["railway-sim.js", "tram-sim.js"]
+  },
+  "referenceSimulation": {
+    "locationIds": ["zagreb"],
+    "modes": ["rail", "tram"]
+  },
+  "trackDefaults": {
+    "tram": {
+      "electrified": "contact_line",
+      "voltage": 600,
+      "frequency": 0
+    }
+  },
+  "providerFields": {
+    "catchmentTotalPopulation": "zagreb_population",
+    "catchmentTotalJobs": "zagreb_jobs"
+  },
+  "providerLabels": {
+    "terrain": "DGU",
+    "terrainAttribution": "Visine &copy; DGU",
+    "terrainDatum": "DGU · EVRF2000"
+  },
+  "providerOperations": {
+    "terrain": {
+      "metadata": true,
+      "coverage": true,
+      "point": true,
+      "profile": true,
+      "grid": true,
+      "tiles": true
+    }
+  },
+  "terrainReference": {
+    "horizontalCrs": "EPSG:4326",
+    "verticalReference": "EVRF2000",
+    "surfaceType": "terrain",
+    "unit": "m",
+    "revision": "zagreb-dgu-2026-09"
+  },
+  "sourceLabels": {
+    "hz-infrastruktura-2024": "HŽ Infrastruktura (2024.)"
+  },
+  "features": {
+    "routing": true,
+    "terrain": true,
+    "terrainTiles": true,
+    "population": true,
+    "jobs": true,
+    "referenceTransit": true,
+    "referenceRail": true,
+    "station3d": true,
+    "persistence": true,
+    "campaigns": false
+  },
+  "station3d": {
+    "worldProfile": {
+      "id": "croatia",
+      "country": "croatia",
+      "localBird": null,
+      "buildings": "mesh",
+      "buildingEndpoint": "buildings-mesh",
+      "farBuildingEndpoint": "buildings-render",
+      "farBuildings": true,
+      "decorEnabled": false,
+      "apiDecor": true,
+      "passengers": false,
+      "roadIndexUrl": null,
+      "water": true,
+      "styleFrom": "nearest-city",
+      "terrain": {
+        "surfaceStyle": "grass",
+        "source": "dgu-dtm-20m",
+        "detail": {
+          "source": "best-available",
+          "halfSizeM": 550,
+          "meshStepM": 4
+        }
+      },
+      "naturalGround": {
+        "style": "grass",
+        "radiusM": 650,
+        "rebuildM": 280
+      },
+      "urbanGround": {
+        "coreRadiusM": 14,
+        "blendRadiusM": 18,
+        "maskHalfSizeM": 320,
+        "maskSizePx": 512,
+        "refreshMoveM": 80
+      }
+    }
+  },
+  "attributions": [
+    {
+      "name": "OpenStreetMap contributors",
+      "url": "https://www.openstreetmap.org/copyright",
+      "license": "ODbL 1.0",
+      "licenseUrl": "https://opendatacommons.org/licenses/odbl/1-0/"
+    },
+    {
+      "name": "Državna geodetska uprava",
+      "url": "https://dgu.gov.hr/",
+      "license": "Use approved separately for this deployment"
+    }
+  ],
+  "dataRevision": "zagreb-compat-2026-09"
+}

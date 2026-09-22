@@ -1,0 +1,30 @@
+{
+  "name": "universal-transit-planner",
+  "version": "0.1.0-alpha.0",
+  "private": true,
+  "description": "Terrain-aware transit network design and scenario planning for any city.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build:zagreb": "TRANSIT_CITY=zagreb node scripts/build.mjs",
+    "dev": "npm run build && node scripts/serve.mjs",
+    "dev:zagreb": "npm run build:zagreb && node scripts/serve.mjs",
+    "terrain:serve": "node scripts/serve-terrain.mjs",
+    "test": "node --test 'test/**/*.test.mjs'",
+    "check": "npm test && npm run build"
+  },
+  "dependencies": {
+    "geotiff": "3.0.5",
+    "station3d": "git+https://github.com/Poglavar/station3d.git#v0.1.0-alpha.1"
+  },
+  "devDependencies": {
+    "@turf/turf": "7.4.0",
+    "html2canvas": "1.4.1",
+    "leaflet": "1.9.4",
+    "leaflet.heat": "0.2.0"
+  }
+}

@@ -1,0 +1,7 @@
+node_modules/
+web/vendor/
+web/city-config.generated.js
+dist/
+.env
+.DS_Store
+coverage/

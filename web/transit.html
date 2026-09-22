@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="station3d-links.js"></script>
+    <script>
+        document.documentElement.classList.add('i18n-pending');
+        window.setTimeout(() => document.documentElement.classList.remove('i18n-pending'), 2000);
+    </script>
+    <script src="i18n.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Universal Transit Planner</title>
+    <meta name="description"
+        content="Design terrain-aware public transport networks, inspect gradients and compare infrastructure scenarios.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Universal Transit Planner">
+    <meta property="og:title" content="Universal Transit Planner">
+    <meta property="og:description"
+        content="Design terrain-aware public transport networks, inspect gradients and compare infrastructure scenarios.">
+    <meta property="og:image" content="transit-social-preview.svg">
+    <meta property="og:image:alt" content="Universal Transit Planner network design interface.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Universal Transit Planner">
+    <meta name="twitter:description"
+        content="Design terrain-aware public transport networks and compare infrastructure scenarios.">
+    <meta name="twitter:image" content="transit-social-preview.svg">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23007bff'/%3E%3Ccircle cx='32' cy='32' r='14' fill='white' fill-opacity='0.9'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23ff4d4d'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+    <link rel="stylesheet" href="transit.css?v=20260806-2">
+    <link rel="stylesheet" href="planner-grade/civil-objects.css?v=20260731-1">
+</head>
+
+<body data-page="planner">
+    <div id="controlsScrim" class="hidden" aria-hidden="true"></div>
+
+    <div id="controls">
+        <div class="nav-row">
+            <a href="leaderboard.html" id="leaderboardNavLink" class="nav-pill"
+                data-requires-capability="persistence">Ljestvica</a>
+            <div class="language-switch" role="group" aria-label="Language">
+                <button type="button" data-language="en" aria-label="Use English">EN</button>
+                <button type="button" data-language="hr" aria-label="Koristi hrvatski">HR</button>
+            </div>
+            <button id="toggleControls" type="button" aria-label="Otvori/zatvori izbornik" aria-controls="controls"
+                aria-expanded="true">&#9776;</button>
+        </div>
+        <div class="sidebar-header">
+            <a href="transit.html" class="logo-link" title="Universal Transit Planner"><span
+                    class="sidebar-product-mark" aria-hidden="true">UTP</span></a>
+            <h2><span data-city-name>Example City</span> planner</h2>
+        </div>
+
+        <div class="control-group sidebar-action-row">
+            <button id="openInfoModal" class="sidebar-secondary-btn" type="button">Info i upute</button>
+            <button id="openGameLog" class="sidebar-secondary-btn" type="button">Dnevnik</button>
+            <button id="openChainage" class="sidebar-secondary-btn hidden" type="button"
+                data-requires-capability="terrain">Kilometraža</button>
+        </div>
+
+        <div class="control-group heatmap-buttons">
+            <button id="togglePopulationHeatmap" class="heatmap-btn" type="button"
+                data-requires-capability="population">Stanovnici</button>
+            <button id="toggleJobsHeatmap" class="heatmap-btn" type="button"
+                data-requires-capability="jobs">Radna mjesta</button>
+        </div>
+
+        <div class="control-group reference-toggle-group">
+            <label class="compact-toggle" for="toggleReferenceRailProjects" data-requires-capability="referenceRail">
+                <span class="compact-toggle-switch">
+                    <input id="toggleReferenceRailProjects" class="compact-toggle-input" type="checkbox">
+                    <span class="compact-toggle-track" aria-hidden="true"></span>
+                </span>
+                <span id="toggleReferenceRailProjectsText" class="compact-toggle-label">Ostale pruge</span>
+            </label>
+            <label class="compact-toggle" for="toggleRailStations" data-requires-capability="referenceRail">
+                <span class="compact-toggle-switch">
+                    <input id="toggleRailStations" class="compact-toggle-input" type="checkbox">
+                    <span class="compact-toggle-track" aria-hidden="true"></span>
+                </span>
+                <span id="toggleRailStationsText" class="compact-toggle-label">Vlak</span>
+            </label>
+            <label class="compact-toggle" for="toggleTramStops" data-requires-capability="referenceTransit">
+                <span class="compact-toggle-switch">
+                    <input id="toggleTramStops" class="compact-toggle-input" type="checkbox">
+                    <span class="compact-toggle-track" aria-hidden="true"></span>
+                </span>
+                <span id="toggleTramStopsText" class="compact-toggle-label">Tramvaj</span>
+            </label>
+            <!-- The toggle and the button share a row: one shades the map by
+                 height here, the other opens the same proposal in the 3D relief
+                 viewer. They belong together even though only one is a layer. -->
+            <div class="compact-toggle-row">
+                <label class="compact-toggle" for="toggleTerrainMap" data-requires-capability="terrainTiles">
+                    <span class="compact-toggle-switch">
+                        <input id="toggleTerrainMap" class="compact-toggle-input" type="checkbox">
+                        <span class="compact-toggle-track" aria-hidden="true"></span>
+                    </span>
+                    <span id="toggleTerrainMapText" class="compact-toggle-label">Reljef</span>
+                </label>
+                <button id="openReliefViewer" class="relief-viewer-btn" type="button" disabled
+                    data-requires-capability="station3d"
+                    title="Spremite projekt da biste ga otvorili u pregledniku reljefa">Preglednik</button>
+            </div>
+        </div>
+
+        <div class="control-group compact-toggle-group">
+            <label class="compact-toggle" for="toggleTimeFlow">
+                <span class="compact-toggle-switch">
+                    <input id="toggleTimeFlow" class="compact-toggle-input" type="checkbox" checked>
+                    <span class="compact-toggle-track" aria-hidden="true"></span>
+                </span>
+                <span class="compact-toggle-label">Protok vremena</span>
+            </label>
+            <label class="compact-toggle" for="toggleStationDistances">
+                <span class="compact-toggle-switch">
+                    <input id="toggleStationDistances" class="compact-toggle-input" type="checkbox">
+                    <span class="compact-toggle-track" aria-hidden="true"></span>
+                </span>
+                <span class="compact-toggle-label">Razmaci stanica (plan)</span>
+            </label>
+            <label class="compact-toggle" for="toggleDemandLabels" data-requires-capability="population,jobs">
+                <span class="compact-toggle-switch">
+                    <input id="toggleDemandLabels" class="compact-toggle-input" type="checkbox" checked>
+                    <span class="compact-toggle-track" aria-hidden="true"></span>
+                </span>
+                <span class="compact-toggle-label">Brojke nad stanicama</span>
+            </label>
+        </div>
+
+        <!-- Walk-time controls -->
+        <div id="catchmentControls" class="control-group" data-requires-capability="routing">
+            <div class="range-field-header">
+                <span id="walkTimeLabel">Vrijeme hodanja:</span>
+            </div>
+            <div class="walk-time-options" role="radiogroup" aria-labelledby="walkTimeLabel">
+                <label class="walk-time-option">
+                    <input type="radio" name="walkTime" value="0">
+                    <span class="walk-time-option-label">isklj.</span>
+                </label>
+                <label class="walk-time-option">
+                    <input type="radio" name="walkTime" value="5">
+                    <span class="walk-time-option-label">5 min</span>
+                </label>
+                <label class="walk-time-option">
+                    <input type="radio" name="walkTime" value="10" checked>
+                    <span class="walk-time-option-label">10 min</span>
+                </label>
+                <label class="walk-time-option">
+                    <input type="radio" name="walkTime" value="15">
+                    <span class="walk-time-option-label">15 min</span>
+                </label>
+                <label class="walk-time-option">
+                    <input type="radio" name="walkTime" value="20">
+                    <span class="walk-time-option-label">20 min</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Track drawing controls (hidden until draw mode entered via map) -->
+        <div id="lineControls" class="control-group hidden">
+            <label>Širina kolosijeka:</label>
+            <div class="line-type-selector">
+                <!-- Monorail option removed for now (kept in pricing/gauge code so
+                     existing monorail proposals still load and price). -->
+                <label class="radio-label">
+                    <input type="radio" name="trackGauge" value="g1000">
+                    🚊 Uskotračna (1000 mm) — <span id="gaugePriceG1000">15 mil. EUR/km</span>
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="trackGauge" value="g1435" checked>
+                    🚇 Normalna (1435 mm) — <span id="gaugePriceG1435">20 mil. EUR/km</span>
+                </label>
+            </div>
+            <div class="line-controls-hint">Cijena za površinu; razine mijenjate na točkama trase (−1/0/+1).</div>
+        </div>
+
+        <!-- Selection info panel (shown when a map object is clicked) -->
+        <div id="selectionPanel" class="hidden">
+            <button id="selectionTitle" class="selection-title-button" type="button"></button>
+            <input id="selectionTitleInput" class="selection-title-input hidden" type="text" maxlength="120">
+            <div id="selectionDetails"></div>
+            <div class="selection-actions">
+                <button id="selectionDelete" class="selection-delete-btn" type="button">Obri&scaron;i</button>
+                <button id="selectionDeselect" class="selection-deselect-btn" type="button">Zatvori</button>
+            </div>
+        </div>
+
+        <!-- Catchment stats for single point -->
+        <div id="catchmentStats" class="hidden">
+            <h3>Doseg pješaka</h3>
+            <div class="stat-row">
+                <span class="stat-label">Stanovnika u dosegu</span>
+                <span class="stat-value" id="statCatchmentPop">&mdash;</span>
+            </div>
+            <div class="stat-bar-container">
+                <div class="stat-bar stat-bar-in" id="barPopIn"></div>
+                <div class="stat-bar stat-bar-out" id="barPopOut"></div>
+            </div>
+            <div class="stat-detail" id="statPopDetail"></div>
+
+            <div class="stat-row" style="margin-top: 10px;">
+                <span class="stat-label">Radnih mjesta u dosegu</span>
+                <span class="stat-value" id="statCatchmentJobs">&mdash;</span>
+            </div>
+            <div class="stat-bar-container">
+                <div class="stat-bar stat-bar-in" id="barJobsIn"></div>
+                <div class="stat-bar stat-bar-out" id="barJobsOut"></div>
+            </div>
+            <div class="stat-detail" id="statJobsDetail"></div>
+        </div>
+
+        <!-- Project tracks/lines list -->
+        <div id="linesList" class="hidden">
+            <div class="sidebar-tabs">
+                <button class="sidebar-tab active" data-tab="tracks">Trase</button>
+                <button class="sidebar-tab" data-tab="lines">Linije</button>
+            </div>
+            <div id="linesListContent" class="sidebar-tab-content"></div>
+            <div id="routesListContent" class="sidebar-tab-content hidden"></div>
+        </div>
+
+        <!-- Project summary -->
+        <div id="projectSummary" class="hidden">
+            <h3><span id="projectNameLabel"></span>Sažetak <span id="ancestorLink" class="ancestor-link hidden"></span></h3>
+            <div class="summary-grid">
+                <span class="summary-label">Ukupna duljina:</span>
+                <span class="summary-value" id="sumLength">0 km</span>
+                <span class="summary-label">Ukupna cijena:</span>
+                <span class="summary-value" id="sumCost">0 EUR</span>
+                <span class="summary-label">Stanica:</span>
+                <span class="summary-value" id="sumStations">0</span>
+                <span class="summary-label" data-requires-capability="population">Stanovnika u dosegu:</span>
+                <span class="summary-value" id="sumPopulation" data-requires-capability="population">0</span>
+                <span class="summary-label" data-requires-capability="population">Stan. s više stanica:</span>
+                <span class="summary-value" id="sumMultiPopulation" data-requires-capability="population">0</span>
+                <span class="summary-label" data-requires-capability="jobs">Radnih mjesta u dosegu:</span>
+                <span class="summary-value" id="sumJobs" data-requires-capability="jobs">0</span>
+                <span class="summary-label" data-requires-capability="jobs">Rad. mj. s više stanica:</span>
+                <span class="summary-value" id="sumMultiJobs" data-requires-capability="jobs">0</span>
+                <span class="summary-label" data-requires-capability="population">Cijena/stanovnik:</span>
+                <span class="summary-value" id="sumCostPerPerson" data-requires-capability="population">&mdash;</span>
+                <span class="summary-label" data-requires-capability="jobs">Cijena/radno mj.:</span>
+                <span class="summary-value" id="sumCostPerJob" data-requires-capability="jobs">&mdash;</span>
+            </div>
+        </div>
+
+        <!-- Save / Share buttons -->
+        <div id="saveSection" class="save-section-sticky" data-requires-capability="persistence">
+            <div class="save-actions">
+                <button id="saveProject" type="button" disabled>Spremi</button>
+                <button id="shareProject" type="button" class="secondary-btn hidden" aria-expanded="false"
+                    aria-controls="sharePopup">Podijeli</button>
+            </div>
+            <div id="sharePopup" class="share-popup hidden" role="dialog" aria-modal="false"
+                aria-label="Podijeli projekt">
+                <label class="share-popup-label" for="shareLink">Link na projekt:</label>
+                <div class="share-popup-row">
+                    <input type="text" id="shareLink" readonly class="share-link-input">
+                    <button id="copyShareLink" type="button" class="share-copy-btn">Kopiraj</button>
+                </div>
+                <div class="share-popup-section">
+                    <span class="share-popup-label">Slika za dijeljenje:</span>
+                    <div class="share-export-grid">
+                        <button id="downloadScreenshot" type="button" class="share-export-btn">Preuzmi screenshot</button>
+                        <button id="copyScreenshot" type="button"
+                            class="share-export-btn share-export-btn-secondary">Kopiraj screenshot</button>
+                    </div>
+                    <p class="share-popup-help">Screenshot hvata trenutno vidljiv prikaz projekta, za dijeljenje po
+                        forumima i porukama.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+            <span>Računam...</span>
+        </div>
+
+    </div>
+
+    <!-- Save modal -->
+    <div id="saveModal" class="modal-overlay hidden">
+        <div class="modal">
+            <h3>Spremi projekt</h3>
+            <label for="authorInput">Naziv projekta:</label>
+            <input type="text" id="authorInput" maxlength="100" placeholder="e.g. Central metro" autofocus>
+            <p id="saveModalError" class="modal-error hidden"></p>
+            <div class="modal-buttons">
+                <button id="modalCancel" class="modal-btn-cancel">Odustani</button>
+                <button id="modalConfirm" class="modal-btn-confirm">Spremi</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="discardDraftModal" class="modal-overlay hidden">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="discardDraftTitle">
+            <h3 id="discardDraftTitle"></h3>
+            <p id="discardDraftMessage" class="modal-message"></p>
+            <div class="modal-buttons">
+                <button id="discardDraftCancel" class="modal-btn-cancel" type="button"></button>
+                <button id="discardDraftConfirm" class="modal-btn-danger" type="button"></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="infoModal" class="modal-overlay hidden">
+        <div class="modal info-modal" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle">
+            <div class="info-modal-header">
+                <h3 id="infoModalTitle">Info i upute</h3>
+                <button id="closeInfoModal" class="info-close-btn" type="button"
+                    aria-label="Zatvori info prozor">&times;</button>
+            </div>
+
+            <div class="info-modal-content"></div>
+        </div>
+    </div>
+
+    <!-- Shared object-details panel: compact bottom panel on desktop, sheet on mobile. -->
+    <div id="selectionSheet" class="hidden" role="dialog" aria-modal="false" aria-label="Odabrani objekt"></div>
+
+    <!-- Shown INSTEAD of the map while a ?st3d= / cab deep link boots, so the
+         reader never watches a map they did not ask for. It is Station3D's one
+         loading screen (station-3d/ui/loading-curtain.js): the engine adopts this
+         element, feeds its bar and drops it when the world is built; transit.js
+         reveals the map through it if the link fails or the reader cancels. -->
+    <div class="station-3d-campaign-curtain" role="status" aria-live="polite" hidden>
+        <span class="station-3d-photo-loading-spinner" aria-hidden="true"></span>
+        <div class="station-3d-campaign-curtain-title" hidden></div>
+        <span class="station-3d-campaign-curtain-label">Učitavam okolinu…</span>
+        <span class="station-3d-campaign-curtain-bar" hidden><span class="station-3d-campaign-curtain-fill"></span></span>
+        <button type="button" class="station-3d-campaign-curtain-cancel">Prikaži kartu</button>
+        <div class="station-3d-campaign-curtain-diagnostics" hidden></div>
+    </div>
+    <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+    <!-- Ephemeral "press K / click the train" banner after a project opens on the map. -->
+    <div id="plannerCabHint" class="planner-cab-hint hidden" role="status" aria-live="polite"></div>
+    <div id="mapLoaderOverlay" class="map-loader-overlay" style="display:none"></div>
+
+    <div id="gameLogModal" class="modal-overlay hidden">
+        <div class="modal info-modal game-log-modal" role="dialog" aria-modal="true" aria-labelledby="gameLogTitle">
+            <div class="info-modal-header">
+                <h3 id="gameLogTitle">Dnevnik sesije</h3>
+                <button id="closeGameLog" class="info-close-btn" type="button"
+                    aria-label="Zatvori dnevnik">&times;</button>
+            </div>
+            <div id="gameLogContent" class="game-log-content"></div>
+            <div class="game-log-actions">
+                <button id="clearGameLog" class="sidebar-secondary-btn" type="button">Očisti</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bill of civil-engineering objects for the whole network: every viaduct,
+         cut, tunnel, embankment and station counted once. A side panel rather
+         than a dialog so the map stays visible and a row can point at it.
+         Opened by the 📋 in the elevation strip's header; populated by transit.js. -->
+    <aside id="civilObjectsPanel" class="civil-objects-panel hidden" aria-labelledby="civilObjectsTitle">
+        <div class="civil-objects-panel-header">
+            <h3 id="civilObjectsTitle">Objekti na mreži</h3>
+            <button id="closeCivilObjects" class="info-close-btn" type="button"
+                aria-label="Zatvori popis objekata">&times;</button>
+        </div>
+        <p class="civil-objects-hint">Kliknite zaglavlje stupca za sortiranje, a redak da ga
+            pokažete na karti.</p>
+        <div id="civilObjectsContent" class="civil-objects-content"></div>
+    </aside>
+
+    <!-- Generic yes/no confirm. A window.confirm() would block every later
+         browser-automation command, and this has to be answerable on a phone. -->
+    <div id="confirmModal" class="modal-overlay hidden">
+        <div class="modal info-modal confirm-modal" role="dialog" aria-modal="true"
+            aria-labelledby="confirmModalTitle">
+            <div class="info-modal-header">
+                <h3 id="confirmModalTitle">Potvrda</h3>
+            </div>
+            <p id="confirmModalMessage" class="confirm-modal-message"></p>
+            <div class="confirm-modal-actions">
+                <button id="confirmModalCancel" class="sidebar-secondary-btn" type="button">Odustani</button>
+                <button id="confirmModalOk" class="confirm-modal-ok" type="button">Potvrdi</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="simPanel" class="sim-panel">
+        <div id="skyStrip" class="sky-strip">
+            <div id="skyBody" class="sky-body"></div>
+            <span id="timeClockDisplay" class="time-clock-display">06:00</span>
+        </div>
+        <div class="sim-panel-row">
+            <button id="simSpeedDown" class="sim-clock-btn" type="button">&#8722;</button>
+            <span id="simSpeedLabel" class="sim-clock-speed">4x</span>
+            <button id="simSpeedUp" class="sim-clock-btn" type="button">+</button>
+        </div>
+    </div>
+    <div id="revenueHud" class="time-clock-revenue-hud hidden">
+        &#128176; <span id="revenueDisplay">0</span> EUR
+    </div>
+
+    <div id="map"></div>
+    <div id="terrainMapLegend" class="terrain-map-legend hidden" aria-hidden="true"
+        data-requires-capability="terrain">
+        <strong>Reljef · m n. m.</strong>
+        <span class="terrain-map-legend-ramp" aria-hidden="true"></span>
+        <span class="terrain-map-legend-values"><span>0</span><span>150</span><span>300</span><span>800+</span></span>
+        <small data-terrain-datum>Terrain source</small>
+    </div>
+
+    <!-- Map-docked elevation profile of the selected track (M3+): chainage X,
+         two-way hover link with the map. Populated by transit.js. -->
+    <div id="elevationDock" class="elevation-dock hidden" aria-hidden="true" data-requires-capability="terrain">
+        <div class="elevation-dock-header">
+            <span class="elevation-dock-title"></span>
+            <div class="elevation-dock-actions">
+                <button class="elevation-dock-recompute" type="button" hidden
+                    title="Zadržava pričvršćene (narančaste) čvorove na njihovoj visini i povezuje ih ravnim dionicama, brišući automatske čvorove između njih. Bez pričvršćenih čvorova radi puni automatski preračun.">↻ Izravnaj između čvorova</button>
+                <button class="elevation-dock-reset" type="button" hidden>⟲ Poništi izmjene</button>
+                <button class="elevation-dock-objects" type="button"
+                    title="Popis građevina na cijeloj mreži: svaki vijadukt, usjek, tunel, nasip i stanica kao zaseban objekt, s duljinom, visinom i cijenom"
+                    aria-label="Popis objekata na mreži">📋 Objekti</button>
+                <!-- The live 3D preview follows the stripe: opens with the
+                     dock, closes with its ×, reopens from here. Wired in
+                     relief-preview.js. -->
+                <button id="openReliefPreview" class="elevation-dock-3d" type="button"
+                    data-requires-capability="station3d"
+                    title="Živi 3D pregled trase — prati čvor koji uređujete">⛰ 3D pregled</button>
+                <button class="elevation-dock-settings-btn" type="button"
+                    title="Postavke lijepljenja visina" aria-label="Postavke lijepljenja visina">⚙</button>
+            </div>
+        </div>
+        <div class="elevation-dock-settings hidden">
+            <button class="elevation-dock-settings-close" type="button"
+                aria-label="Zatvori postavke" title="Zatvori postavke">&times;</button>
+            <label>Vijadukt: <input type="number" class="snap-over-input" min="1" max="30" step="0.5"> m iznad terena</label>
+            <label>Tunel: <input type="number" class="snap-under-input" min="1" max="30" step="0.5"> m ispod terena</label>
+            <div class="elevation-dock-settings-hint">
+                Tipično: vijadukt +6 m (4,5 m ceste + konstrukcija). Tunel −8 m je
+                pravilo struke i za tramvaj i za vlak: 7,3 m cijevi iznad tračnice
+                + 0,7 m zemlje nad krovnom pločom. Pliće od toga je otvoreni usjek
+                u svim prikazima. Shift tijekom povlačenja crta bez lijepljenja.
+            </div>
+        </div>
+        <div class="elevation-dock-canvas-shell">
+            <div class="elevation-dock-canvas-host"></div>
+            <div class="elevation-dock-loading-overlay" role="status" aria-live="polite">
+                <span class="elevation-dock-loading-spinner" aria-hidden="true"></span>
+                <span>Računam visinski profil…</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="mapActionToolbar" class="map-action-toolbar" role="toolbar" aria-label="Alati za uređivanje mreže">
+        <button id="toggleMapActions" class="map-action-toggle" type="button"
+            aria-expanded="false" aria-controls="mapActionPanel"
+            aria-label="Alati za uređivanje mreže" title="Alati za uređivanje mreže">📝</button>
+        <div id="mapActionPanel" class="map-action-panel hidden">
+        <div class="map-action-row">
+            <div class="map-action-group map-action-group-create" role="group" aria-label="Dodavanje">
+                <button id="toggleTrackDrawing" class="map-action-btn" type="button"
+                    aria-pressed="false" aria-expanded="false" aria-controls="mapGaugePicker">＋ Nova trasa</button>
+                <button id="toggleStationPlacement" class="map-action-btn" type="button"
+                    aria-pressed="false">＋ Nova stanica</button>
+            </div>
+            <div class="map-action-group map-action-group-edit" role="group" aria-label="Uređivanje">
+                <button id="toggleRouteEditing" class="map-action-btn" type="button"
+                    aria-pressed="false">✎ Uredi mrežu</button>
+                <button id="toggleElectrificationEditing" class="map-action-btn" type="button"
+                    aria-pressed="false" disabled>⚡ Uredi elektrifikaciju</button>
+                <button id="toggleReferenceConnection" class="map-action-btn" type="button"
+                    aria-pressed="false" title="Prikaži postojeću željeznicu kao podlogu za spajanje"
+                    disabled>🔗 Spoji postojeću prugu</button>
+            </div>
+        </div>
+        <div id="mapGaugePicker" class="map-gauge-picker hidden" role="group" aria-label="Odaberite širinu kolosijeka">
+            <!-- Monorail option removed for now (kept in pricing/gauge code so
+                 existing monorail proposals still load and price). -->
+            <button class="map-gauge-btn" type="button" data-gauge="g1000" title="Uskotračna (1000 mm)"
+                aria-label="Nova uskotračna trasa, 1000 milimetara">🚊 1000</button>
+            <button class="map-gauge-btn" type="button" data-gauge="g1435" title="Normalna (1435 mm)"
+                aria-label="Nova trasa normalne širine, 1435 milimetara">🚇 1435</button>
+        </div>
+        </div>
+    </div>
+
+    <!-- Edit mode only: says when node handles are thinned out for legibility -->
+    <div id="vertexHandleDensityHint" class="vertex-density-hint hidden" role="status" aria-live="polite"></div>
+
+    <!-- Station 3D view modal -->
+    <div id="station3DModal" class="station-3d-modal hidden" role="dialog" aria-modal="true" aria-labelledby="station3DTitle">
+        <div class="station-3d-frame">
+            <div class="station-3d-header">
+                <h3 id="station3DTitle">3D prikaz stanice</h3>
+                <span id="station3DInfo" class="station-3d-info"></span>
+                <button id="station3DClose" type="button" class="station-3d-close" aria-label="Zatvori 3D prikaz">&times;</button>
+            </div>
+            <div id="station3DContainer" class="station-3d-container">
+                <div id="station3DStatusOverlay" class="station-3d-status hidden"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="railConnectionChoiceModal" class="modal-overlay hidden">
+        <div class="modal rail-connection-choice" role="dialog" aria-modal="true"
+            aria-labelledby="railConnectionChoiceTitle">
+            <h3 id="railConnectionChoiceTitle">Kraj linije</h3>
+            <p>Odaberite nastavak vožnje.</p>
+            <div id="railConnectionChoices" class="rail-connection-choices"></div>
+        </div>
+    </div>
+
+    <script src="vendor/leaflet/leaflet.js"></script>
+    <!-- Reduced-motion support: after Leaflet, before any map is constructed -->
+    <script src="reduced-motion.js"></script>
+    <script src="vendor/leaflet-heat/leaflet-heat.js"></script>
+    <script src="vendor/turf/turf.min.js"></script>
+    <script src="vendor/html2canvas/html2canvas.min.js"></script>
+    <script src="transit-pricing.js"></script>
+    <script src="passenger-demand.js"></script>
+    <script src="city-config.generated.js"></script>
+    <script src="city-capabilities.js"></script>
+    <script src="provider-attribution.js"></script>
+    <script src="runtime-config.js"></script>
+    <script src="city-pack-loader.js"></script>
+    <script>window.__transitI18n.boot();</script>
+    <script src="city-branding.js"></script>
+    <!-- Which 3D world the URL asks for. Classic, and loaded before transit.js
+         and the station-3d module graph, because both read it synchronously. -->
+    <script src="world-mode.js"></script>
+    <!-- A city pack may install a richer prepared-area registry. The generic
+         manifest registry then fills the boundary only when no pack did. -->
+    <script>window.__transitCityPack.load('prePlanner');</script>
+    <script src="location-registry.js"></script>
+    <script src="planner-location-context.js?v=20260813-1"></script>
+    <!-- Pure OSM/authored electrification resolver shared with the map and 3D world. -->
+    <script src="track-electrification.js?v=20260727-2"></script>
+    <script src="track-topology.js?v=20260919-1"></script>
+    <!-- window.__railReferenceProjects: clipped reference-rail context shared
+         by the map and 3D/simulation views. -->
+    <script src="rail-reference-projects.js?v=20260730-1"></script>
+    <script src="planner-project-lifecycle.js?v=20260730-1"></script>
+    <script src="rail-project-connections.js?v=20260726-1"></script>
+    <script src="daylight.js?v=20260730-1"></script>
+    <script src="sim-clock.js"></script>
+    <script src="tram-switch-utils.js"></script>
+    <script src="route-edit-history.js?v=20260802-1"></script>
+    <script src="route-edit.js?v=20260802-1"></script>
+    <script src="route-direction.js?v=20260716-1"></script>
+    <!-- Namespaced planner-grade globals for transit.js: __plannerGrade (solver),
+         __verticalProfile (v10 data model), __profileRender + __profileStrip
+         (profile strip UI), __roadCrossing (road/rail crossing classifier),
+         __selfCrossing (spiral/loop self-intersection detector) -->
+    <script src="planner-grade/grade-view.js?v=20260731-1"></script>
+    <script src="planner-grade/road-crossing.js?v=20260731-2"></script>
+    <script src="planner-grade/self-crossing.js?v=20260731-2"></script>
+    <script src="planner-grade/grade-solver.js?v=20260731-3"></script>
+    <script src="planner-cab-target.js?v=20260727-1"></script>
+    <script src="planner-cab-hint.js?v=20260904-1"></script>
+    <script src="planner-grade/profile-fixpoint.js?v=20260727-1"></script>
+    <script src="tunnel-cover-rule.js?v=20260815-1"></script>
+    <script src="planner-grade/vertical-profile.js?v=20260815-1"></script>
+    <script src="planner-grade/terrain-profile-fetch.js?v=20260802-1"></script>
+    <script src="planner-grade/profile-render.js?v=20260730-2"></script>
+    <script src="planner-grade/profile-strip.js?v=20260815-1"></script>
+    <!-- window.__civilObjects: discrete structures (viaducts/cuts/tunnels/…) detected from a solved profile -->
+    <script src="planner-grade/civil-objects.js?v=20260731-1"></script>
+    <!-- window.__civilObjectsView: the shared "Objekti na mreži" table (also used by leaderboard.html) -->
+    <script src="planner-grade/civil-objects-view.js?v=20260731-1"></script>
+    <script>
+        // Start this dependency before transit.js. Module scripts are deferred,
+        // so assigning the contract in a later <script type="module"> raced a
+        // fast saved-project fetch on a clean page.
+        window.__stationContractReady = import('./vendor/station3d/planning.js')
+            .then((stationContract) => {
+                window.__stationContract = stationContract;
+                return stationContract;
+            });
+    </script>
+    <script src="planner-grade/line-speed.js"></script>
+    <script src="planner-grade/line-chainage.js?v=20260727-3"></script>
+    <script src="line-chainage-dialog.js?v=20260727-2"></script>
+    <script src="terrain-map-layer.js?v=20260802-1"></script>
+    <script src="relief-viewer-link.js?v=20260803-1"></script>
+    <script src="station3d-deeplink.js?v=20260904-1"></script>
+    <script src="transit.js?v=20260802-1"></script>
+    <!-- window.__reliefPreview: the embedded live 3D preview dialog. After
+         transit.js: it reads the planner's own globals (project,
+         buildCanonicalProjectData) rather than keeping a second copy. -->
+    <script src="relief-preview.js?v=20260806-7"></script>
+    <script>window.__transitCityPack.load('simulation');</script>
+    <!-- Configure the independently packaged engine before any 3D preload.
+         The dependency-free facade still defers the renderer graph until use. -->
+    <script src="station3d-planner.js"></script>
+    <script src="vendor/station3d/loader.js"></script>
+</body>
+
+</html>

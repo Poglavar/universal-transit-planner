@@ -1,0 +1,35 @@
+name: Feature proposal
+description: Propose a reusable planner capability or provider contract.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What planning workflow or portability gap should this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Explain the reusable behaviour and the city-specific data boundary.
+    validations:
+      required: true
+  - type: textarea
+    id: providers
+    attributes:
+      label: Providers and provenance
+      description: List required data providers, licences, attribution, resolution, and expected missing-data behaviour.
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: This does not put city-name checks or campaign behaviour into the reusable planner core.
+          required: true

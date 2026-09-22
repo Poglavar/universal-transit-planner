@@ -1,0 +1,75 @@
+{
+  "$schema": "../../docs/city-manifest.schema.json",
+  "id": "example",
+  "name": "Example City",
+  "center": [52.52, 13.405],
+  "zoom": 12,
+  "bounds": {
+    "west": 13.18,
+    "south": 52.41,
+    "east": 13.65,
+    "north": 52.62
+  },
+  "locale": "en",
+  "timezone": "UTC",
+  "currency": "EUR",
+  "units": "metric",
+  "providers": {
+    "valhallaIsochroneUrl": null,
+    "basemap": {
+      "url": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      "attribution": "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap contributors</a>"
+    },
+    "apiBaseUrl": "/api",
+    "terrain": ["copernicus-glo30"]
+  },
+  "providerOperations": {
+    "terrain": {
+      "metadata": true,
+      "coverage": true,
+      "point": true,
+      "profile": true,
+      "grid": true,
+      "tiles": false
+    }
+  },
+  "terrainReference": {
+    "horizontalCrs": "EPSG:4326",
+    "verticalReference": "EPSG:3855 (EGM2008)",
+    "surfaceType": "surface",
+    "unit": "m",
+    "revision": "copernicus-dem-aws-2021"
+  },
+  "providerLabels": {
+    "terrain": "Copernicus DEM GLO-30 · preliminary DSM",
+    "terrainAttribution": "© DLR e.V. 2010-2014 and © Airbus Defence and Space GmbH 2014-2018 provided under COPERNICUS by the European Union and ESA; all rights reserved.",
+    "terrainDatum": "Copernicus DEM · EGM2008 · preliminary"
+  },
+  "features": {
+    "routing": false,
+    "terrain": true,
+    "terrainTiles": false,
+    "population": false,
+    "jobs": false,
+    "referenceTransit": false,
+    "referenceRail": false,
+    "station3d": false,
+    "persistence": false,
+    "campaigns": false
+  },
+  "attributions": [
+    {
+      "name": "OpenStreetMap contributors",
+      "url": "https://www.openstreetmap.org/copyright",
+      "license": "ODbL 1.0",
+      "licenseUrl": "https://opendatacommons.org/licenses/odbl/1-0/"
+    },
+    {
+      "name": "Copernicus DEM",
+      "url": "https://dataspace.copernicus.eu/explore-data/data-collections/copernicus-contributing-missions/collections-description/COP-DEM",
+      "license": "Copernicus WorldDEM free licence",
+      "licenseUrl": "https://dataspace.copernicus.eu/sites/default/files/media/files/2025-06/copernicus_contributing_mission_data_access_v2_cop_dem_licenses.pdf"
+    }
+  ],
+  "dataRevision": "example-copdem-2021-1"
+}

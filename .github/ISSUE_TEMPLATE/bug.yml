@@ -1,0 +1,51 @@
+name: Bug report
+description: Report a reproducible planner, provider, build, or documentation problem.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for helping improve Universal Transit Planner. Do not include credentials or private project data.
+  - type: input
+    id: revision
+    attributes:
+      label: Revision or deployment
+      description: Commit SHA, release, or public URL where the problem occurs.
+      placeholder: main at abc1234
+    validations:
+      required: true
+  - type: input
+    id: city
+    attributes:
+      label: City manifest
+      description: City-pack ID and any non-secret provider configuration.
+      placeholder: example
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Give the smallest repeatable sequence of actions.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual result
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Relevant logs or screenshots
+      description: Remove tokens, personal data, and private project contents first.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched for an existing issue.
+          required: true
+        - label: I removed credentials and unnecessary personal data.
+          required: true

@@ -1,0 +1,1864 @@
+[
+    {
+        "name": "Aleja javora",
+        "lat": 45.82856207239891,
+        "lng": 16.069530480086893,
+        "stopId": "189_1",
+        "snapped": true
+    },
+    {
+        "name": "Aleja javora",
+        "lat": 45.828864614248424,
+        "lng": 16.0681445571575,
+        "stopId": "189_2",
+        "snapped": true
+    },
+    {
+        "name": "Autobusni kol.",
+        "lat": 45.80437104675739,
+        "lng": 15.993638906428426,
+        "stopId": "113_3",
+        "snapped": true
+    },
+    {
+        "name": "Autobusni kol.",
+        "lat": 45.80362877822914,
+        "lng": 15.993916424470099,
+        "stopId": "113_4",
+        "snapped": true
+    },
+    {
+        "name": "Badalićeva",
+        "lat": 45.80163779442934,
+        "lng": 15.959270846707248,
+        "stopId": "190_1",
+        "snapped": true
+    },
+    {
+        "name": "Badalićeva",
+        "lat": 45.80201719063509,
+        "lng": 15.959719021642423,
+        "stopId": "190_2",
+        "snapped": true
+    },
+    {
+        "name": "Belostenčeva",
+        "lat": 45.82226449765456,
+        "lng": 15.97987591912507,
+        "stopId": "126_3",
+        "snapped": true
+    },
+    {
+        "name": "Belostenčeva",
+        "lat": 45.822589172110135,
+        "lng": 15.979802392278856,
+        "stopId": "126_4",
+        "snapped": true
+    },
+    {
+        "name": "Borongaj",
+        "lat": 45.81423633200445,
+        "lng": 16.018238077829768,
+        "stopId": "193_1",
+        "snapped": true
+    },
+    {
+        "name": "Borongaj",
+        "lat": 45.814512383625896,
+        "lng": 16.018920517691413,
+        "stopId": "193_2",
+        "snapped": true
+    },
+    {
+        "name": "Borovje",
+        "lat": 45.78882636772907,
+        "lng": 16.00430051783443,
+        "stopId": "1729_3",
+        "snapped": true
+    },
+    {
+        "name": "Borovje",
+        "lat": 45.78853604750923,
+        "lng": 16.004184073395155,
+        "stopId": "1729_4",
+        "snapped": true
+    },
+    {
+        "name": "Botanički vrt",
+        "lat": 45.805548788824176,
+        "lng": 15.973613960458625,
+        "stopId": "194_1",
+        "snapped": true
+    },
+    {
+        "name": "Botanički vrt",
+        "lat": 45.80567121256111,
+        "lng": 15.974289285760293,
+        "stopId": "194_2",
+        "snapped": true
+    },
+    {
+        "name": "Branim. tržnica",
+        "lat": 45.80610835339929,
+        "lng": 15.992016526149431,
+        "stopId": "112_1",
+        "snapped": true
+    },
+    {
+        "name": "Branim. tržnica",
+        "lat": 45.80611390319034,
+        "lng": 15.991435587035687,
+        "stopId": "112_2",
+        "snapped": true
+    },
+    {
+        "name": "Branimir centar",
+        "lat": 45.80545855226378,
+        "lng": 15.98366026936913,
+        "stopId": "111_1",
+        "snapped": true
+    },
+    {
+        "name": "Branimir centar",
+        "lat": 45.805585945848435,
+        "lng": 15.984440895702326,
+        "stopId": "111_2",
+        "snapped": true
+    },
+    {
+        "name": "Britanski trg",
+        "lat": 45.81224031349086,
+        "lng": 15.963171455735617,
+        "stopId": "169_1",
+        "snapped": true
+    },
+    {
+        "name": "Britanski trg",
+        "lat": 45.812589978421954,
+        "lng": 15.96474670939717,
+        "stopId": "169_2",
+        "snapped": true
+    },
+    {
+        "name": "Čavićeva",
+        "lat": 45.80098636938173,
+        "lng": 16.030524784225534,
+        "stopId": "198_1",
+        "snapped": true
+    },
+    {
+        "name": "Čavićeva",
+        "lat": 45.800833098414714,
+        "lng": 16.031066082909962,
+        "stopId": "198_2",
+        "snapped": true
+    },
+    {
+        "name": "Črnomerec",
+        "lat": 45.81500712905034,
+        "lng": 15.934413383883308,
+        "stopId": "98_1",
+        "snapped": true
+    },
+    {
+        "name": "Črnomerec",
+        "lat": 45.815081518802884,
+        "lng": 15.934421940845825,
+        "stopId": "98_11",
+        "snapped": true
+    },
+    {
+        "name": "Črnomerec",
+        "lat": 45.81541351165953,
+        "lng": 15.933906944786868,
+        "stopId": "98_2",
+        "snapped": true
+    },
+    {
+        "name": "Čulinečka",
+        "lat": 45.82867419463371,
+        "lng": 16.063533925674278,
+        "stopId": "201_1",
+        "snapped": true
+    },
+    {
+        "name": "Čulinečka",
+        "lat": 45.8289828383697,
+        "lng": 16.06240139119906,
+        "stopId": "201_2",
+        "snapped": true
+    },
+    {
+        "name": "Dankovečka",
+        "lat": 45.829561653889606,
+        "lng": 16.056664614837683,
+        "stopId": "202_1",
+        "snapped": true
+    },
+    {
+        "name": "Dankovečka",
+        "lat": 45.82947387396157,
+        "lng": 16.05465282018493,
+        "stopId": "202_2",
+        "snapped": true
+    },
+    {
+        "name": "Donje Svetice",
+        "lat": 45.80295582606251,
+        "lng": 16.014600718004395,
+        "stopId": "203_1",
+        "snapped": true
+    },
+    {
+        "name": "Donje Svetice",
+        "lat": 45.80315270539652,
+        "lng": 16.015231971947834,
+        "stopId": "203_2",
+        "snapped": true
+    },
+    {
+        "name": "Draškovićeva",
+        "lat": 45.813391921333,
+        "lng": 15.983517833290849,
+        "stopId": "124_3",
+        "snapped": true
+    },
+    {
+        "name": "Draškovićeva",
+        "lat": 45.81273540942757,
+        "lng": 15.983355935628103,
+        "stopId": "124_4",
+        "snapped": true
+    },
+    {
+        "name": "Držićeva",
+        "lat": 45.80108525787623,
+        "lng": 15.996413271912841,
+        "stopId": "114_1",
+        "snapped": true
+    },
+    {
+        "name": "Držićeva",
+        "lat": 45.801067651230355,
+        "lng": 15.994378596496153,
+        "stopId": "114_2",
+        "snapped": true
+    },
+    {
+        "name": "Držićeva",
+        "lat": 45.80196947253654,
+        "lng": 15.995013790144055,
+        "stopId": "114_3",
+        "snapped": true
+    },
+    {
+        "name": "Držićeva",
+        "lat": 45.80035005284011,
+        "lng": 15.99586887068791,
+        "stopId": "114_4",
+        "snapped": true
+    },
+    {
+        "name": "Držićeva-petlja",
+        "lat": 45.796629948352624,
+        "lng": 15.998890949753294,
+        "stopId": "115_3",
+        "snapped": true
+    },
+    {
+        "name": "Držićeva-petlja",
+        "lat": 45.79686413056748,
+        "lng": 15.99859352158445,
+        "stopId": "115_4",
+        "snapped": true
+    },
+    {
+        "name": "Dubec",
+        "lat": 45.82784591440694,
+        "lng": 16.078133779507684,
+        "stopId": "206_11",
+        "snapped": true
+    },
+    {
+        "name": "Dubec",
+        "lat": 45.82789137419446,
+        "lng": 16.077912158564576,
+        "stopId": "206_14",
+        "snapped": true
+    },
+    {
+        "name": "Dubec",
+        "lat": 45.827777049756996,
+        "lng": 16.078109497460787,
+        "stopId": "206_4",
+        "snapped": true
+    },
+    {
+        "name": "Dubrava",
+        "lat": 45.82478398631211,
+        "lng": 16.039989138708588,
+        "stopId": "209_1",
+        "snapped": true
+    },
+    {
+        "name": "Dubrava",
+        "lat": 45.82450929709672,
+        "lng": 16.03763165051701,
+        "stopId": "209_12",
+        "snapped": true
+    },
+    {
+        "name": "Dubrava",
+        "lat": 45.82440891844341,
+        "lng": 16.037169971488254,
+        "stopId": "209_13",
+        "snapped": true
+    },
+    {
+        "name": "Dubrava",
+        "lat": 45.82447263830478,
+        "lng": 16.037151618855816,
+        "stopId": "209_14",
+        "snapped": true
+    },
+    {
+        "name": "Dubrava",
+        "lat": 45.82438201277776,
+        "lng": 16.03748155658818,
+        "stopId": "209_2",
+        "snapped": true
+    },
+    {
+        "name": "Dubrava",
+        "lat": 45.82457042028094,
+        "lng": 16.03760599108605,
+        "stopId": "209_7",
+        "snapped": true
+    },
+    {
+        "name": "Elka",
+        "lat": 45.797127809922294,
+        "lng": 16.037434566262878,
+        "stopId": "212_3",
+        "snapped": true
+    },
+    {
+        "name": "Elka",
+        "lat": 45.796789280018686,
+        "lng": 16.03757574277989,
+        "stopId": "212_4",
+        "snapped": true
+    },
+    {
+        "name": "Ferenščica",
+        "lat": 45.80428430651583,
+        "lng": 16.023307924187808,
+        "stopId": "213_1",
+        "snapped": true
+    },
+    {
+        "name": "Ferenščica",
+        "lat": 45.80432825801949,
+        "lng": 16.02372283482892,
+        "stopId": "213_2",
+        "snapped": true
+    },
+    {
+        "name": "Folnegovićevo",
+        "lat": 45.791972480631586,
+        "lng": 16.002504607994936,
+        "stopId": "171_3",
+        "snapped": true
+    },
+    {
+        "name": "Folnegovićevo",
+        "lat": 45.79220742554103,
+        "lng": 16.002208996781857,
+        "stopId": "171_4",
+        "snapped": true
+    },
+    {
+        "name": "Frankopanska",
+        "lat": 45.813245002301116,
+        "lng": 15.969427863654277,
+        "stopId": "105_1",
+        "snapped": true
+    },
+    {
+        "name": "Frankopanska",
+        "lat": 45.81332889997083,
+        "lng": 15.969104499308125,
+        "stopId": "105_2",
+        "snapped": true
+    },
+    {
+        "name": "Frankopanska",
+        "lat": 45.81284867213137,
+        "lng": 15.969688055213151,
+        "stopId": "105_3",
+        "snapped": true
+    },
+    {
+        "name": "Frankopanska",
+        "lat": 45.812690390953186,
+        "lng": 15.969488620623967,
+        "stopId": "105_4",
+        "snapped": true
+    },
+    {
+        "name": "Getaldićeva",
+        "lat": 45.80290528261692,
+        "lng": 16.026777557503905,
+        "stopId": "214_1",
+        "snapped": true
+    },
+    {
+        "name": "Getaldićeva",
+        "lat": 45.80267439035964,
+        "lng": 16.027453599616702,
+        "stopId": "214_2",
+        "snapped": true
+    },
+    {
+        "name": "Glavni kolodvor",
+        "lat": 45.80522157406566,
+        "lng": 15.979256053343274,
+        "stopId": "109_1",
+        "snapped": true
+    },
+    {
+        "name": "Glavni kolodvor",
+        "lat": 45.80526523887022,
+        "lng": 15.978428669557431,
+        "stopId": "109_2",
+        "snapped": true
+    },
+    {
+        "name": "Grač. Mihaljevac",
+        "lat": 45.854034007812295,
+        "lng": 15.973325038199926,
+        "stopId": "132_1",
+        "snapped": true
+    },
+    {
+        "name": "Grač. Mihaljevac",
+        "lat": 45.85357675464933,
+        "lng": 15.973208978782548,
+        "stopId": "132_2",
+        "snapped": true
+    },
+    {
+        "name": "Gračani",
+        "lat": 45.85822322967285,
+        "lng": 15.974077686639308,
+        "stopId": "133_1",
+        "snapped": true
+    },
+    {
+        "name": "Gračani",
+        "lat": 45.85815796062709,
+        "lng": 15.973835079528298,
+        "stopId": "133_2",
+        "snapped": true
+    },
+    {
+        "name": "Gračanske stube",
+        "lat": 45.849333625514866,
+        "lng": 15.975185050451964,
+        "stopId": "131_1",
+        "snapped": true
+    },
+    {
+        "name": "Gračanske stube",
+        "lat": 45.84899256457543,
+        "lng": 15.975263924346551,
+        "stopId": "131_2",
+        "snapped": true
+    },
+    {
+        "name": "Gračansko dolje",
+        "lat": 45.86058749410474,
+        "lng": 15.981607209488871,
+        "stopId": "134_1",
+        "snapped": true
+    },
+    {
+        "name": "Gračansko dolje",
+        "lat": 45.86032758008598,
+        "lng": 15.981081287714263,
+        "stopId": "134_2",
+        "snapped": true
+    },
+    {
+        "name": "Grižanska",
+        "lat": 45.82876262866792,
+        "lng": 16.05244666573381,
+        "stopId": "215_1",
+        "snapped": true
+    },
+    {
+        "name": "Grižanska",
+        "lat": 45.828861313351695,
+        "lng": 16.052162174761744,
+        "stopId": "215_2",
+        "snapped": true
+    },
+    {
+        "name": "Grškovićeva",
+        "lat": 45.820038891940065,
+        "lng": 15.979493448608356,
+        "stopId": "125_3",
+        "snapped": true
+    },
+    {
+        "name": "Grškovićeva",
+        "lat": 45.819765406307646,
+        "lng": 15.979317500349136,
+        "stopId": "125_4",
+        "snapped": true
+    },
+    {
+        "name": "Gupčeva zvijezda",
+        "lat": 45.82804730476846,
+        "lng": 15.979535862198466,
+        "stopId": "127_3",
+        "snapped": true
+    },
+    {
+        "name": "Gupčeva zvijezda",
+        "lat": 45.82761487145319,
+        "lng": 15.979536162864584,
+        "stopId": "127_4",
+        "snapped": true
+    },
+    {
+        "name": "Harambašićeva",
+        "lat": 45.81467108063527,
+        "lng": 16.008023541432657,
+        "stopId": "217_1",
+        "snapped": true
+    },
+    {
+        "name": "Harambašićeva",
+        "lat": 45.81499235720572,
+        "lng": 16.00849521195113,
+        "stopId": "217_2",
+        "snapped": true
+    },
+    {
+        "name": "Heinzelova",
+        "lat": 45.80226166354213,
+        "lng": 16.010487736635245,
+        "stopId": "221_1",
+        "snapped": true
+    },
+    {
+        "name": "Heinzelova",
+        "lat": 45.80249971680225,
+        "lng": 16.011319941864127,
+        "stopId": "221_2",
+        "snapped": true
+    },
+    {
+        "name": "Heinzelova-sjever",
+        "lat": 45.812013536302885,
+        "lng": 16.001251114319974,
+        "stopId": "220_1",
+        "snapped": true
+    },
+    {
+        "name": "Heinzelova-sjever",
+        "lat": 45.811571975615436,
+        "lng": 15.99935928835028,
+        "stopId": "220_2",
+        "snapped": true
+    },
+    {
+        "name": "HNK2",
+        "lat": 45.807788518306445,
+        "lng": 15.961558331459008,
+        "stopId": "188_1",
+        "snapped": true
+    },
+    {
+        "name": "HNK2",
+        "lat": 45.80762363899595,
+        "lng": 15.962003085592013,
+        "stopId": "188_2",
+        "snapped": true
+    },
+    {
+        "name": "Hondlova",
+        "lat": 45.82092315483691,
+        "lng": 16.022369428759912,
+        "stopId": "222_1",
+        "snapped": true
+    },
+    {
+        "name": "Hondlova",
+        "lat": 45.821009926291076,
+        "lng": 16.022090828343508,
+        "stopId": "222_2",
+        "snapped": true
+    },
+    {
+        "name": "Horvati",
+        "lat": 45.78814106005859,
+        "lng": 15.942184250450968,
+        "stopId": "223_1",
+        "snapped": true
+    },
+    {
+        "name": "Horvati",
+        "lat": 45.78823954023474,
+        "lng": 15.940738308652552,
+        "stopId": "223_2",
+        "snapped": true
+    },
+    {
+        "name": "Hrgovići",
+        "lat": 45.787886840464274,
+        "lng": 15.929409137140725,
+        "stopId": "283_1",
+        "snapped": true
+    },
+    {
+        "name": "Hrgovići",
+        "lat": 45.78781271092996,
+        "lng": 15.930110038586754,
+        "stopId": "283_2",
+        "snapped": true
+    },
+    {
+        "name": "Ivanićgradska",
+        "lat": 45.803843157150176,
+        "lng": 16.019927415197664,
+        "stopId": "225_1",
+        "snapped": true
+    },
+    {
+        "name": "Ivanićgradska",
+        "lat": 45.80404719808459,
+        "lng": 16.020651138020828,
+        "stopId": "225_2",
+        "snapped": true
+    },
+    {
+        "name": "Jagićeva",
+        "lat": 45.809071624024995,
+        "lng": 15.957425585417065,
+        "stopId": "227_2",
+        "snapped": true
+    },
+    {
+        "name": "Jandrićeva",
+        "lat": 45.83650013553773,
+        "lng": 15.977518034589643,
+        "stopId": "175_3",
+        "snapped": true
+    },
+    {
+        "name": "Jandrićeva",
+        "lat": 45.83673541008217,
+        "lng": 15.977341691098058,
+        "stopId": "175_4",
+        "snapped": true
+    },
+    {
+        "name": "Jarun-zapad",
+        "lat": 45.789571249179886,
+        "lng": 15.92052872498735,
+        "stopId": "230_1",
+        "snapped": true
+    },
+    {
+        "name": "Jarun-zapad",
+        "lat": 45.789912027110844,
+        "lng": 15.920060449053251,
+        "stopId": "230_2",
+        "snapped": true
+    },
+    {
+        "name": "Jordanovac",
+        "lat": 45.8175580461941,
+        "lng": 16.008035851845158,
+        "stopId": "231_1",
+        "snapped": true
+    },
+    {
+        "name": "Jordanovac",
+        "lat": 45.81761128166803,
+        "lng": 16.007563669740428,
+        "stopId": "231_2",
+        "snapped": true
+    },
+    {
+        "name": "Jukićeva",
+        "lat": 45.805137118477305,
+        "lng": 15.965834181834424,
+        "stopId": "232_1",
+        "snapped": true
+    },
+    {
+        "name": "Jukićeva",
+        "lat": 45.805292149074255,
+        "lng": 15.965762367212736,
+        "stopId": "232_2",
+        "snapped": true
+    },
+    {
+        "name": "Kapucinska",
+        "lat": 45.82752177467261,
+        "lng": 16.048616275525294,
+        "stopId": "233_1",
+        "snapped": true
+    },
+    {
+        "name": "Kapucinska",
+        "lat": 45.82755716998708,
+        "lng": 16.04816585077724,
+        "stopId": "233_2",
+        "snapped": true
+    },
+    {
+        "name": "Knežija",
+        "lat": 45.78812246092165,
+        "lng": 15.94533611582719,
+        "stopId": "234_1",
+        "snapped": true
+    },
+    {
+        "name": "Knežija",
+        "lat": 45.78822803860677,
+        "lng": 15.944787343511317,
+        "stopId": "234_2",
+        "snapped": true
+    },
+    {
+        "name": "Koledovčina",
+        "lat": 45.790930261112806,
+        "lng": 16.036523325972198,
+        "stopId": "313_3",
+        "snapped": true
+    },
+    {
+        "name": "Koledovčina",
+        "lat": 45.79151228181088,
+        "lng": 16.0369485179531,
+        "stopId": "313_4",
+        "snapped": true
+    },
+    {
+        "name": "Kruge",
+        "lat": 45.80049774219207,
+        "lng": 15.984763076426352,
+        "stopId": "235_1",
+        "snapped": true
+    },
+    {
+        "name": "Kruge",
+        "lat": 45.800631053642974,
+        "lng": 15.985632142561519,
+        "stopId": "235_2",
+        "snapped": true
+    },
+    {
+        "name": "Kvaternikov trg",
+        "lat": 45.81491763942136,
+        "lng": 15.997025361665246,
+        "stopId": "236_1",
+        "snapped": true
+    },
+    {
+        "name": "Kvaternikov trg",
+        "lat": 45.81494656408282,
+        "lng": 15.997274145511195,
+        "stopId": "236_13",
+        "snapped": true
+    },
+    {
+        "name": "Kvaternikov trg",
+        "lat": 45.81494656408282,
+        "lng": 15.997274145511195,
+        "stopId": "236_14",
+        "snapped": true
+    },
+    {
+        "name": "Kvaternikov trg",
+        "lat": 45.81533936905015,
+        "lng": 15.997657611424813,
+        "stopId": "236_2",
+        "snapped": true
+    },
+    {
+        "name": "Lisinski",
+        "lat": 45.800286258343185,
+        "lng": 15.98052598028203,
+        "stopId": "239_1",
+        "snapped": true
+    },
+    {
+        "name": "Lisinski",
+        "lat": 45.80023225485227,
+        "lng": 15.977767465902158,
+        "stopId": "239_2",
+        "snapped": true
+    },
+    {
+        "name": "Ljubijska",
+        "lat": 45.82635627001034,
+        "lng": 16.04523423132163,
+        "stopId": "242_1",
+        "snapped": true
+    },
+    {
+        "name": "Ljubijska",
+        "lat": 45.826024771719595,
+        "lng": 16.04381322029702,
+        "stopId": "242_2",
+        "snapped": true
+    },
+    {
+        "name": "Ljubljanica",
+        "lat": 45.797190225331434,
+        "lng": 15.938373756070044,
+        "stopId": "245_1",
+        "snapped": true
+    },
+    {
+        "name": "Ljubljanica",
+        "lat": 45.7972280885682,
+        "lng": 15.937676598223327,
+        "stopId": "245_12",
+        "snapped": true
+    },
+    {
+        "name": "Ljubljanica",
+        "lat": 45.79727426063551,
+        "lng": 15.937673892241078,
+        "stopId": "245_2",
+        "snapped": true
+    },
+    {
+        "name": "Mandaličina",
+        "lat": 45.81234798056793,
+        "lng": 15.948412966305048,
+        "stopId": "101_1",
+        "snapped": true
+    },
+    {
+        "name": "Mandaličina",
+        "lat": 45.81249533651373,
+        "lng": 15.948892947309142,
+        "stopId": "101_2",
+        "snapped": true
+    },
+    {
+        "name": "Mandlova",
+        "lat": 45.82329491111845,
+        "lng": 16.03622771575579,
+        "stopId": "1787_4",
+        "snapped": true
+    },
+    {
+        "name": "Marijane Radev",
+        "lat": 45.79304754291325,
+        "lng": 15.902167549326364,
+        "stopId": "246_1",
+        "snapped": true
+    },
+    {
+        "name": "Marijane Radev",
+        "lat": 45.79322180878808,
+        "lng": 15.901943514913617,
+        "stopId": "246_2",
+        "snapped": true
+    },
+    {
+        "name": "Mašićeva",
+        "lat": 45.816480423277234,
+        "lng": 16.003347306144118,
+        "stopId": "247_1",
+        "snapped": true
+    },
+    {
+        "name": "Mašićeva",
+        "lat": 45.81660760607669,
+        "lng": 16.00311772770107,
+        "stopId": "247_2",
+        "snapped": true
+    },
+    {
+        "name": "Mihaljevac",
+        "lat": 45.84249990388242,
+        "lng": 15.975203098297012,
+        "stopId": "177_1",
+        "snapped": true
+    },
+    {
+        "name": "Mihaljevac",
+        "lat": 45.84268648237847,
+        "lng": 15.975185295878866,
+        "stopId": "177_2",
+        "snapped": true
+    },
+    {
+        "name": "Mihaljevac",
+        "lat": 45.84185221332802,
+        "lng": 15.974795512592229,
+        "stopId": "177_3",
+        "snapped": true
+    },
+    {
+        "name": "Mihaljevac",
+        "lat": 45.84163026547893,
+        "lng": 15.974595399942734,
+        "stopId": "177_4",
+        "snapped": true
+    },
+    {
+        "name": "Mihaljevac",
+        "lat": 45.841650208183985,
+        "lng": 15.97467447469829,
+        "stopId": "177_5",
+        "snapped": true
+    },
+    {
+        "name": "Miramarska",
+        "lat": 45.80001823892216,
+        "lng": 15.975335811359864,
+        "stopId": "248_1",
+        "snapped": true
+    },
+    {
+        "name": "Miramarska",
+        "lat": 45.80002778575636,
+        "lng": 15.973691730382667,
+        "stopId": "248_2",
+        "snapped": true
+    },
+    {
+        "name": "Most mladosti",
+        "lat": 45.78236786581681,
+        "lng": 16.001499905990382,
+        "stopId": "117_3",
+        "snapped": true
+    },
+    {
+        "name": "Most mladosti",
+        "lat": 45.781868090830926,
+        "lng": 16.001241299712735,
+        "stopId": "117_4",
+        "snapped": true
+    },
+    {
+        "name": "Munja",
+        "lat": 45.792414704592325,
+        "lng": 16.038043173840485,
+        "stopId": "249_3",
+        "snapped": true
+    },
+    {
+        "name": "Munja",
+        "lat": 45.79322995555386,
+        "lng": 16.038487434967145,
+        "stopId": "249_4",
+        "snapped": true
+    },
+    {
+        "name": "Muzej suv.umjetnosti",
+        "lat": 45.7774581810764,
+        "lng": 15.979652784868575,
+        "stopId": "278_1",
+        "snapped": true
+    },
+    {
+        "name": "Muzej suv.umjetnosti",
+        "lat": 45.77759643021537,
+        "lng": 15.980837425333727,
+        "stopId": "278_2",
+        "snapped": true
+    },
+    {
+        "name": "Nehajska",
+        "lat": 45.79868001720304,
+        "lng": 15.94824269150664,
+        "stopId": "250_1",
+        "snapped": true
+    },
+    {
+        "name": "Nehajska",
+        "lat": 45.798428533394016,
+        "lng": 15.946941131180044,
+        "stopId": "250_2",
+        "snapped": true
+    },
+    {
+        "name": "Olipska",
+        "lat": 45.80124404802568,
+        "lng": 15.999522889388711,
+        "stopId": "251_1",
+        "snapped": true
+    },
+    {
+        "name": "Olipska",
+        "lat": 45.80136865709467,
+        "lng": 16.000261909510844,
+        "stopId": "251_2",
+        "snapped": true
+    },
+    {
+        "name": "Park Maksimir",
+        "lat": 45.819518828844274,
+        "lng": 16.01474946879609,
+        "stopId": "1783_11",
+        "snapped": true
+    },
+    {
+        "name": "Park Maksimir",
+        "lat": 45.818941488639524,
+        "lng": 16.013897964670125,
+        "stopId": "197_1",
+        "snapped": true
+    },
+    {
+        "name": "Park Maksimir",
+        "lat": 45.81867618582522,
+        "lng": 16.01212233818003,
+        "stopId": "197_2",
+        "snapped": true
+    },
+    {
+        "name": "Petrova",
+        "lat": 45.813799570917816,
+        "lng": 15.991426736229934,
+        "stopId": "254_1",
+        "snapped": true
+    },
+    {
+        "name": "Petrova",
+        "lat": 45.813952220490755,
+        "lng": 15.991204075260146,
+        "stopId": "254_2",
+        "snapped": true
+    },
+    {
+        "name": "Petrovaradinska",
+        "lat": 45.79237756022829,
+        "lng": 15.906927120158597,
+        "stopId": "255_1",
+        "snapped": true
+    },
+    {
+        "name": "Petrovaradinska",
+        "lat": 45.792602436620186,
+        "lng": 15.9056122581482,
+        "stopId": "255_2",
+        "snapped": true
+    },
+    {
+        "name": "Poljanice IV",
+        "lat": 45.82816281179823,
+        "lng": 16.072781570819675,
+        "stopId": "256_1",
+        "snapped": true
+    },
+    {
+        "name": "Poljanice IV",
+        "lat": 45.8283605623449,
+        "lng": 16.07259334243253,
+        "stopId": "256_2",
+        "snapped": true
+    },
+    {
+        "name": "Prečko",
+        "lat": 45.79432906732867,
+        "lng": 15.893418180634088,
+        "stopId": "259_1",
+        "snapped": true
+    },
+    {
+        "name": "Prečko",
+        "lat": 45.79429501082623,
+        "lng": 15.892711610177637,
+        "stopId": "259_2",
+        "snapped": true
+    },
+    {
+        "name": "Prisavlje",
+        "lat": 45.79148336522522,
+        "lng": 15.956948199361317,
+        "stopId": "262_3",
+        "snapped": true
+    },
+    {
+        "name": "Prisavlje",
+        "lat": 45.790409227909564,
+        "lng": 15.955985796748509,
+        "stopId": "262_4",
+        "snapped": true
+    },
+    {
+        "name": "Radić. šetalište",
+        "lat": 45.831765046714416,
+        "lng": 15.978076816945212,
+        "stopId": "128_3",
+        "snapped": true
+    },
+    {
+        "name": "Radić. šetalište",
+        "lat": 45.831965413623244,
+        "lng": 15.977951909535653,
+        "stopId": "128_4",
+        "snapped": true
+    },
+    {
+        "name": "Radnička",
+        "lat": 45.80145974148363,
+        "lng": 16.003847262502294,
+        "stopId": "263_1",
+        "snapped": true
+    },
+    {
+        "name": "Radnička",
+        "lat": 45.80159075281239,
+        "lng": 16.004579026582437,
+        "stopId": "263_2",
+        "snapped": true
+    },
+    {
+        "name": "Ravnice",
+        "lat": 45.8220782323634,
+        "lng": 16.027661888030305,
+        "stopId": "264_1",
+        "snapped": true
+    },
+    {
+        "name": "Ravnice",
+        "lat": 45.82238989755059,
+        "lng": 16.028342653169528,
+        "stopId": "264_2",
+        "snapped": true
+    },
+    {
+        "name": "Savišće",
+        "lat": 45.789325661112805,
+        "lng": 16.034870824917792,
+        "stopId": "266_3",
+        "snapped": true
+    },
+    {
+        "name": "Savišće",
+        "lat": 45.78907197407176,
+        "lng": 16.0344623087039,
+        "stopId": "266_4",
+        "snapped": true
+    },
+    {
+        "name": "Savski gaj",
+        "lat": 45.77717921396872,
+        "lng": 15.956307765145205,
+        "stopId": "2114_12",
+        "snapped": true
+    },
+    {
+        "name": "Savski gaj",
+        "lat": 45.777067988249506,
+        "lng": 15.956777459573406,
+        "stopId": "269_1",
+        "snapped": true
+    },
+    {
+        "name": "Savski gaj",
+        "lat": 45.77717921396872,
+        "lng": 15.956307765145205,
+        "stopId": "269_2",
+        "snapped": true
+    },
+    {
+        "name": "Savski gaj-rotor",
+        "lat": 45.778089901937264,
+        "lng": 15.952878269364032,
+        "stopId": "226_3",
+        "snapped": true
+    },
+    {
+        "name": "Savski gaj-rotor",
+        "lat": 45.77779268068887,
+        "lng": 15.952727630330989,
+        "stopId": "226_4",
+        "snapped": true
+    },
+    {
+        "name": "Savski most",
+        "lat": 45.786252215023104,
+        "lng": 15.95342706446162,
+        "stopId": "272_3",
+        "snapped": true
+    },
+    {
+        "name": "Savski most",
+        "lat": 45.785110985905945,
+        "lng": 15.952440995219526,
+        "stopId": "272_4",
+        "snapped": true
+    },
+    {
+        "name": "Selska",
+        "lat": 45.797833388503406,
+        "lng": 15.944417683705714,
+        "stopId": "275_1",
+        "snapped": true
+    },
+    {
+        "name": "Selska",
+        "lat": 45.797708624816096,
+        "lng": 15.942367622071357,
+        "stopId": "275_2",
+        "snapped": true
+    },
+    {
+        "name": "Sheraton",
+        "lat": 45.808026622202185,
+        "lng": 15.984482191244933,
+        "stopId": "122_1",
+        "snapped": true
+    },
+    {
+        "name": "Sheraton",
+        "lat": 45.80834819223681,
+        "lng": 15.98391324708109,
+        "stopId": "122_3",
+        "snapped": true
+    },
+    {
+        "name": "Sheraton",
+        "lat": 45.80715565962727,
+        "lng": 15.983802643361875,
+        "stopId": "122_4",
+        "snapped": true
+    },
+    {
+        "name": "Slavenskoga-jug",
+        "lat": 45.79416121980774,
+        "lng": 15.898884906526169,
+        "stopId": "281_1",
+        "snapped": true
+    },
+    {
+        "name": "Slavenskoga-jug",
+        "lat": 45.79431525698001,
+        "lng": 15.898775876621334,
+        "stopId": "281_2",
+        "snapped": true
+    },
+    {
+        "name": "Slovenska",
+        "lat": 45.81238426096277,
+        "lng": 15.951991489846433,
+        "stopId": "102_1",
+        "snapped": true
+    },
+    {
+        "name": "Slovenska",
+        "lat": 45.812538831516974,
+        "lng": 15.952478440729196,
+        "stopId": "102_2",
+        "snapped": true
+    },
+    {
+        "name": "Sopot",
+        "lat": 45.77765518399077,
+        "lng": 15.986792493117077,
+        "stopId": "179_1",
+        "snapped": true
+    },
+    {
+        "name": "Sopot",
+        "lat": 45.77769831951191,
+        "lng": 15.984598137832501,
+        "stopId": "179_2",
+        "snapped": true
+    },
+    {
+        "name": "Sopot",
+        "lat": 45.77769831951191,
+        "lng": 15.984598137832501,
+        "stopId": "1794_12",
+        "snapped": true
+    },
+    {
+        "name": "Središće",
+        "lat": 45.77777677724344,
+        "lng": 15.991393730892877,
+        "stopId": "181_1",
+        "snapped": true
+    },
+    {
+        "name": "Središće",
+        "lat": 45.77782312071158,
+        "lng": 15.989333685122007,
+        "stopId": "181_2",
+        "snapped": true
+    },
+    {
+        "name": "Srednjaci",
+        "lat": 45.788092967525444,
+        "lng": 15.936812341169171,
+        "stopId": "282_1",
+        "snapped": true
+    },
+    {
+        "name": "Srednjaci",
+        "lat": 45.78821973949197,
+        "lng": 15.937521274634243,
+        "stopId": "282_2",
+        "snapped": true
+    },
+    {
+        "name": "St. dom S. Radić",
+        "lat": 45.7863677799399,
+        "lng": 15.95100199576783,
+        "stopId": "287_1",
+        "snapped": true
+    },
+    {
+        "name": "St. dom S. Radić",
+        "lat": 45.786787489043434,
+        "lng": 15.952462221188751,
+        "stopId": "287_2",
+        "snapped": true
+    },
+    {
+        "name": "St. dom S. Radić",
+        "lat": 45.78629220810479,
+        "lng": 15.951781980593422,
+        "stopId": "287_3",
+        "snapped": true
+    },
+    {
+        "name": "Strojarska",
+        "lat": 45.800699526669874,
+        "lng": 15.988804354929298,
+        "stopId": "284_1",
+        "snapped": true
+    },
+    {
+        "name": "Strojarska",
+        "lat": 45.8008381632018,
+        "lng": 15.989749831561472,
+        "stopId": "284_2",
+        "snapped": true
+    },
+    {
+        "name": "Studentski centar",
+        "lat": 45.80289324193656,
+        "lng": 15.964728353381409,
+        "stopId": "288_3",
+        "snapped": true
+    },
+    {
+        "name": "Studentski centar",
+        "lat": 45.80248939009858,
+        "lng": 15.964229062116136,
+        "stopId": "288_4",
+        "snapped": true
+    },
+    {
+        "name": "Šubićeva",
+        "lat": 45.810428355803374,
+        "lng": 15.994282446090345,
+        "stopId": "163_1",
+        "snapped": true
+    },
+    {
+        "name": "Šubićeva",
+        "lat": 45.81027678859308,
+        "lng": 15.992306666485852,
+        "stopId": "163_2",
+        "snapped": true
+    },
+    {
+        "name": "Šubićeva",
+        "lat": 45.8108098138531,
+        "lng": 15.993759083827497,
+        "stopId": "163_3",
+        "snapped": true
+    },
+    {
+        "name": "Šubićeva",
+        "lat": 45.809929482011405,
+        "lng": 15.992854505079551,
+        "stopId": "163_4",
+        "snapped": true
+    },
+    {
+        "name": "Šulekova",
+        "lat": 45.81314780860645,
+        "lng": 16.0044477278775,
+        "stopId": "292_1",
+        "snapped": true
+    },
+    {
+        "name": "Šulekova",
+        "lat": 45.813455002841245,
+        "lng": 16.004959141091682,
+        "stopId": "292_2",
+        "snapped": true
+    },
+    {
+        "name": "Sveti Duh",
+        "lat": 45.81317849596913,
+        "lng": 15.943110511072778,
+        "stopId": "100_1",
+        "snapped": true
+    },
+    {
+        "name": "Sveti Duh",
+        "lat": 45.81363710359584,
+        "lng": 15.941556567045078,
+        "stopId": "100_2",
+        "snapped": true
+    },
+    {
+        "name": "Svetice",
+        "lat": 45.8153706121417,
+        "lng": 16.012771454608068,
+        "stopId": "291_1",
+        "snapped": true
+    },
+    {
+        "name": "Svetice",
+        "lat": 45.81538466676804,
+        "lng": 16.013485981383077,
+        "stopId": "291_2",
+        "snapped": true
+    },
+    {
+        "name": "Sveučilišna al.",
+        "lat": 45.79980694568465,
+        "lng": 15.97115784444882,
+        "stopId": "1375_1",
+        "snapped": true
+    },
+    {
+        "name": "Sveučilišna al.",
+        "lat": 45.799803660993895,
+        "lng": 15.96932198696998,
+        "stopId": "1375_2",
+        "snapped": true
+    },
+    {
+        "name": "Talovčeva",
+        "lat": 45.809650850734535,
+        "lng": 15.956979420238262,
+        "stopId": "293_4",
+        "snapped": true
+    },
+    {
+        "name": "Tehnički muzej",
+        "lat": 45.803234252766444,
+        "lng": 15.964360401960446,
+        "stopId": "294_1",
+        "snapped": true
+    },
+    {
+        "name": "Tehnički muzej",
+        "lat": 45.80344294450704,
+        "lng": 15.963551633004144,
+        "stopId": "294_2",
+        "snapped": true
+    },
+    {
+        "name": "Traumatologija",
+        "lat": 45.81036966345003,
+        "lng": 15.983754150791187,
+        "stopId": "123_3",
+        "snapped": true
+    },
+    {
+        "name": "Traumatologija",
+        "lat": 45.8102773554,
+        "lng": 15.983559262971752,
+        "stopId": "123_4",
+        "snapped": true
+    },
+    {
+        "name": "Trešnjevački trg",
+        "lat": 45.80002915554175,
+        "lng": 15.954806191092372,
+        "stopId": "295_1",
+        "snapped": true
+    },
+    {
+        "name": "Trešnjevački trg",
+        "lat": 45.80010112162937,
+        "lng": 15.954430310056194,
+        "stopId": "295_2",
+        "snapped": true
+    },
+    {
+        "name": "Trg bana J. Jelačića",
+        "lat": 45.8128358063069,
+        "lng": 15.977271011164445,
+        "stopId": "106_1",
+        "snapped": true
+    },
+    {
+        "name": "Trg bana J. Jelačića",
+        "lat": 45.813051030337704,
+        "lng": 15.97660697658029,
+        "stopId": "106_2",
+        "snapped": true
+    },
+    {
+        "name": "Trg dr. F. Tuđmana",
+        "lat": 45.81309935921275,
+        "lng": 15.956922784048942,
+        "stopId": "103_1",
+        "snapped": true
+    },
+    {
+        "name": "Trg dr. F. Tuđmana",
+        "lat": 45.81321589702353,
+        "lng": 15.957785282044783,
+        "stopId": "103_2",
+        "snapped": true
+    },
+    {
+        "name": "Trg dr. F. Tuđmana",
+        "lat": 45.81281174624788,
+        "lng": 15.957469547608815,
+        "stopId": "103_3",
+        "snapped": true
+    },
+    {
+        "name": "Trg hr. velikana",
+        "lat": 45.811500794857544,
+        "lng": 15.98444726789373,
+        "stopId": "296_1",
+        "snapped": true
+    },
+    {
+        "name": "Trg hr. velikana",
+        "lat": 45.81181758515108,
+        "lng": 15.984277999989102,
+        "stopId": "296_2",
+        "snapped": true
+    },
+    {
+        "name": "Trg P. Krešimira",
+        "lat": 45.80812052645727,
+        "lng": 15.99170922002442,
+        "stopId": "297_3",
+        "snapped": true
+    },
+    {
+        "name": "Trg P. Krešimira",
+        "lat": 45.80763040247203,
+        "lng": 15.991626786743307,
+        "stopId": "297_4",
+        "snapped": true
+    },
+    {
+        "name": "Trg Rep. Hrvatske",
+        "lat": 45.80873524677533,
+        "lng": 15.968710368539778,
+        "stopId": "298_3",
+        "snapped": true
+    },
+    {
+        "name": "Trg Rep. Hrvatske",
+        "lat": 45.808515039691606,
+        "lng": 15.968329523438372,
+        "stopId": "298_4",
+        "snapped": true
+    },
+    {
+        "name": "Trg žrt. fašizma",
+        "lat": 45.809410486649675,
+        "lng": 15.987659887528482,
+        "stopId": "299_1",
+        "snapped": true
+    },
+    {
+        "name": "Trg žrt. fašizma",
+        "lat": 45.81004349756325,
+        "lng": 15.98836363277869,
+        "stopId": "299_2",
+        "snapped": true
+    },
+    {
+        "name": "Trnsko",
+        "lat": 45.777072471393325,
+        "lng": 15.965268460038498,
+        "stopId": "302_1",
+        "snapped": true
+    },
+    {
+        "name": "Trnsko",
+        "lat": 45.77716222838802,
+        "lng": 15.964678228798705,
+        "stopId": "302_2",
+        "snapped": true
+    },
+    {
+        "name": "Tržnica Kvatrić",
+        "lat": 45.8139871229151,
+        "lng": 15.996505593899116,
+        "stopId": "303_3",
+        "snapped": true
+    },
+    {
+        "name": "Tržnica Kvatrić",
+        "lat": 45.8123543694615,
+        "lng": 15.99496444361722,
+        "stopId": "303_4",
+        "snapped": true
+    },
+    {
+        "name": "Tuškanova",
+        "lat": 45.811015483875174,
+        "lng": 15.997492824806136,
+        "stopId": "304_1",
+        "snapped": true
+    },
+    {
+        "name": "Tuškanova",
+        "lat": 45.81117353549417,
+        "lng": 15.997786970520194,
+        "stopId": "304_2",
+        "snapped": true
+    },
+    {
+        "name": "Učit. fakultet",
+        "lat": 45.797231410001835,
+        "lng": 15.960870601948919,
+        "stopId": "305_3",
+        "snapped": true
+    },
+    {
+        "name": "Učit. fakultet",
+        "lat": 45.79652627514445,
+        "lng": 15.960163488565765,
+        "stopId": "305_4",
+        "snapped": true
+    },
+    {
+        "name": "Utrina",
+        "lat": 45.77794878205825,
+        "lng": 15.997879122111877,
+        "stopId": "183_1",
+        "snapped": true
+    },
+    {
+        "name": "Utrina",
+        "lat": 45.777992724669886,
+        "lng": 15.9957804520918,
+        "stopId": "183_2",
+        "snapped": true
+    },
+    {
+        "name": "Velesajam",
+        "lat": 45.77724430175294,
+        "lng": 15.971470147100712,
+        "stopId": "308_1",
+        "snapped": true
+    },
+    {
+        "name": "Velesajam",
+        "lat": 45.77732542632132,
+        "lng": 15.970806527771614,
+        "stopId": "308_2",
+        "snapped": true
+    },
+    {
+        "name": "Veslačka",
+        "lat": 45.788838442591164,
+        "lng": 15.955140017770633,
+        "stopId": "309_3",
+        "snapped": true
+    },
+    {
+        "name": "Veslačka",
+        "lat": 45.7886532061557,
+        "lng": 15.954795451705694,
+        "stopId": "309_4",
+        "snapped": true
+    },
+    {
+        "name": "Vjesnik",
+        "lat": 45.79480987503179,
+        "lng": 15.959219970564043,
+        "stopId": "310_3",
+        "snapped": true
+    },
+    {
+        "name": "Vjesnik",
+        "lat": 45.79342990073985,
+        "lng": 15.958046375991941,
+        "stopId": "310_4",
+        "snapped": true
+    },
+    {
+        "name": "Vodnikova",
+        "lat": 45.8053818851985,
+        "lng": 15.967637637015411,
+        "stopId": "224_1",
+        "snapped": true
+    },
+    {
+        "name": "Vodnikova",
+        "lat": 45.80548570275832,
+        "lng": 15.967243579315003,
+        "stopId": "224_2",
+        "snapped": true
+    },
+    {
+        "name": "Vodnikova",
+        "lat": 45.80617928407043,
+        "lng": 15.966974385132342,
+        "stopId": "224_3",
+        "snapped": true
+    },
+    {
+        "name": "Vodnikova",
+        "lat": 45.80591465558799,
+        "lng": 15.966562436132156,
+        "stopId": "224_4",
+        "snapped": true
+    },
+    {
+        "name": "Vončinina",
+        "lat": 45.81366695983137,
+        "lng": 15.986730894191096,
+        "stopId": "311_1",
+        "snapped": true
+    },
+    {
+        "name": "Vončinina",
+        "lat": 45.813808439139976,
+        "lng": 15.986366323909484,
+        "stopId": "311_2",
+        "snapped": true
+    },
+    {
+        "name": "Vrbani",
+        "lat": 45.79159448834439,
+        "lng": 15.914662574563447,
+        "stopId": "265_1",
+        "snapped": true
+    },
+    {
+        "name": "Vrbani",
+        "lat": 45.791863021604,
+        "lng": 15.913004209858352,
+        "stopId": "265_2",
+        "snapped": true
+    },
+    {
+        "name": "Vrbik",
+        "lat": 45.7996233217442,
+        "lng": 15.967585945229834,
+        "stopId": "312_1",
+        "snapped": true
+    },
+    {
+        "name": "Zagrepčanka",
+        "lat": 45.79940272247818,
+        "lng": 15.963313361823845,
+        "stopId": "314_1",
+        "snapped": true
+    },
+    {
+        "name": "Zagrepčanka",
+        "lat": 45.80011014114022,
+        "lng": 15.962831357418086,
+        "stopId": "314_3",
+        "snapped": true
+    },
+    {
+        "name": "Zagrepčanka",
+        "lat": 45.79873066004228,
+        "lng": 15.961666444414089,
+        "stopId": "314_4",
+        "snapped": true
+    },
+    {
+        "name": "Zapadni kolodvor",
+        "lat": 45.80931565189896,
+        "lng": 15.955783137181115,
+        "stopId": "317_1",
+        "snapped": true
+    },
+    {
+        "name": "Zapadni kolodvor",
+        "lat": 45.809500159924305,
+        "lng": 15.954841535000481,
+        "stopId": "317_2",
+        "snapped": true
+    },
+    {
+        "name": "Zapruđe",
+        "lat": 45.77802897790252,
+        "lng": 16.00091815846296,
+        "stopId": "185_1",
+        "snapped": true
+    },
+    {
+        "name": "Zapruđe",
+        "lat": 45.778113021788954,
+        "lng": 16.000324028800414,
+        "stopId": "185_2",
+        "snapped": true
+    },
+    {
+        "name": "Zapruđe",
+        "lat": 45.7795156653391,
+        "lng": 16.001788260050567,
+        "stopId": "185_3",
+        "snapped": true
+    },
+    {
+        "name": "Zapruđe",
+        "lat": 45.779040936500394,
+        "lng": 16.00174143825061,
+        "stopId": "185_4",
+        "snapped": true
+    },
+    {
+        "name": "Žitnjak",
+        "lat": 45.79882870871003,
+        "lng": 16.0347809015598,
+        "stopId": "1781_11",
+        "snapped": true
+    },
+    {
+        "name": "Žitnjak",
+        "lat": 45.79882870871003,
+        "lng": 16.0347809015598,
+        "stopId": "187_1",
+        "snapped": true
+    },
+    {
+        "name": "Žitnjak",
+        "lat": 45.79914827881288,
+        "lng": 16.034376315636287,
+        "stopId": "187_2",
+        "snapped": true
+    },
+    {
+        "name": "Zrinjevac",
+        "lat": 45.809128849225296,
+        "lng": 15.977860148940543,
+        "stopId": "107_3",
+        "snapped": true
+    },
+    {
+        "name": "Zrinjevac",
+        "lat": 45.808976928286306,
+        "lng": 15.977721937827802,
+        "stopId": "107_4",
+        "snapped": true
+    }
+]
