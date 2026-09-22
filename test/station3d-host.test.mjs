@@ -28,8 +28,8 @@ test('planner configures Station3D without exposing campaigns', async () => {
             station3d: {
                 worldProfile: { id: 'example-world', buildings: 'overture' },
                 loadingScreen: {
-                    logoUrl: 'city-pack/brand.svg',
-                    logoAlt: 'Example City',
+                    logoUrl: 'city-pack/example-logo.svg',
+                    logoAlt: 'Example Transit',
                     background: '#102030',
                     foreground: '#f8fafc',
                     accent: '#38bdf8',
@@ -40,10 +40,15 @@ test('planner configures Station3D without exposing campaigns', async () => {
     assert.equal(calls[0][1].id, 'transit-planner-example');
     assert.equal(calls[0][1].worldProfile.id, 'example-world');
     assert.equal(calls[1][1].name, 'Example City Transit Planner');
+    assert.equal(calls[1][1].loadingScreen.logoUrl, 'city-pack/example-logo.svg');
+    assert.equal(calls[1][1].loadingScreen.logoAlt, 'Example Transit');
+    assert.equal(calls[1][1].loadingScreen.background, '#102030');
+    assert.equal(calls[1][1].loadingScreen.foreground, '#f8fafc');
+    assert.equal(calls[1][1].loadingScreen.accent, '#38bdf8');
     assert.equal(calls[1][1].campaigns, false);
     assert.deepEqual({ ...calls[1][1].loadingScreen }, {
-        logoUrl: 'city-pack/brand.svg',
-        logoAlt: 'Example City',
+        logoUrl: 'city-pack/example-logo.svg',
+        logoAlt: 'Example Transit',
         background: '#102030',
         foreground: '#f8fafc',
         accent: '#38bdf8',

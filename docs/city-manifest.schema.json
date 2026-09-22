@@ -145,7 +145,24 @@
       },
       "additionalProperties": false
     },
-    "station3d": { "type": "object" },
+    "station3d": {
+      "type": "object",
+      "properties": {
+        "worldProfile": { "type": "object" },
+        "loadingScreen": {
+          "type": "object",
+          "properties": {
+            "logoUrl": { "type": "string", "minLength": 1 },
+            "logoAlt": { "type": "string" },
+            "background": { "type": "string", "minLength": 1 },
+            "foreground": { "type": "string", "minLength": 1 },
+            "accent": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": true
+    },
     "attributions": {
       "type": "array",
       "items": {

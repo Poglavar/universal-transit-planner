@@ -27,6 +27,22 @@
         }
     }
 
+    const loadingScreen = city.station3d?.loadingScreen;
+    const loadingCurtain = document.querySelector('.station-3d-campaign-curtain');
+    const loadingBrand = loadingCurtain?.querySelector('.station-3d-campaign-curtain-brand');
+    if (loadingBrand && loadingScreen?.logoUrl) {
+        loadingBrand.src = loadingScreen.logoUrl;
+        loadingBrand.alt = loadingScreen.logoAlt || '';
+        loadingBrand.hidden = false;
+    }
+    for (const [field, property] of [
+        ['background', '--station3d-loading-background'],
+        ['foreground', '--station3d-loading-foreground'],
+        ['accent', '--station3d-loading-accent'],
+    ]) {
+        if (loadingScreen?.[field]) loadingCurtain?.style.setProperty(property, loadingScreen[field]);
+    }
+
     const authorInput = document.getElementById('authorInput');
     if (authorInput) {
         authorInput.placeholder = i18n?.currentLanguage === 'hr'
