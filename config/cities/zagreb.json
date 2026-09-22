@@ -114,6 +114,13 @@
     "campaigns": false
   },
   "station3d": {
+    "loadingScreen": {
+      "logoUrl": "city-pack/zagreb-prijevoz-logo.svg",
+      "logoAlt": "Zagreb prijevoz",
+      "background": "#071a2e",
+      "foreground": "#f8fafc",
+      "accent": "#38bdf8"
+    },
     "worldProfile": {
       "id": "croatia",
       "country": "croatia",

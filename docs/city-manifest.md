@@ -14,6 +14,10 @@ Its stable core is:
 - `dataRevision`;
 - optional Station3D world profile and static compatibility datasets.
 
+`station3d.loadingScreen` may provide a product-owned logo and colour palette
+for the engine's shared loading layout. Logo paths resolve from the built page,
+so city-pack assets must ship with the selected deployment.
+
 A feature flag describes honest availability, not UI preference. If `jobs` is
 false, the interface must hide or mark job metrics unavailable. A provider must
 not return zero to make a feature appear supported.

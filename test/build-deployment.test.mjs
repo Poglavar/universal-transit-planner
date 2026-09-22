@@ -37,6 +37,7 @@ test('Zagreb deployment build emits branded metadata and isolated asset base', a
             access(join(output, 'objekti.html')),
             access(join(output, 'objekti.js')),
             access(join(output, 'objekti.css')),
+            access(join(output, 'city-pack/zagreb-prijevoz-logo.svg')),
         ]);
         await assert.rejects(access(join(output, 'json/rail-tunnels-osm.json')));
     } finally {

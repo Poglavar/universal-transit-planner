@@ -1,6 +1,6 @@
 {
   "name": "universal-transit-planner",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "private": true,
   "description": "Terrain-aware transit network design and scenario planning for any city.",
   "license": "MIT",
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "geotiff": "3.0.5",
-    "station3d": "git+https://github.com/Poglavar/station3d.git#v0.1.0-alpha.1"
+    "station3d": "github:Poglavar/station3d#v0.1.0-alpha.2"
   },
   "devDependencies": {
     "@turf/turf": "7.4.0",

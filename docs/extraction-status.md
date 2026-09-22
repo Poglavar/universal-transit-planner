@@ -57,7 +57,7 @@
 - Recorded that DGU separately approved the maintainer's deployed use of its
   terrain data; the data is not redistributed or offered as reusable, while
   all project-authored provider code remains MIT licensed.
-- Pinned Station3D to public tag `v0.1.0-alpha.1`, which builds its distribution
+- Pinned Station3D to public tag `v0.1.0-alpha.2`, which builds its distribution
   during a Git install and no longer requires a sibling checkout.
 - Verified `npm ci`, tests, the portable build and the documented demo command
   from a fresh clone.
