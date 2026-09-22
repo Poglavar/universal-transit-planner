@@ -29,6 +29,14 @@ function isSafePackScript(value) {
         && !value.split('/').includes('..');
 }
 
+function isSafeRelativePath(value) {
+    return typeof value === 'string'
+        && value.length > 0
+        && !value.startsWith('/')
+        && !value.split('/').includes('..')
+        && /^[a-z0-9][a-z0-9._/-]*$/i.test(value);
+}
+
 export function validateCityManifest(city, expectedId = null) {
     const errors = [];
     const add = message => errors.push(message);
@@ -91,11 +99,30 @@ export function validateCityManifest(city, expectedId = null) {
                     add(`cityPack.${phase} must contain safe relative JavaScript paths`);
                 }
             }
+            if (city.cityPack.publicAssets !== undefined) {
+                if (!Array.isArray(city.cityPack.publicAssets)) {
+                    add('cityPack.publicAssets must be an array');
+                } else {
+                    city.cityPack.publicAssets.forEach((asset, index) => {
+                        if (!asset || typeof asset !== 'object' || Array.isArray(asset)
+                            || !isSafeRelativePath(asset.source)
+                            || !isSafeRelativePath(asset.target)) {
+                            add(`cityPack.publicAssets[${index}] must contain safe source and target paths`);
+                        }
+                    });
+                }
+            }
             for (const phase of Object.keys(city.cityPack)) {
-                if (!['prePlanner', 'simulation'].includes(phase)) {
+                if (!['prePlanner', 'simulation', 'publicAssets'].includes(phase)) {
                     add(`cityPack.${phase} is not a supported loading phase`);
                 }
             }
+        }
+    }
+    if (city.objectBrowser !== undefined) {
+        if (!city.objectBrowser || typeof city.objectBrowser !== 'object'
+            || !isSafeRelativePath(city.objectBrowser.path)) {
+            add('objectBrowser.path must be a safe relative path');
         }
     }
 

@@ -38,3 +38,17 @@ test('default world profile selects the global terrain provider contract', async
     const adapter = await commonJsApi('../web/station3d-planner.js');
     assert.equal(adapter.DEFAULT_WORLD_PROFILE.terrain.source, 'copernicus-glo30');
 });
+
+test('legacy explorer links hand off only when a deployment configures a host', async () => {
+    const links = await commonJsApi('../web/station3d-links.js');
+    const source = 'https://planner.example/?st3d=gta&lat=45.8&lon=15.9#view';
+    assert.equal(links.legacyExplorerRedirect(source), null);
+    assert.equal(
+        links.legacyExplorerRedirect(source, { baseUrl: '/explore/' }),
+        'https://planner.example/explore/?st3d=gta&lat=45.8&lon=15.9#view',
+    );
+    assert.equal(
+        links.legacyExplorerRedirect('https://planner.example/?st3d=walk', { baseUrl: '/explore/' }),
+        null,
+    );
+});

@@ -3,7 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
+    <script src="deployment-config.generated.js"></script>
     <script src="station3d-links.js"></script>
+    <script>
+        {
+            const destination = window.__station3DLinks.legacyExplorerRedirect(location.href, {
+                baseUrl: window.__TRANSIT_APP_CONFIG__?.externalExplorerBaseUrl,
+            });
+            if (destination) location.replace(destination);
+        }
+    </script>
     <script>
         document.documentElement.classList.add('i18n-pending');
         window.setTimeout(() => document.documentElement.classList.remove('i18n-pending'), 2000);
@@ -39,6 +48,7 @@
         <div class="nav-row">
             <a href="leaderboard.html" id="leaderboardNavLink" class="nav-pill"
                 data-requires-capability="persistence">Ljestvica</a>
+            <a id="objectBrowserNavLink" class="nav-pill" hidden></a>
             <div class="language-switch" role="group" aria-label="Language">
                 <button type="button" data-language="en" aria-label="Use English">EN</button>
                 <button type="button" data-language="hr" aria-label="Koristi hrvatski">HR</button>

@@ -1,0 +1,49 @@
+name: Release static builds
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - name: Build portable example
+        env:
+          TRANSIT_CITY: example
+          TRANSIT_DIST_DIR: release/example
+        run: npm run build
+      - name: Build Zagreb deployment
+        env:
+          TRANSIT_CITY: zagreb
+          TRANSIT_DIST_DIR: release/zagreb
+          TRANSIT_ASSET_BASE_PATH: /prijevoz/utp/
+          TRANSIT_PUBLIC_URL: https://zagreb.lol/prijevoz/
+          TRANSIT_API_BASE_URL: /prijevoz/api
+          TRANSIT_VALHALLA_ISOCHRONE_URL: /prijevoz/api/isochrone
+          TRANSIT_EXTERNAL_EXPLORER_URL: /sloboda/
+        run: npm run build
+      - name: Package checksummed artifacts
+        run: |
+          cp release/example/transit.html release/example/index.html
+          cp release/zagreb/transit.html release/zagreb/index.html
+          tar -C release/example -czf "universal-transit-planner-${GITHUB_REF_NAME}-example.tar.gz" .
+          tar -C release/zagreb -czf "universal-transit-planner-${GITHUB_REF_NAME}-zagreb.tar.gz" .
+          sha256sum universal-transit-planner-*.tar.gz > SHA256SUMS
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          gh release create "${GITHUB_REF_NAME}"
+          universal-transit-planner-*.tar.gz SHA256SUMS
+          --generate-notes

@@ -14,6 +14,23 @@
   "timezone": "Europe/Zagreb",
   "currency": "EUR",
   "units": "metric",
+  "branding": {
+    "productName": "Zagreb transit planner",
+    "plannerTitle": "Zagreb transit planner",
+    "description": "Design and compare terrain-aware public transport lines in Zagreb.",
+    "siteName": "zagreb.lol",
+    "logo": "city-pack/zagreb-logo.svg",
+    "logoAlt": "zagreb.lol",
+    "socialImage": "transit-social-preview.svg"
+  },
+  "objectBrowser": {
+    "path": "objekti.html",
+    "datasets": {
+      "tunnels": "/prijevoz/json/rail-tunnels-osm.json",
+      "railwayObjects": "/prijevoz/json/repozdrav.json",
+      "reconstructionRuns": "/prijevoz/json/rail-reconstruction-runs.json"
+    }
+  },
   "providers": {
     "apiBaseUrl": null,
     "valhallaIsochroneUrl": null,
@@ -36,7 +53,13 @@
   },
   "cityPack": {
     "prePlanner": ["croatia-boundary.js", "location-registry.js"],
-    "simulation": ["railway-sim.js", "tram-sim.js"]
+    "simulation": ["railway-sim.js", "tram-sim.js"],
+    "publicAssets": [
+      { "source": "object-browser/objekti.html", "target": "objekti.html" },
+      { "source": "object-browser/objekti.js", "target": "objekti.js" },
+      { "source": "object-browser/objekti.css", "target": "objekti.css" },
+      { "source": "object-browser/ortho-pane-zoom.js", "target": "ortho-pane-zoom.js" }
+    ]
   },
   "referenceSimulation": {
     "locationIds": ["zagreb"],

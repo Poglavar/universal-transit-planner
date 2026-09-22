@@ -2872,7 +2872,14 @@ function rideCabToTrackChainage(track, dM) {
     train.pauseRemainingSeconds = 0;
     train.pausedStationId = null;
     updateTrainMarker(train, line);
-    openPlannerTrainCab(train, line);
+    train._cabRidden = true;
+    train._cabStepMs = null;
+    try {
+        if (!openPlannerTrainCab(train, line)) train._cabRidden = false;
+    } catch (error) {
+        train._cabRidden = false;
+        throw error;
+    }
 }
 
 function setElevationHoverMarker(latlng) {
@@ -13127,6 +13134,10 @@ async function applyPlannerCab3DLink(options = {}) {
     train.pauseRemainingSeconds = 0;
     train.pausedStationId = null;
     updateTrainMarker(train, line);
+    // Hold the exact deeplink offset while proposal data is fetched. The map
+    // animation must not advance this train before the cab owns it.
+    train._cabRidden = true;
+    train._cabStepMs = null;
     // ?plan= (or ?proposals=) rides along: the walk deeplink already resolves
     // it, and a cab over the same corridor without the plan is bare karst —
     // measured on the Šibenik flight, where the whole district was missing.
@@ -13139,10 +13150,18 @@ async function applyPlannerCab3DLink(options = {}) {
     } catch (error) {
         console.warn('[planner-cab] plan proposals failed to load:', error?.message || error);
     }
-    if (!openPlannerTrainCab(train, line, {
-        proposalIds: planProposals ? planProposals.proposalIds : null,
-        prefetchedProposals: planProposals ? planProposals.loaded : null,
-    })) {
+    let opened = false;
+    try {
+        opened = openPlannerTrainCab(train, line, {
+            proposalIds: planProposals ? planProposals.proposalIds : null,
+            prefetchedProposals: planProposals ? planProposals.loaded : null,
+        });
+    } catch (error) {
+        train._cabRidden = false;
+        throw error;
+    }
+    if (!opened) {
+        train._cabRidden = false;
         throw new Error('Otvaranje kabine prijedloga nije uspjelo.');
     }
     setStatusMessage(`Otvorena kabina na liniji ${escapeHtml(line.number ?? line.id)}.`);

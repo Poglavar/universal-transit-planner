@@ -88,6 +88,24 @@ test('city-pack script phases accept only safe relative JavaScript paths', () =>
     assert.deepEqual(validateCityManifest(valid, 'example'), []);
 });
 
+test('city-pack public assets stay inside the pack and output roots', () => {
+    const valid = structuredClone(example);
+    valid.cityPack = {
+        publicAssets: [{ source: 'object-browser/index.html', target: 'objects.html' }],
+    };
+    assert.deepEqual(validateCityManifest(valid, 'example'), []);
+
+    const invalid = structuredClone(valid);
+    invalid.cityPack.publicAssets[0].source = '../private.txt';
+    assert.ok(validateCityManifest(invalid).some(error => error.includes('safe source and target')));
+});
+
+test('optional companion tool paths cannot escape the selected build', () => {
+    const invalid = structuredClone(zagreb);
+    invalid.objectBrowser.path = '../objekti.html';
+    assert.ok(validateCityManifest(invalid).some(error => error.includes('objectBrowser.path')));
+});
+
 test('local terrain configuration declares source identity', () => {
     assert.deepEqual(zagreb.providers.terrain, ['best-available', 'dgu-dtm-20m']);
     assert.equal(zagreb.station3d.worldProfile.terrain.source, 'dgu-dtm-20m');

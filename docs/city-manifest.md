@@ -58,6 +58,17 @@ registry before the generic manifest registry runs; simulation scripts load
 after the planner composition root. Core HTML must never name a pack script or
 dataset directly.
 
+`cityPack.publicAssets` can expose optional city-pack pages and their code at
+safe relative output paths. It is intended for small companion tools such as
+the Zagreb railway object browser. Dataset URLs remain manifest configuration;
+the build does not imply permission to redistribute a deployment's source data.
+
+Deployment builds can set `TRANSIT_ASSET_BASE_PATH`, `TRANSIT_PUBLIC_URL`,
+`TRANSIT_API_BASE_URL`, `TRANSIT_VALHALLA_ISOCHRONE_URL` and
+`TRANSIT_EXTERNAL_EXPLORER_URL`. The generated deployment config keeps an
+artifact's asset namespace separate from sibling products and lets legacy
+explorer links hand off without embedding campaign code in the planner.
+
 Local static-data URLs in the manifest point at `city-pack/data/...`. Network
 defaults such as electrification, API compatibility field names and provider
 labels are manifest data rather than branches on `city.id`.

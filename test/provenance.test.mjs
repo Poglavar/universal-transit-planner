@@ -25,6 +25,15 @@ test('every checked-in documentation image has a provenance record', async () =>
     }
 });
 
+test('the public object browser does not redistribute deployment-only datasets', async () => {
+    const entries = await readdir(new URL('city-packs/zagreb/object-browser/', rootUrl), {
+        withFileTypes: true,
+    });
+    assert.equal(entries.some(entry => entry.name === 'json'), false);
+    const notice = await readFile(new URL('THIRD_PARTY_NOTICES.md', rootUrl), 'utf8');
+    assert.match(notice, /object-browser[\s\S]*deployment-supplied[\s\S]*not\s+redistributed/);
+});
+
 test('package metadata and repository licence agree on MIT', async () => {
     const packageJson = JSON.parse(await readFile(new URL('package.json', rootUrl), 'utf8'));
     const license = await readFile(new URL('LICENSE', rootUrl), 'utf8');

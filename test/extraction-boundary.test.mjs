@@ -30,7 +30,7 @@ test('every checked-in local script and stylesheet referenced by the planner she
         .map(match => match[1])
         .filter(path => !/^(?:[a-z][a-z0-9+.-]*:|\/)/i.test(path))
         .filter(path => !path.startsWith('vendor/'))
-        .filter(path => path !== 'city-config.generated.js');
+        .filter(path => !['city-config.generated.js', 'deployment-config.generated.js'].includes(path));
     for (const path of refs) {
         assert.equal((await stat(new URL(path, webUrl))).isFile(), true, path);
     }
@@ -45,4 +45,5 @@ test('the reusable planner metadata and header have no deployment-specific publi
     assert.doesNotMatch(social, /zagreb\.lol|\/prijevoz|zagreb-logo\.svg/);
     assert.match(html, /city-capabilities\.js/);
     assert.match(html, /city-branding\.js/);
+    assert.match(html, /legacyExplorerRedirect[\s\S]*location\.replace/);
 });

@@ -12,9 +12,8 @@
       `npm ci && npm run dev` path.
 - [x] Keep campaign code and assets out of the planner distribution (enforced
       by `test/extraction-boundary.test.mjs`).
-- [x] Pass all 41 tests and the portable build from a clean checkout.
+- [x] Pass the complete unit suite and both portable and Zagreb builds from a clean checkout.
 - [x] Render all manifest provider attribution in the application.
 - [x] Add security policy, code of conduct and issue templates.
-- [ ] Squash the incubation history before making the repository public; the
-      current private history contains legacy personal contact details that are
-      absent from the release tree.
+- [x] Publish the repository from a single sanitized root commit; the private
+      incubation history remains in a separate private archive.

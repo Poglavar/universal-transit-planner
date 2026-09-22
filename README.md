@@ -1,7 +1,7 @@
 # Universal Transit Planner
 
-Universal Transit Planner is a terrain-aware workspace for designing
-public-transport networks, being prepared for an open-source release. Draw
+Universal Transit Planner is an open-source, terrain-aware workspace for designing
+public-transport networks. Draw
 tracks and stations, inspect vertical alignment and civil works, estimate
 catchments and costs, compare proposals, and explore the same network in 3D.
 
@@ -23,6 +23,7 @@ three-dimensional terrain and alignment data.
 - calculate walking catchments through a routing provider;
 - save, share and compare proposals through an optional persistence provider;
 - open the designed network in the independently packaged Station3D engine;
+- ship optional city-pack companion tools, such as a railway object browser;
 - present the planner in English or Croatian, selected from the URL, a saved
   choice, or the reader's browser language.
 
@@ -56,7 +57,7 @@ Image provenance and reproducible deep links are in
 
 ## Status
 
-The project is in pre-release alpha. The map editor, terrain profile workflow,
+The project is in public alpha. The map editor, terrain profile workflow,
 cost model, proposal comparison and Station3D integration are functional. The
 city/provider boundary is now explicit and the portable example has a working
 global terrain profile provider, but a turnkey city bootstrap is not ready yet.
@@ -67,7 +68,7 @@ The largest remaining pieces are:
 - generic OSM/Valhalla city bootstrap;
 - GTFS and global population/activity adapters;
 - portable pricing and vehicle presets;
-- finalized regional data provenance and a turnkey deployment guide.
+- a turnkey deployment guide.
 
 See [docs/extraction-status.md](docs/extraction-status.md) for the working
 migration checklist.

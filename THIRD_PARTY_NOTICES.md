@@ -42,6 +42,12 @@ derived extracts.
 | `city-packs/zagreb/data/zagreb_tram_segments_gtfs.json` | Derived from ZET GTFS shapes, stops and schedules | Open Licence – The Republic of Croatia | Cleared with attribution |
 | `city-packs/zagreb/data/zagreb_rail_schedule.json` | HŽPP GTFS timetable | [HŽPP publishes the feed](https://hzpp.hr/hr/vozni-red); free reuse permission was confirmed directly with HŽPP and the correspondence is retained privately by the project maintainer | Cleared by direct permission |
 
+The MIT-licensed railway object-browser implementation lives under
+`city-packs/zagreb/object-browser/`. Its HŽ/OSM comparison extracts and
+saved-project reconstruction export are deployment-supplied and are not
+redistributed by this repository. A deployment must configure cleared dataset
+URLs in `objectBrowser.datasets`.
+
 Zagreb's DGU terrain data is accessed only by the maintainer's existing
 deployment and is not redistributed by this repository. DGU approved that
 deployment separately. The approval does not make the terrain data reusable:

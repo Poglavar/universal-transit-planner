@@ -57,6 +57,9 @@
     const reliefViewerBaseUrl = override.reliefViewerBaseUrl
         ? stripTrailingSlash(override.reliefViewerBaseUrl)
         : null;
+    const externalExplorerBaseUrl = override.externalExplorerBaseUrl
+        ? stripTrailingSlash(override.externalExplorerBaseUrl)
+        : null;
 
     window.__TRANSIT_RUNTIME_CONFIG__ = Object.freeze({
         city,
@@ -72,6 +75,7 @@
                 || fallbackApiBaseUrl)
             : null,
         reliefViewerBaseUrl,
+        externalExplorerBaseUrl,
         // Cesium ion token override hook: lets the token be rotated via config
         // (window.__TRANSIT_APP_CONFIG__) instead of editing source. null means
         // "no override" — the Station3D consumer keeps its

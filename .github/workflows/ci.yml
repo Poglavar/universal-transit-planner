@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - name: Build portable example
+        run: TRANSIT_CITY=example TRANSIT_DIST_DIR=dist/example npm run build
+      - name: Build Zagreb city pack
+        run: TRANSIT_CITY=zagreb TRANSIT_DIST_DIR=dist/zagreb npm run build

@@ -1,0 +1,139 @@
+<!doctype html>
+<!-- Zagreb railway object viewer. Dataset URLs and the optional orthophoto
+     provider come from the selected deployment's city configuration; the UTP
+     repository does not redistribute those deployment-owned extracts. -->
+<html lang="hr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Željeznički objekti</title>
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='8' y='20' width='48' height='30' rx='15' fill='%23455a64'/%3E%3Crect x='16' y='28' width='32' height='22' rx='8' fill='%23263238'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <link rel="stylesheet" href="objekti.css?v=20260801-6">
+</head>
+<body>
+    <header class="obj-header">
+        <strong>Željeznički objekti</strong>
+        <div id="objTabs" class="obj-tabs" role="tablist" aria-label="Podaci">
+            <button type="button" data-tab="tuneli" class="is-active">Tuneli</button>
+            <button type="button" data-tab="pruge">Pruge</button>
+            <button type="button" data-tab="stanice">Stanice</button>
+            <button type="button" data-tab="zcpr">ŽCPR</button>
+            <button type="button" data-tab="tablice">Tablice ŽCPR</button>
+        </div>
+        <span id="objSummary" class="obj-summary"></span>
+        <div id="tunnelsFilters" class="obj-filters" role="group" aria-label="Filtri">
+            <button type="button" data-filter="all" class="is-active">Svi</button>
+            <button type="button" data-filter="diff">Razlike</button>
+            <button type="button" data-filter="missing">Nema u OSM</button>
+        </div>
+    </header>
+    <main class="obj-layout">
+        <section class="obj-list" aria-label="Popis">
+            <div id="panel-tuneli" class="obj-panel">
+                <table id="tunnelsTable">
+                    <thead>
+                        <tr>
+                            <th>Pruga</th>
+                            <th>Tunel</th>
+                            <th class="num">Stac [km]</th>
+                            <th class="num">Duljina [m]</th>
+                            <th>OSM way</th>
+                            <th class="num">OSM stac [km]</th>
+                            <th class="num">OSM dulj. [m]</th>
+                            <th class="num">Δdulj.</th>
+                            <th>Pouzdanost</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tunnelsBody"></tbody>
+                </table>
+                <details id="extrasDetails">
+                    <summary>Tuneli u OSM-u bez retka u popisu (<span id="extrasCount"></span>)</summary>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Pruga</th>
+                                <th>OSM ime</th>
+                                <th>OSM way</th>
+                                <th class="num">OSM stac [km]</th>
+                                <th class="num">Duljina [m]</th>
+                                <th>Status pruge</th>
+                            </tr>
+                        </thead>
+                        <tbody id="extrasBody"></tbody>
+                    </table>
+                </details>
+            </div>
+            <div id="panel-pruge" class="obj-panel" hidden>
+                <table>
+                    <thead>
+                        <tr><th>Kategorija</th><th>Pruga</th><th>Naziv</th><th class="num">km</th></tr>
+                    </thead>
+                    <tbody id="body-pruge"></tbody>
+                </table>
+            </div>
+            <div id="panel-stanice" class="obj-panel" hidden>
+                <table>
+                    <thead>
+                        <tr><th>Pruga</th><th class="num">Stac</th><th>Naziv</th><th>Tip</th></tr>
+                    </thead>
+                    <tbody id="body-stanice"></tbody>
+                </table>
+            </div>
+            <div id="panel-zcpr" class="obj-panel" hidden>
+                <table>
+                    <thead>
+                        <tr><th>Pruga</th><th class="num">Stac</th><th>Broj</th><th>Naziv</th></tr>
+                    </thead>
+                    <tbody id="body-zcpr"></tbody>
+                </table>
+            </div>
+            <div id="panel-tablice" class="obj-panel" hidden>
+                <table>
+                    <thead>
+                        <tr><th>Broj</th><th>Pruga</th><th class="num">Stac</th><th>Cesta</th>
+                            <th>Županija</th><th>Općina</th><th>Osiguranje</th><th>Opis</th></tr>
+                    </thead>
+                    <tbody id="body-tablice"></tbody>
+                </table>
+            </div>
+            <p id="objMeta" class="obj-meta"></p>
+        </section>
+        <section class="obj-map-pane" aria-label="Karte">
+            <div class="map-upper">
+                <div id="objMap"></div>
+                <div id="mapViewToggle" class="map-view-toggle" role="group" aria-label="Prikaz karte">
+                    <button type="button" data-view="data" class="is-active">Podaci</button>
+                    <button type="button" data-view="route">Rekonstrukcija</button>
+                </div>
+            </div>
+            <div class="map-lower">
+                <div id="orthoMap"></div>
+                <div id="reliefMap" hidden></div>
+                <div id="lowerViewToggle" class="map-view-toggle" role="group" aria-label="Podloga donje karte">
+                    <button type="button" data-lower="ortho" class="is-active">Ortofoto</button>
+                    <button type="button" data-lower="relief">Reljef</button>
+                </div>
+                <select id="dofVintage" class="dof-vintage" aria-label="Godište ortofota"></select>
+            </div>
+        </section>
+    </main>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- Reduced-motion support: after Leaflet, before any map is constructed -->
+    <script src="reduced-motion.js"></script>
+    <script src="https://unpkg.com/proj4@2.11.0/dist/proj4.js"
+        integrity="sha256-SXX79BH6wYQsW5HTYtMj0/AcoMtSOFouohl5D/qiCoA=" crossorigin=""></script>
+    <script src="https://unpkg.com/proj4leaflet@1.0.2/src/proj4leaflet.js"
+        integrity="sha256-/bf+R9zVlOfIMNDuNpTviLQDJTcmjcLztY9JodcWHBI=" crossorigin=""></script>
+    <script src="deployment-config.generated.js"></script>
+    <script src="city-config.generated.js"></script>
+    <script src="city-capabilities.js"></script>
+    <script src="runtime-config.js"></script>
+    <script src="terrain-map-layer.js?v=20260802-1"></script>
+    <script src="ortho-pane-zoom.js?v=20260801-1"></script>
+    <script src="objekti.js?v=20260801-8"></script>
+</body>
+</html>

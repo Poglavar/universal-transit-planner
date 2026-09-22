@@ -1,0 +1,208 @@
+/* Styles for the railway objects viewer (objekti.html): tab bar in the header,
+   the active tab's list on the left; on the right the data/reconstruction map
+   above and the location-synced DGU ortofoto below. */
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font: 14px/1.4 -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: #212121;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.obj-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 8px 12px;
+    border-bottom: 1px solid #ddd;
+    background: #fafafa;
+}
+
+.obj-summary { color: #555; }
+
+.obj-tabs button,
+.obj-filters button {
+    border: 1px solid #bbb;
+    background: #fff;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin-right: 4px;
+    cursor: pointer;
+    font: inherit;
+}
+
+.obj-tabs button.is-active,
+.obj-filters button.is-active {
+    background: #1565c0;
+    border-color: #1565c0;
+    color: #fff;
+}
+
+.obj-layout {
+    flex: 1;
+    display: flex;
+    min-height: 0;
+}
+
+.obj-list {
+    flex: 0 0 50%;
+    max-width: 50%;
+    overflow: auto;
+    padding: 8px;
+}
+
+/* Right half: data/reconstruction map on top, DGU ortofoto below. */
+.obj-map-pane {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.map-upper, .map-lower { flex: 1 1 50%; min-height: 0; position: relative; }
+.map-lower { border-top: 1px solid #bbb; }
+
+#objMap, #orthoMap, #reliefMap { width: 100%; height: 100%; }
+
+.map-view-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1100;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.map-view-toggle button {
+    border: none;
+    background: #fff;
+    padding: 4px 10px;
+    cursor: pointer;
+    font: inherit;
+    font-size: 12px;
+}
+
+.map-view-toggle button + button { border-left: 1px solid #ddd; }
+
+.map-view-toggle button.is-active {
+    background: #1565c0;
+    color: #fff;
+}
+
+/* Ortofoto vintage picker in the lower map pane, below the podloga toggle. */
+.dof-vintage {
+    position: absolute;
+    top: 44px;
+    right: 10px;
+    z-index: 1100;
+    font: inherit;
+    font-size: 12px;
+    padding: 3px 6px;
+    border: none;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 3px 6px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    white-space: nowrap;
+}
+
+th { position: sticky; top: 0; background: #fff; border-bottom: 2px solid #ccc; }
+
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+tbody tr { cursor: pointer; }
+tbody tr:hover { background: #f0f6ff; }
+tbody tr.is-selected { background: #dbeaff; }
+tbody tr.is-missing { background: #fdecea; }
+tbody tr.is-missing:hover { background: #fbdcd8; }
+tbody tr.no-location { color: #999; }
+
+.confidence,
+.badge {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 9px;
+    font-size: 12px;
+    color: #fff;
+    background: #757575;
+}
+
+.confidence.high { background: #2e7d32; }
+.confidence.medium { background: #f9a825; color: #333; }
+.confidence.low { background: #e65100; }
+.confidence.missing { background: #c62828; }
+
+td .delta-bad { color: #c62828; font-weight: 600; }
+
+td a { color: #1565c0; text-decoration: none; }
+td a:hover { text-decoration: underline; }
+
+#extrasDetails { margin-top: 14px; }
+#extrasDetails summary { cursor: pointer; color: #555; padding: 4px 0; }
+
+.obj-meta { color: #888; font-size: 12px; }
+
+/* Click popups: the 3D walk link on the upper map, the DGU elevation
+   readout on the relief map. */
+.walk-link-popup a {
+    color: #1565c0;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.walk-link-popup a:hover { text-decoration: underline; }
+
+.elevation-popup strong { font-size: 14px; }
+
+.elevation-popup .elevation-meta {
+    color: #777;
+    font-size: 11px;
+    margin-left: 6px;
+}
+
+.map-legend {
+    background: #fff;
+    padding: 5px 9px;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.map-legend .legend-osm,
+.map-legend .legend-popis {
+    display: inline-block;
+    width: 18px;
+    height: 5px;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+.map-legend .legend-osm { background: #2e7d32; }
+.map-legend .legend-popis { background: #e53935; }
+
+@media (max-width: 800px) {
+    .obj-layout { flex-direction: column; }
+    .obj-list { flex: 1; max-width: none; order: 2; }
+    .obj-map-pane { flex: 0 0 62vh; order: 1; }
+    th, td { padding: 3px 4px; }
+}

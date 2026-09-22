@@ -49,6 +49,28 @@
       "additionalProperties": true
     },
     "staticData": { "type": "object" },
+    "branding": {
+      "type": "object",
+      "properties": {
+        "productName": { "type": "string", "minLength": 1 },
+        "plannerTitle": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 },
+        "siteName": { "type": "string", "minLength": 1 },
+        "logo": { "type": "string", "minLength": 1 },
+        "logoAlt": { "type": "string" },
+        "socialImage": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "objectBrowser": {
+      "type": "object",
+      "required": ["path", "datasets"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "datasets": { "type": "object" }
+      },
+      "additionalProperties": true
+    },
     "cityPack": {
       "type": "object",
       "properties": {
@@ -59,6 +81,18 @@
         "simulation": {
           "type": "array",
           "items": { "type": "string", "pattern": "^(?:[A-Za-z0-9][A-Za-z0-9._-]*/)*[A-Za-z0-9][A-Za-z0-9._-]*\\.js$" }
+        },
+        "publicAssets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["source", "target"],
+            "properties": {
+              "source": { "type": "string", "minLength": 1 },
+              "target": { "type": "string", "minLength": 1 }
+            },
+            "additionalProperties": false
+          }
         }
       },
       "additionalProperties": false

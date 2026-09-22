@@ -30,7 +30,19 @@
         });
     }
 
-    function legacyExplorerRedirect() { return null; }
+    function legacyExplorerRedirect(currentUrl, options = {}) {
+        const url = new URL(currentUrl);
+        const mode = (url.searchParams.get('st3d') || '').trim().toLowerCase();
+        if (!['gta', 'campaign'].includes(mode)) return null;
+        const configured = options.baseUrl
+            || globalThis.__TRANSIT_RUNTIME_CONFIG__?.externalExplorerBaseUrl
+            || globalThis.__TRANSIT_APP_CONFIG__?.externalExplorerBaseUrl;
+        if (!configured) return null;
+        const destination = new URL(configured, url.origin);
+        destination.search = url.search;
+        destination.hash = url.hash;
+        return destination.href;
+    }
 
     return Object.freeze({ parseSessionQuery, legacyExplorerRedirect });
 }));
