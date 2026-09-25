@@ -1,6 +1,6 @@
 {
   "name": "universal-transit-planner",
-  "version": "0.1.0-alpha.5",
+  "version": "0.1.0-alpha.6",
   "private": true,
   "description": "Terrain-aware transit network design and scenario planning for any city.",
   "license": "MIT",
