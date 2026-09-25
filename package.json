@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "geotiff": "3.0.5",
-    "station3d": "github:Poglavar/station3d#v0.1.0-alpha.4"
+    "station3d": "github:Poglavar/station3d#v0.1.0-alpha.5"
   },
   "devDependencies": {
     "@turf/turf": "7.4.0",
