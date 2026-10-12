@@ -9,8 +9,12 @@
     // device, where the keyboard half of the sentence is noise and there is no
     // click, only a tap. Returns { lead, key, rest } — `key` is rendered as a
     // keycap between the two halves — or null.
-    function plannerCabHint({ hasTrain, coarsePointer } = {}) {
+    function plannerCabHint({ hasTrain, coarsePointer, language = 'hr' } = {}) {
         if (!hasTrain) return null;
+        if (language === 'en') {
+            if (coarsePointer) return { lead: 'Tap the train icon to enter the cab', key: null, rest: '' };
+            return { lead: 'Press', key: 'K', rest: 'to enter the cab, or click the train icon' };
+        }
         if (coarsePointer) return { lead: 'Dodirni ikonu vlaka za ulaz u kabinu', key: null, rest: '' };
         return { lead: 'Pritisni', key: 'K', rest: 'za ulaz u kabinu, ili klikni na ikonu vlaka' };
     }

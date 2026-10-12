@@ -10,6 +10,24 @@
 
     const MESSAGES = Object.freeze({
         en: Object.freeze({
+            finishAction: "✓ Finish",
+            newTrack: "＋ New track",
+            newStation: "＋ New station",
+            editNetwork: "✎ Edit network",
+            newTrackLabel: "New track",
+            finishTrackLabel: "Finish new track",
+            newStationLabel: "New station",
+            finishStationLabel: "Finish new station",
+            editNetworkLabel: "Edit network",
+            finishNetworkLabel: "Finish editing the network",
+            finishTrackHint: "Finish or cancel the track using the icons beside its last point.",
+            openReliefHint: "Open this proposal in the 3D terrain viewer",
+            saveReliefChangesHint: "Save your changes to see them in the terrain viewer",
+            saveReliefProjectHint: "Save the project before opening it in the 3D viewer",
+            heatmapPopulationStatus: "Heatmap: {count} buildings with population data.",
+            heatmapJobsStatus: "Heatmap: {count} buildings with jobs data.",
+            loading: "Loading…",
+            comingSoon: "Coming soon",
             cityPlannerTitle: '{city} — Universal Transit Planner',
             leaderboardTitle: '{city} — Project leaderboard',
             projectLoaded: 'Project “{name}” loaded.',
@@ -19,6 +37,24 @@
             close: 'Close',
         }),
         hr: Object.freeze({
+            finishAction: "✓ Završi",
+            newTrack: "＋ Nova trasa",
+            newStation: "＋ Nova stanica",
+            editNetwork: "✎ Uredi mrežu",
+            newTrackLabel: "Nova trasa",
+            finishTrackLabel: "Završi novu trasu",
+            newStationLabel: "Nova stanica",
+            finishStationLabel: "Završi novu stanicu",
+            editNetworkLabel: "Uredi mrežu",
+            finishNetworkLabel: "Završi uređivanje mreže",
+            finishTrackHint: "Završite ili otkažite trasu ikonama uz posljednju točku.",
+            openReliefHint: "Otvori ovaj prijedlog u 3D pregledniku reljefa",
+            saveReliefChangesHint: "Spremite izmjene da biste ih vidjeli u pregledniku reljefa",
+            saveReliefProjectHint: "Spremite projekt da biste ga otvorili u pregledniku reljefa",
+            heatmapPopulationStatus: "Toplinska karta: {count} zgrada s stanovnika.",
+            heatmapJobsStatus: "Toplinska karta: {count} zgrada s radnih mjesta.",
+            loading: "Ucitavam...",
+            comingSoon: "Uskoro",
             cityPlannerTitle: '{city} — Planer javnog prijevoza',
             leaderboardTitle: '{city} — Ljestvica projekata',
             projectLoaded: 'Projekt „{name}” učitan.',
@@ -545,6 +581,9 @@
                     + 'locally without changing server data.';
             }
             translateTree(documentRef.body, documentRef);
+        }
+        for (const element of documentRef.querySelectorAll('[data-i18n]')) {
+            element.textContent = t(element.dataset.i18n);
         }
         decorateInternalLinks(documentRef);
         renderLanguageControls(documentRef);

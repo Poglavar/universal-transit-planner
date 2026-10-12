@@ -9,7 +9,7 @@
         document.documentElement.classList.add('i18n-pending');
         window.setTimeout(() => document.documentElement.classList.remove('i18n-pending'), 2000);
     </script>
-    <script src="i18n.js"></script>
+    <script src="i18n.js?v=20261012-1"></script>
     <link rel="icon"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23007bff'/%3E%3Ccircle cx='32' cy='32' r='14' fill='white' fill-opacity='0.9'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23ff4d4d'/%3E%3C/svg%3E">
     <!-- The 📋 object-bill table, shared with transit.html -->
@@ -754,7 +754,7 @@
         <div class="prices-modal civil-objects-modal">
             <h2 id="objectsModalTitle">Objekti na mreži</h2>
             <div id="objectsContent" class="civil-objects-content">
-                <div class="loading">Ucitavam...</div>
+                <div class="loading" data-i18n="loading">Ucitavam...</div>
             </div>
             <div class="modal-actions">
                 <div class="modal-actions-right">
@@ -777,7 +777,7 @@
     </div>
 
     <div id="content">
-        <div class="loading">Ucitavam...</div>
+        <div class="loading" data-i18n="loading">Ucitavam...</div>
     </div>
 
     <!-- The object model behind both the price list and the 📋 bill of
@@ -796,7 +796,7 @@
     <script src="city-branding.js"></script>
     <script src="leaderboard-format.js?v=20260803-1"></script>
     <script src="project-export.js?v=20260803-1"></script>
-    <script src="leaderboard.js?v=20260803-1"></script>
+    <script src="leaderboard.js?v=20261012-1"></script>
 </body>
 
 </html>
