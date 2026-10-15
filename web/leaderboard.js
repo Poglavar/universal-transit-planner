@@ -37,9 +37,23 @@
         openPricesBtn?.setAttribute('hidden', '');
         return;
     }
+    const leaderboardDataApi = window.__leaderboardApi.createClient({ apiBaseUrl: API_BASE_URL });
     const pendingVotes = new Set();
     const pendingExports = new Set();
     const projectDetailCache = new Map();
+    const previewQueue = window.__leaderboardApi.createLazyPreviewQueue({
+        concurrency: 2,
+        load: fetchProjectDetail,
+        isCurrent: (cell, projectId) => Boolean(cell?.isConnected && contentDiv.contains(cell)
+            && cell.dataset.projectId === String(projectId)),
+        onLoad: (cell, _projectId, detail) => {
+            const preview = generateNetworkThumbnail(detail?.project_data);
+            cell.innerHTML = preview || '<span title="No network geometry is available">—</span>';
+        },
+        onError: cell => {
+            cell.innerHTML = '<button type="button" class="network-preview-retry" aria-label="Retry network preview" title="Preview failed; click to retry">↻</button>';
+        },
+    });
     const RANK_MEDALS = ['🥇', '🥈', '🥉'];
     const VOTE_STORAGE_KEY = 'transit-leaderboard-votes-v1';
     const DEFAULT_PRICING = pricingApi ? { ...pricingApi.DEFAULT_PRICING } : {
@@ -219,6 +233,32 @@
         return svg;
     }
 
+    function networkThumbnailMarkup(project) {
+        const preview = generateNetworkThumbnail(project?.project_data);
+        return preview || `<button type="button" class="network-preview-load" aria-label="Load network preview" title="Load network preview">↻</button>`;
+    }
+
+    function observeNetworkThumbnails() {
+        contentDiv.querySelectorAll('.network-thumb[data-project-id]').forEach(cell => {
+            const projectId = cell.dataset.projectId;
+            const project = findProjectById(Number(projectId), currentProjects, serverProjects, unrankedProjects, existingProjects);
+            if (project?.project_data) {
+                cell.innerHTML = generateNetworkThumbnail(project.project_data) || '<span title="No network geometry is available">—</span>';
+                return;
+            }
+            previewQueue.observe(cell, projectId);
+        });
+    }
+
+    contentDiv.addEventListener('click', event => {
+        const button = event.target.closest('.network-preview-load, .network-preview-retry');
+        if (!button) return;
+        const cell = button.closest('.network-thumb[data-project-id]');
+        if (!cell) return;
+        event.stopPropagation();
+        previewQueue.retry(cell, cell.dataset.projectId);
+    });
+
     function compareNullableNumbers(left, right) {
         const normalizedLeft = Number.isFinite(Number(left)) ? Number(left) : null;
         const normalizedRight = Number.isFinite(Number(right)) ? Number(right) : null;
@@ -395,13 +435,7 @@
     }
 
     async function fetchProjectDetail(projectId) {
-        const response = await fetch(`${API_BASE_URL}/transit/projects/${projectId}`, {
-            cache: 'no-store',
-        });
-        if (!response.ok) {
-            throw new Error(`Projekt ${projectId} nije dostupan (${response.status})`);
-        }
-        const detail = await response.json();
+        const detail = await leaderboardDataApi.fetchProjectDetail(projectId);
         cacheProjectDetail(detail);
         return detail;
     }
@@ -744,9 +778,9 @@
     }
 
     function tabCountUrl(tab) {
-        if (tab === 'unranked') return `${API_BASE_URL}/transit/unranked`;
+        if (tab === 'unranked') return `${API_BASE_URL}/transit/unranked?view=summary&limit=100&offset=0`;
         if (tab === 'existing') return `${API_BASE_URL}/transit/reference-projects`;
-        return `${API_BASE_URL}/transit/leaderboard?sort=${encodeURIComponent(currentSortKey)}`;
+        return `${API_BASE_URL}/transit/leaderboard?sort=${encodeURIComponent(currentSortKey)}&view=summary`;
     }
 
     // Populate all three counters without forcing the reader to open every tab.
@@ -851,6 +885,7 @@
 
     function renderExisting() {
         if (activeTab !== 'existing') return;
+        previewQueue.reset();
         if (existingProjects.length === 0) {
             contentDiv.innerHTML = '<div class="empty">Nema rekonstruiranih postojećih pruga.</div>';
             return;
@@ -865,7 +900,7 @@
         existingProjects.forEach((project) => {
             const refs = Array.isArray(project.refs) ? project.refs : [];
             html += `<tr class="project-row" data-project-id="${project.id}">
-                <td class="network-thumb">${generateNetworkThumbnail(project.project_data)}</td>
+                <td class="network-thumb" data-project-id="${project.id}">${networkThumbnailMarkup(project)}</td>
                 <td class="author-cell">${projectNameMarkup(project)}</td>
                 <td class="existing-ref">${escapeHtml(refs.join(', '))}</td>
                 <td>${escapeHtml(project.location || '')}</td>
@@ -877,6 +912,7 @@
         });
         html += '</tbody></table></div>';
         contentDiv.innerHTML = html;
+        observeNetworkThumbnails();
         attachObjectsButtons();
         attachExportButtons();
         attachSecondaryTabSort('existing', renderExisting);
@@ -886,9 +922,7 @@
     async function loadUnranked() {
         contentDiv.innerHTML = '<div class="loading">Ucitavam...</div>';
         try {
-            const response = await fetch(`${API_BASE_URL}/transit/unranked`, { cache: 'no-store' });
-            if (!response.ok) throw new Error(`Greska: ${response.status}`);
-            unrankedProjects = await response.json();
+            unrankedProjects = (await leaderboardDataApi.fetchUnranked()).map(applyCachedProjectDetail);
         } catch (error) {
             contentDiv.innerHTML = `<div class="error">${escapeHtml(error.message)}</div>`;
             return;
@@ -899,6 +933,7 @@
 
     function renderUnranked() {
         if (activeTab !== 'unranked') return;
+        previewQueue.reset();
         if (unrankedProjects.length === 0) {
             contentDiv.innerHTML = '<div class="empty">Nema nerangiranih projekata.</div>';
             return;
@@ -914,7 +949,7 @@
         unrankedProjects.forEach((project) => {
             const isRanking = rankingIds.has(project.id);
             html += `<tr class="project-row" data-project-id="${project.id}">
-                <td class="network-thumb">${generateNetworkThumbnail(project.project_data)}</td>
+                <td class="network-thumb" data-project-id="${project.id}">${networkThumbnailMarkup(project)}</td>
                 <td class="author-cell">${projectNameMarkup(project)}</td>
                 <td>${Number(project.total_length_km).toFixed(1)} km</td>
                 <td>${formatCost(project.total_cost_eur)} &euro; ${objectsButtonMarkup(project.id)}</td>
@@ -931,6 +966,7 @@
         });
         html += '</tbody></table></div>';
         contentDiv.innerHTML = html;
+        observeNetworkThumbnails();
         attachObjectsButtons();
         attachExportButtons();
         attachSecondaryTabSort('unranked', renderUnranked);
@@ -993,6 +1029,7 @@
     }
 
     function renderLeaderboard() {
+        previewQueue.reset();
         if (currentProjects.length === 0) {
             contentDiv.innerHTML = `<div class="empty">Nema projekata. <a href="${escapeAttribute(getPlannerBaseHref())}">Kreirajte prvi!</a></div>`;
             return;
@@ -1022,7 +1059,7 @@
             const isPending = pendingVotes.has(project.id);
             html += `<tr class="project-row" data-project-id="${project.id}">
                 <td class="rank">${getRankMarkup(rank)}</td>
-                <td class="network-thumb">${generateNetworkThumbnail(project.project_data)}</td>
+                <td class="network-thumb" data-project-id="${project.id}">${networkThumbnailMarkup(project)}</td>
                 <td class="author-cell">${projectNameMarkup(project)}</td>
                 <td>${Number(project.total_length_km).toFixed(1)} km</td>
                 <td>${formatCost(project.total_cost_eur)} &euro; ${objectsButtonMarkup(project.id)}</td>
@@ -1060,6 +1097,7 @@
 
         html += '</tbody></table></div>';
         contentDiv.innerHTML = html;
+        observeNetworkThumbnails();
         attachLeaderboardEvents();
     }
 
@@ -1271,13 +1309,8 @@
         }
 
         try {
-            const response = await fetch(`${API_BASE_URL}/transit/leaderboard?sort=${sort}`, { cache: 'no-store' });
-            if (!response.ok) throw new Error(`Greska: ${response.status}`);
-            const payload = await response.json();
-            serverProjects = (Array.isArray(payload) ? payload : []).map(project => {
-                cacheProjectDetail(project);
-                return applyCachedProjectDetail(project);
-            });
+            const payload = await leaderboardDataApi.fetchLeaderboard(sort);
+            serverProjects = payload.map(applyCachedProjectDetail);
             updateTabCount('ranked', serverProjects.length);
         } catch (error) {
             contentDiv.innerHTML = `<div class="error">${error.message}</div>`;

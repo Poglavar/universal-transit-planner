@@ -16114,7 +16114,7 @@ const initialProjectLoadPromise = (async () => {
 })();
 (async () => {
     try {
-        const resp = await fetch(`${API_BASE_URL}/transit/leaderboard?sort=cost_per_person`, { cache: 'no-store' });
+        const resp = await fetch(`${API_BASE_URL}/transit/leaderboard?sort=cost_per_person&view=summary`, { cache: 'no-store' });
         if (!resp.ok) return;
         const projects = await resp.json();
         if (!Array.isArray(projects)) return;
