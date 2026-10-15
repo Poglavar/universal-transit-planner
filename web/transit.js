@@ -4576,29 +4576,29 @@ function syncMapActionButtons() {
         const hasUnfinishedTrack = currentMode === 'drawLine' && hasDraftLine();
         toggleTrackDrawingBtn.classList.toggle('active', active);
         toggleTrackDrawingBtn.setAttribute('aria-pressed', String(active));
-        toggleTrackDrawingBtn.textContent = active ? '✓ Završi' : '＋ Nova trasa';
-        toggleTrackDrawingBtn.setAttribute('aria-label', active ? 'Završi novu trasu' : 'Nova trasa');
+        toggleTrackDrawingBtn.textContent = I18N.t(active ? 'finishAction' : 'newTrack');
+        toggleTrackDrawingBtn.setAttribute('aria-label', I18N.t(active ? 'finishTrackLabel' : 'newTrackLabel'));
         toggleTrackDrawingBtn.disabled = !canEdit || hasUnfinishedTrack;
         toggleTrackDrawingBtn.title = hasUnfinishedTrack
-            ? 'Završite ili otkažite trasu ikonama uz posljednju točku.'
+            ? I18N.t('finishTrackHint')
             : '';
     }
     if (toggleStationPlacementBtn) {
         const active = currentMode === 'placeStation';
         toggleStationPlacementBtn.classList.toggle('active', active);
         toggleStationPlacementBtn.setAttribute('aria-pressed', String(active));
-        toggleStationPlacementBtn.textContent = active ? '✓ Završi' : '＋ Nova stanica';
-        toggleStationPlacementBtn.setAttribute('aria-label', active ? 'Završi novu stanicu' : 'Nova stanica');
+        toggleStationPlacementBtn.textContent = I18N.t(active ? 'finishAction' : 'newStation');
+        toggleStationPlacementBtn.setAttribute('aria-label', I18N.t(active ? 'finishStationLabel' : 'newStationLabel'));
         toggleStationPlacementBtn.disabled = !canEdit;
     }
     if (toggleRouteEditingBtn) {
         const active = currentMode === 'edit';
         toggleRouteEditingBtn.classList.toggle('active', active);
         toggleRouteEditingBtn.setAttribute('aria-pressed', String(active));
-        toggleRouteEditingBtn.textContent = active ? '✓ Završi' : '✎ Uredi mrežu';
+        toggleRouteEditingBtn.textContent = I18N.t(active ? 'finishAction' : 'editNetwork');
         toggleRouteEditingBtn.setAttribute(
             'aria-label',
-            active ? 'Završi uređivanje mreže' : 'Uredi mrežu',
+            I18N.t(active ? 'finishNetworkLabel' : 'editNetworkLabel'),
         );
         toggleRouteEditingBtn.disabled = !canEdit;
     }
@@ -8961,6 +8961,7 @@ function showPlannerCabHint() {
     const hint = window.__plannerCabHint.plannerCabHint({
         hasTrain: Boolean(window.__plannerCabTarget.pickCabTarget(project, null)),
         coarsePointer: window.matchMedia('(pointer: coarse)').matches,
+        language: UI_LANGUAGE,
     });
     if (!hint) return;
     plannerCabHintEl.replaceChildren(hint.lead);
@@ -9362,7 +9363,9 @@ async function loadHeatmap(field, options = {}) {
 
         activeHeatmapField = field;
         if (!preserveStatus) {
-            setStatusMessage(`Toplinska karta: ${points.length.toLocaleString(UI_LOCALE)} zgrada s ${config.label}.`);
+            setStatusMessage(I18N.t(field === 'residents' ? 'heatmapPopulationStatus' : 'heatmapJobsStatus', {
+                count: points.length.toLocaleString(UI_LOCALE),
+            }));
         }
     } catch (error) {
         if (token !== heatmapRequestToken) return;
@@ -12257,10 +12260,10 @@ function refreshReliefViewerButton() {
     const ready = Boolean(savedProjectId) && !projectDirty;
     openReliefViewerBtn.disabled = !ready;
     openReliefViewerBtn.title = ready
-        ? 'Otvori ovaj prijedlog u 3D pregledniku reljefa'
+        ? I18N.t('openReliefHint')
         : (savedProjectId
-            ? 'Spremite izmjene da biste ih vidjeli u pregledniku reljefa'
-            : 'Spremite projekt da biste ga otvorili u pregledniku reljefa');
+            ? I18N.t('saveReliefChangesHint')
+            : I18N.t('saveReliefProjectHint'));
 }
 
 if (openReliefViewerBtn) {

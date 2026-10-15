@@ -640,7 +640,7 @@
         if (!objectsModal) return;
         objectsProjectId = projectId;
         objectsModal.classList.remove('hidden');
-        objectsContent.innerHTML = '<div class="loading">Ucitavam...</div>';
+        objectsContent.innerHTML = `<div class="loading">${i18n.t('loading')}</div>`;
         let project = findProjectById(
             projectId,
             currentProjects,
@@ -870,7 +870,7 @@
     // existing rail the sims and the 3D world draw as reference geometry is NOT
     // a project and never appears here.
     async function loadExisting() {
-        contentDiv.innerHTML = '<div class="loading">Ucitavam...</div>';
+        contentDiv.innerHTML = `<div class="loading">${i18n.t('loading')}</div>`;
         try {
             const response = await fetch(`${API_BASE_URL}/transit/reference-projects`, { cache: 'no-store' });
             if (!response.ok) throw new Error(`Greska: ${response.status}`);
@@ -920,7 +920,7 @@
     }
 
     async function loadUnranked() {
-        contentDiv.innerHTML = '<div class="loading">Ucitavam...</div>';
+        contentDiv.innerHTML = `<div class="loading">${i18n.t('loading')}</div>`;
         try {
             unrankedProjects = (await leaderboardDataApi.fetchUnranked()).map(applyCachedProjectDetail);
         } catch (error) {
@@ -1180,7 +1180,7 @@
             const helpText = isConfigurable
                 ? formatPricingPreview(field, activePricing[field.key])
                 : (field.fixedHelp || 'Jos nije moguce podesavati ovu stavku.');
-            const lockedValue = isFixed ? `×${field.fixedValue}` : 'Uskoro';
+            const lockedValue = isFixed ? `×${field.fixedValue}` : i18n.t('comingSoon');
 
             return `<div class="price-card ${isConfigurable ? '' : 'disabled'}">
                 <div class="price-card-header">
@@ -1305,7 +1305,7 @@
     async function loadLeaderboard(sort, options = {}) {
         const { preserveContent = false } = options;
         if (!preserveContent) {
-            contentDiv.innerHTML = '<div class="loading">Ucitavam...</div>';
+            contentDiv.innerHTML = `<div class="loading">${i18n.t('loading')}</div>`;
         }
 
         try {
