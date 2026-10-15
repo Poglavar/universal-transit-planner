@@ -43,7 +43,9 @@ npm run build
 npm run dev
 ```
 
-Do not run browser test suites unless the user explicitly asks. For a visual
+Headless test suites need no approval. Ask before a headed full suite the user has
+not asked for, and name the test type (headless or headed) whenever a run is
+mentioned. For a visual
 change, inspect it in a dedicated headed browser and close that browser after.
 
 ## Change discipline
