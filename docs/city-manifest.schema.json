@@ -58,7 +58,11 @@
         "siteName": { "type": "string", "minLength": 1 },
         "logo": { "type": "string", "minLength": 1 },
         "logoAlt": { "type": "string" },
-        "socialImage": { "type": "string", "minLength": 1 }
+        "socialImage": { "type": "string", "minLength": 1 },
+        "socialImageAlt": { "type": "string", "minLength": 1 },
+        "socialImageWidth": { "type": "integer", "minimum": 1 },
+        "socialImageHeight": { "type": "integer", "minimum": 1 },
+        "themeColor": { "type": "string", "minLength": 1 }
       },
       "additionalProperties": false
     },

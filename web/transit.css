@@ -95,7 +95,7 @@ button *,
     font: 700 10px/1 Arial, sans-serif;
     letter-spacing: 0.06em;
 }
-.sidebar-header h2 { margin: 0; }
+.sidebar-header h1 { margin: 0; font-size: 1.2rem; }
 .language-switch {
     display: inline-flex;
     align-items: center;

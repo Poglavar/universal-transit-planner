@@ -115,6 +115,51 @@ function replaceMeta(html, selector, content) {
     return html.replace(pattern, `$1${escaped}$2`);
 }
 
+const imageTypes = { '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.svg': 'image/svg+xml' };
+
+// Search and share tags a city brand can add beyond the template's own: robots, locale,
+// theme colour, share-image type and size, and the Twitter image alt text.
+function searchHeadTags(branding, socialImage) {
+    const tags = ['<meta name="robots" content="index, follow, max-image-preview:large">'];
+    if (city.locale) tags.push(`<meta property="og:locale" content="${escapeAttribute(city.locale.replace('-', '_'))}">`);
+    if (branding.themeColor) tags.push(`<meta name="theme-color" content="${escapeAttribute(branding.themeColor)}">`);
+    const extension = String(socialImage || '').split(/[?#]/)[0].match(/\.[a-z]+$/i)?.[0].toLowerCase();
+    if (imageTypes[extension]) tags.push(`<meta property="og:image:type" content="${imageTypes[extension]}">`);
+    if (branding.socialImageWidth) tags.push(`<meta property="og:image:width" content="${branding.socialImageWidth}">`);
+    if (branding.socialImageHeight) tags.push(`<meta property="og:image:height" content="${branding.socialImageHeight}">`);
+    if (branding.socialImageAlt) tags.push(`<meta name="twitter:image:alt" content="${escapeAttribute(branding.socialImageAlt)}">`);
+    return tags.map(tag => `    ${tag}`).join('\n');
+}
+
+// WebApplication JSON-LD for a public deployment, with the site root as its parent.
+function structuredData(title, description, socialImage, language) {
+    const branding = city.branding || {};
+    const siteUrl = new URL('/', deployment.publicUrl).href;
+    const siteName = branding.siteName || 'Universal Transit Planner';
+    const name = title.endsWith(` | ${siteName}`) ? title.slice(0, -` | ${siteName}`.length) : title;
+    const data = {
+        '@context': 'https://schema.org',
+        '@type': 'WebApplication',
+        name,
+        url: deployment.publicUrl,
+        description,
+        inLanguage: language,
+        image: socialImage,
+        applicationCategory: 'DesignApplication',
+        operatingSystem: 'Any',
+        isPartOf: { '@type': 'WebSite', name: siteName, url: siteUrl },
+        breadcrumb: {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+                { '@type': 'ListItem', position: 1, name: siteName, item: siteUrl },
+                { '@type': 'ListItem', position: 2, name, item: deployment.publicUrl },
+            ],
+        },
+    };
+    const json = JSON.stringify(data, null, 4).replace(/</g, '\\u003c');
+    return `    <script type="application/ld+json">\n${json}\n    </script>\n`;
+}
+
 function brandHtml(filename) {
     const path = resolve(output, filename);
     if (!existsSync(path)) return;
@@ -128,7 +173,11 @@ function brandHtml(filename) {
         const title = branding.plannerTitle || `${city.name} — Universal Transit Planner`;
         const description = branding.description;
         const socialImage = absoluteAssetUrl(branding.socialImage || 'transit-social-preview.svg');
+        const language = String(city.locale || 'en').split('-')[0];
+        html = html.replace(/<html lang="[^"]*">/i, `<html lang="${escapeAttribute(language)}">`);
         html = html.replace(/<title>[^<]*<\/title>/i, `<title>${escapeText(title)}</title>`);
+        html = html.replace('</title>', `</title>\n${searchHeadTags(branding, socialImage)}`);
+        html = replaceMeta(html, 'property="og:image:alt"', branding.socialImageAlt);
         html = replaceMeta(html, 'name="description"', description);
         html = replaceMeta(html, 'property="og:site_name"', branding.siteName || 'Universal Transit Planner');
         html = replaceMeta(html, 'property="og:title"', title);
@@ -141,6 +190,7 @@ function brandHtml(filename) {
             const publicUrl = escapeAttribute(deployment.publicUrl);
             html = html.replace('</title>', `</title>\n    <link rel="canonical" href="${publicUrl}">`);
             html = html.replace('</head>', `    <meta property="og:url" content="${publicUrl}">\n</head>`);
+            html = html.replace('</head>', `${structuredData(title, description, socialImage, language)}</head>`);
         }
     }
     writeFileSync(path, html);

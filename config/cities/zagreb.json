@@ -16,12 +16,16 @@
   "units": "metric",
   "branding": {
     "productName": "Zagreb transit planner",
-    "plannerTitle": "Zagreb transit planner",
-    "description": "Design and compare terrain-aware public transport lines in Zagreb.",
+    "plannerTitle": "Planer javnog prijevoza za Zagreb | zagreb.lol",
+    "description": "Planer javnog prijevoza za Zagreb: crtajte tramvajske i željezničke trase po stvarnom terenu, postavljajte stanice i usporedite troškove i doseg prijedloga.",
     "siteName": "zagreb.lol",
     "logo": "city-pack/zagreb-logo.svg",
     "logoAlt": "zagreb.lol",
-    "socialImage": "transit-social-preview.svg"
+    "socialImage": "https://zagreb.lol/prijevoz/og-image.png?v=20261017-1",
+    "socialImageAlt": "Planer javnog prijevoza za Zagreb — zagreb.lol",
+    "socialImageWidth": 1200,
+    "socialImageHeight": 630,
+    "themeColor": "#007bff"
   },
   "objectBrowser": {
     "path": "objekti.html",

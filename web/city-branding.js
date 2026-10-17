@@ -7,9 +7,13 @@
     const i18n = window.__transitI18n;
 
     document.documentElement.lang = i18n?.currentLanguage || String(city.locale || 'en').split('-')[0];
-    document.title = page === 'leaderboard'
-        ? (i18n?.t('leaderboardTitle', { city: cityName }) || `${cityName} — Project leaderboard`)
-        : (i18n?.t('cityPlannerTitle', { city: cityName }) || `${cityName} — ${product}`);
+    // A city that brands its planner title gets it written into the static HTML at build
+    // time; keep it, so search engines index the same title the page was served with.
+    if (page === 'leaderboard') {
+        document.title = i18n?.t('leaderboardTitle', { city: cityName }) || `${cityName} — Project leaderboard`;
+    } else if (!branding.plannerTitle) {
+        document.title = i18n?.t('cityPlannerTitle', { city: cityName }) || `${cityName} — ${product}`;
+    }
 
     for (const element of document.querySelectorAll('[data-city-name]')) {
         element.textContent = cityName;
@@ -65,7 +69,7 @@
 
     const heading = page === 'leaderboard'
         ? document.querySelector('.page-header h1')
-        : document.querySelector('.sidebar-header h2');
+        : document.querySelector('.sidebar-header h1');
     if (heading) {
         heading.textContent = page === 'leaderboard'
             ? `${cityName} — ${i18n?.currentLanguage === 'hr' ? 'ljestvica projekata' : 'Project leaderboard'}`
