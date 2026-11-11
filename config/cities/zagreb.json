@@ -138,6 +138,10 @@
       "passengers": false,
       "roadIndexUrl": null,
       "water": true,
+      "plannedBuildings": {
+        "endpoint": "veleprojekti/future-buildings",
+        "radiusM": 1500
+      },
       "styleFrom": "nearest-city",
       "terrain": {
         "surfaceStyle": "grass",
@@ -173,6 +177,10 @@
       "name": "Državna geodetska uprava",
       "url": "https://dgu.gov.hr/",
       "license": "Use approved separately for this deployment"
+    },
+    {
+      "name": "Ministarstvo prostornoga uređenja, graditeljstva i državne imovine (ISPU)",
+      "url": "https://ispu.mgipu.hr/"
     }
   ],
   "dataRevision": "zagreb-compat-2026-09"

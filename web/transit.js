@@ -9755,6 +9755,7 @@ async function applyWalk3DLink(options = {}) {
         headingDeg = 0,
         pitchDeg = 0,
         proposalIds = null,
+        plannedBuildings = false,
     } = options;
     if (!Number.isFinite(lat) || !Number.isFinite(lon)) {
         throw new Error('Za 3D šetnju trebate zadati lat i lon.');
@@ -9792,6 +9793,7 @@ async function applyWalk3DLink(options = {}) {
         initialLookPitchDeg: pitchDeg,
         proposalIds: proposalRail.proposalIds.length > 0 ? proposalRail.proposalIds : proposalIds,
         prefetchedProposals: proposalRail.prefetchedProposals,
+        plannedBuildings,
     });
     setStatusMessage('Otvorena 3D šetnja na podijeljenoj lokaciji.');
     return true;
@@ -16161,6 +16163,7 @@ const initialProjectLoadPromise = (async () => {
             headingDeg: Number.isFinite(linkedWalkHeadingParam) ? linkedWalkHeadingParam : 0,
             pitchDeg: Number.isFinite(linkedWalkPitchParam) ? linkedWalkPitchParam : 0,
             proposalIds: linkedWalkProposalsParam.length > 0 ? linkedWalkProposalsParam : null,
+            plannedBuildings: station3DSessionLink.plannedBuildings,
         }).catch(error => {
             console.error('3D walk deeplink failed:', error);
             setStatusMessage(error.message, true);

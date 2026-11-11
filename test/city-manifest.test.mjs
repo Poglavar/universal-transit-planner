@@ -117,6 +117,38 @@ test('Station3D loading branding uses a local city-pack asset', () => {
     )));
 });
 
+test('planned buildings are requested from a path below the planner API', () => {
+    assert.deepEqual(zagreb.station3d.worldProfile.plannedBuildings, {
+        endpoint: 'veleprojekti/future-buildings',
+        radiusM: 1500,
+    });
+    assert.ok(zagreb.attributions.some(attribution => attribution.url === 'https://ispu.mgipu.hr/'));
+
+    const withoutRadius = structuredClone(zagreb);
+    delete withoutRadius.station3d.worldProfile.plannedBuildings.radiusM;
+    assert.deepEqual(validateCityManifest(withoutRadius, 'zagreb'), []);
+
+    for (const endpoint of ['https://elsewhere.example/buildings', '/veleprojekti/future-buildings', '../future-buildings', '', undefined]) {
+        const invalid = structuredClone(zagreb);
+        invalid.station3d.worldProfile.plannedBuildings.endpoint = endpoint;
+        assert.ok(validateCityManifest(invalid, 'zagreb').some(error => (
+            error.includes('station3d.worldProfile.plannedBuildings.endpoint')
+        )), `endpoint ${JSON.stringify(endpoint)} must be rejected`);
+    }
+    for (const radiusM of [0, -200, '1500', null, Number.NaN]) {
+        const invalid = structuredClone(zagreb);
+        invalid.station3d.worldProfile.plannedBuildings.radiusM = radiusM;
+        assert.ok(validateCityManifest(invalid, 'zagreb').some(error => (
+            error.includes('station3d.worldProfile.plannedBuildings.radiusM')
+        )), `radiusM ${String(radiusM)} must be rejected`);
+    }
+    const notAnObject = structuredClone(zagreb);
+    notAnObject.station3d.worldProfile.plannedBuildings = 'veleprojekti/future-buildings';
+    assert.ok(validateCityManifest(notAnObject, 'zagreb').some(error => (
+        error.includes('station3d.worldProfile.plannedBuildings must be an object')
+    )));
+});
+
 test('local terrain configuration declares source identity', () => {
     assert.deepEqual(zagreb.providers.terrain, ['best-available', 'dgu-dtm-20m']);
     assert.equal(zagreb.station3d.worldProfile.terrain.source, 'dgu-dtm-20m');

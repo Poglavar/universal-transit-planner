@@ -55,6 +55,14 @@ every other use or deployment must obtain its own approval from DGU. The
 planner, terrain-provider interfaces and integration code are project-authored
 MIT code and may be reused independently of the DGU data.
 
+Zagreb's planned buildings (`station3d.worldProfile.plannedBuildings`, shown by
+a `?future=1` walk) are requested at run time from the maintainer's deployment
+and are not redistributed by this repository. Their outlines are the building
+outlines of permits published in ISPU by the Ministry of Physical Planning,
+Construction and State Assets. Their heights are estimates made by that
+deployment from the storeys or floor area the permit states, or from published
+renders.
+
 `city-packs/zagreb/zagreb-logo.svg` and
 `city-packs/zagreb/zagreb-prijevoz-logo.svg` are project-authored media created
 by the project maintainer and released under the repository's MIT licence. The

@@ -82,3 +82,10 @@ city/product `logoUrl` and three palette values: `background`, `foreground` and
 `accent`. The engine keeps a neutral unbranded default. A local logo belongs in
 the selected city pack and is copied with that pack; other consumers should
 supply their own identity rather than modifying the shared Station3D shell.
+
+`station3d.worldProfile.plannedBuildings` optionally offers buildings that will
+be built: `{ "endpoint": "<path below the planner API base>", "radiusM": 1500 }`.
+A walk link with `future=1` then shows those around its start in place of what
+stands on their plots. The endpoint answers `?bbox=…` with a GeoJSON
+`FeatureCollection` of building outlines carrying `properties.height_m`; see
+Station3D's provider contract. Without the field, `future=1` changes nothing.

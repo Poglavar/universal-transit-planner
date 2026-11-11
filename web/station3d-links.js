@@ -27,6 +27,9 @@
                 ? params.get('railProfile') : null,
             proposalIds: (params.get('proposals') || '')
                 .split(',').map(value => value.trim()).filter(Boolean),
+            // ?future=1: a walk also shows the buildings the city's world profile
+            // offers as planned (station3d.worldProfile.plannedBuildings).
+            plannedBuildings: params.get('future') === '1',
         });
     }
 

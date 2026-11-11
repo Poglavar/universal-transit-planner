@@ -6,7 +6,7 @@ import vm from 'node:vm';
 async function commonJsApi(path) {
     const source = await readFile(new URL(path, import.meta.url), 'utf8');
     const module = { exports: {} };
-    const context = vm.createContext({ module, URL, Promise, console });
+    const context = vm.createContext({ module, URL, URLSearchParams, Promise, console });
     vm.runInContext(source, context, { filename: path });
     return module.exports;
 }
@@ -58,6 +58,30 @@ test('planner configures Station3D without exposing campaigns', async () => {
 test('default world profile selects the global terrain provider contract', async () => {
     const adapter = await commonJsApi('../web/station3d-planner.js');
     assert.equal(adapter.DEFAULT_WORLD_PROFILE.terrain.source, 'copernicus-glo30');
+});
+
+test('a walk link asks for planned buildings only with future=1', async () => {
+    const links = await commonJsApi('../web/station3d-links.js');
+    const link = links.parseSessionQuery('?st3d=walk&lat=45.8&lon=15.9&future=1');
+    assert.equal(link.mode, 'walk');
+    assert.equal(link.plannedBuildings, true);
+    assert.equal(links.parseSessionQuery('?st3d=walk&lat=45.8&lon=15.9').plannedBuildings, false);
+    assert.equal(links.parseSessionQuery('?st3d=walk&lat=45.8&lon=15.9&future=0').plannedBuildings, false);
+    assert.equal(links.parseSessionQuery('?st3d=walk&lat=45.8&lon=15.9&future=true').plannedBuildings, false);
+});
+
+test('the walk deeplink hands the planned-buildings request to Station3D', async () => {
+    const transit = await readFile(new URL('../web/transit.js', import.meta.url), 'utf8');
+    const from = transit.indexOf('async function applyWalk3DLink');
+    const to = transit.indexOf('function consensusApiBaseForWalkLink', from);
+    assert.ok(from !== -1 && to !== -1, 'applyWalk3DLink is in transit.js');
+    const body = transit.slice(from, to);
+    assert.match(body, /plannedBuildings = false,\s*\} = options;/);
+    assert.match(body, /station3D\.openWalk\(lat, lon, \{[^}]*\bplannedBuildings,\s*\}\);/);
+    assert.match(
+        transit,
+        /applyWalk3DLink\(\{[^}]*plannedBuildings: station3DSessionLink\.plannedBuildings,\s*\}\)/,
+    );
 });
 
 test('legacy explorer links hand off only when a deployment configures a host', async () => {

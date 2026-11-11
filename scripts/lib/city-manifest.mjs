@@ -140,6 +140,23 @@ export function validateCityManifest(city, expectedId = null) {
             }
         }
     }
+    // Planned buildings are requested below the planner API base, so the endpoint is a
+    // relative path there, never another origin.
+    if (city.station3d?.worldProfile?.plannedBuildings !== undefined) {
+        const plannedBuildings = city.station3d.worldProfile.plannedBuildings;
+        if (!plannedBuildings || typeof plannedBuildings !== 'object' || Array.isArray(plannedBuildings)) {
+            add('station3d.worldProfile.plannedBuildings must be an object');
+        } else {
+            if (!isSafeRelativePath(plannedBuildings.endpoint)) {
+                add('station3d.worldProfile.plannedBuildings.endpoint must be a safe relative path');
+            }
+            if (plannedBuildings.radiusM !== undefined
+                && !(typeof plannedBuildings.radiusM === 'number'
+                    && Number.isFinite(plannedBuildings.radiusM) && plannedBuildings.radiusM > 0)) {
+                add('station3d.worldProfile.plannedBuildings.radiusM must be a positive number when present');
+            }
+        }
+    }
 
     if (!city.features || typeof city.features !== 'object') {
         add('features must be an object');
