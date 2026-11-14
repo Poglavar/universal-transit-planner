@@ -728,7 +728,17 @@ function hidePlannerBootLoading() {
 }
 // Give the reader the planner after all: a link that failed, or one that is
 // taking so long they would rather go look at the map. Idempotent.
+// It also cancels the 3D open. Before, the button only removed the loading
+// screen: the ride still opened underneath, and until its world was built the
+// reader looked at an empty blue sky. A newer intent stops a pending open at its
+// next check; Station3D.close() drops one queued in the engine or closes an open
+// session, whose visibility event then restores the map below. The flag stops a
+// link whose open has not started yet (it waits for its project first).
+let station3DDeepLinkCancelled = false;
 function revealPlannerMap() {
+    station3DDeepLinkCancelled = true;
+    beginPlanner3DOpenIntent();
+    window.Station3D?.close?.();
     hidePlannerBootLoading();
     ensureBasemapLayer();
     if (station3DMapSuspended) setStation3DMapSuspended(false);
@@ -16135,6 +16145,9 @@ const initialProjectLoadPromise = (async () => {
 
 (async () => {
     await initialProjectLoadPromise;
+    // The reader chose the map on the loading screen while the project loaded;
+    // starting the linked 3D world now would take a fresh open intent of its own.
+    if (station3DDeepLinkCancelled) return;
     if (openStation3DScenarioRequested) {
         try {
             const [station3D, scenarioRunner] = await Promise.all([
