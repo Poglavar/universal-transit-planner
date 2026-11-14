@@ -7874,7 +7874,11 @@ function getLineTrackCenterSpacingAtDistance(line, distanceMeters) {
     // flared, and the cab that kept it rode the near-centreline straight through
     // the island platform. Match the rails: in photo the flare is purely a
     // function of distance.
-    const depthFactor = plannerCabAslActive
+    // A model ride on the authored grade (plannerCabModelGradeActive, terrain on)
+    // reads absolute EVRF2000 heights the same way: ≈96 m at Stari terminal, so
+    // the easing collapsed the flare to running spacing and the cab drove through
+    // the island platform (2026-11-14). Same rule there.
+    const depthFactor = plannerCabAslActive || plannerCabModelGradeActive
         ? 1
         : getUndergroundDepthFlareFactor(getLineElevationAt(line, Number(distanceMeters) || 0).elevM);
     return runningSpacingMeters + (spacingMeters - runningSpacingMeters) * depthFactor;
