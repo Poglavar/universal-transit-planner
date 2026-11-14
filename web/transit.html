@@ -39,6 +39,11 @@
     <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
     <link rel="stylesheet" href="transit.css?v=20260806-2">
     <link rel="stylesheet" href="planner-grade/civil-objects.css?v=20260731-1">
+    <!-- Station3D's shell styles, here rather than left to vendor/station3d/loader.js:
+         a 3D deep link shows the loading curtain below as soon as transit.js runs, long
+         before the loader at the end of <body> would add them, and the unstyled curtain
+         flashed its logo full size. The loader skips a link carrying data-station3d-shell. -->
+    <link rel="stylesheet" href="vendor/station3d/station3d.css" data-station3d-shell>
 </head>
 
 <body data-page="planner">
