@@ -7910,6 +7910,17 @@ function plannerCabPoseElevationAt(_line, _lat, _lng, profileElevationM) {
     return { y: Number.isFinite(profileElevationM) ? profileElevationM : 0 };
 }
 
+// The cab's consist is three cars a car-spacing apart, centred on where the
+// pose is drawn. At a line end the train runs up to the very end of the track,
+// so the consist is held back as one body: its front car stops at the end (its
+// rear car at the start). Clamping each car on its own stopped the front car
+// while the two behind it slid on into it (2026-11-15).
+const PLANNER_CAB_CAR_SPACING_M = 23.735;
+function plannerCabConsistDistance(distanceM, totalLengthM, spacingM = PLANNER_CAB_CAR_SPACING_M) {
+    if (!(totalLengthM > 2 * spacingM)) return totalLengthM / 2;
+    return Math.min(totalLengthM - spacingM, Math.max(spacingM, distanceM));
+}
+
 function makeTrainPoseFn(train, line) {
     const capacity = TRAIN_CAPACITY[normalizeGauge(line.gauge)];
     const stationEntryBufferMeters = isMetroStyleLine(line) ? UNDERGROUND_STATION_ENTRY_BUFFER_METERS : 0;
@@ -7937,12 +7948,16 @@ function makeTrainPoseFn(train, line) {
             // release — that was the 33000 km/h spike + engine-whine blow-up.
             if (dt > 0 && !cabViewPaused) stepPlannerTrain(train, line, profile, baseSpeedMps, dt);
         }
+        // Where the consist is drawn; the train itself (stops, HUD distances) stays at
+        // train.distanceMeters. They differ only within a car of a line end.
+        const consistDistance = plannerCabConsistDistance(train.distanceMeters, profile.totalLengthMeters);
+        const consistHeld = consistDistance !== train.distanceMeters;
         const pos = undergroundCabProfile
-            ? getUndergroundCabPosition(undergroundCabProfile, train.distanceMeters, train.direction)
-            : getTrainPosition(profile, train.distanceMeters, train.direction);
+            ? getUndergroundCabPosition(undergroundCabProfile, consistDistance, train.direction)
+            : getTrainPosition(profile, consistDistance, train.direction);
         if (!pos) return null;
         const headingDeg = (pos.angleDeg + 90 + 360) % 360;
-        const elevation = getLineElevationAt(line, train.distanceMeters);
+        const elevation = getLineElevationAt(line, consistDistance);
         const paused = (train.pauseRemainingSeconds || 0) > 0.01;
         let stationName = null;
         if (paused && train.pausedStationId != null) {
@@ -7977,14 +7992,14 @@ function makeTrainPoseFn(train, line) {
             pos.latlng.lat,
             pos.latlng.lng,
             headingDeg,
-            getLineTrackCenterOffsetAtDistance(line, train.distanceMeters),
+            getLineTrackCenterOffsetAtDistance(line, consistDistance),
         );
         const articulatedCars = [1, 0, -1].map((carOffset) => {
             const carDistance = Math.max(
                 0,
                 Math.min(
                     profile.totalLengthMeters,
-                    train.distanceMeters + carOffset * train.direction * 23.735,
+                    consistDistance + carOffset * train.direction * PLANNER_CAB_CAR_SPACING_M,
                 ),
             );
             const carPos = undergroundCabProfile
@@ -8025,7 +8040,8 @@ function makeTrainPoseFn(train, line) {
                     ? Math.max(0, Number(train.pauseRemainingSeconds) || 0)
                     : null,
                 departureAutomatic: paused,
-                speedKmh: Math.round(Math.max(0, Number(train.currentSpeedMps) || 0) * 3.6),
+                // A consist held at a line end stands still while the train runs its last car.
+                speedKmh: consistHeld ? 0 : Math.round(Math.max(0, Number(train.currentSpeedMps) || 0) * 3.6),
                 stationName,
                 nextStation,
                 totalPassengers: train.totalPassengers || 0,
@@ -8049,7 +8065,7 @@ function makeTrainPoseFn(train, line) {
         // Planner rides carry no railFormation, so the cab HUD's chainage/grade
         // readout would be stuck at "km 0+000 · 0.0%". Feed it the train's real
         // position along the line and the grade along the direction of travel.
-        pose.status.chainageM = train.distanceMeters;
+        pose.status.chainageM = consistDistance;
         pose.status.gradePercent = Math.tan(pose.pitchDeg * Math.PI / 180) * 100;
         return pose;
     };
